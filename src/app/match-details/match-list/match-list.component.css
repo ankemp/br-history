@@ -1,0 +1,13 @@
+:host() {
+  display: block;
+}
+
+.rosters {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.rosters >>> brh-team-roster {
+  width: 50%;
+}

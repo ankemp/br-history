@@ -1,0 +1,28 @@
+:host() {
+  display: block;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.mat-card {
+  border-top: 4px solid transparent;
+  box-sizing: border-box;
+}
+
+.mat-card.winner {
+  border-top-color: gold;
+}
+
+.mat-card-content {
+  word-wrap: break-word;
+}
+
+.participants {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.participants >>> brh-participants-card {
+  width: 50%;
+}

@@ -1,0 +1,10 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Round: {{ (data$ | async)?.attributes.ordinal }} ({{ roundLength((data$ | async)?.attributes.duration) }})
+    </mat-panel-title>
+    <mat-panel-description>
+      Team {{ (data$ | async)?.attributes.stats.winningTeam }} Wins
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
