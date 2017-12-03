@@ -1,0 +1,27 @@
+.search {
+  box-sizing: border-box;
+  min-width: 300px;
+  padding: 16px;
+}
+
+.search >>> mat-form-field {
+  width: 100%;
+}
+
+.search >>> .mat-form-field-prefix {
+  align-self: center;
+  display: flex;
+}
+
+.search >>> .mat-form-field-prefix mat-icon {
+  height: 0.5em;
+}
+
+.search >>> .mat-input-element,
+.search >>> .mat-form-field-placeholder {
+  color: #fff;
+}
+
+.search >>> .mat-form-field-underline {
+  background-color: #fff;
+}
