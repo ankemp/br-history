@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$br-history-primary: mat-palette($mat-indigo);
+$br-history-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$br-history-theme: mat-light-theme($br-history-primary, $br-history-accent);
+
+@include angular-material-theme($br-history-theme);
