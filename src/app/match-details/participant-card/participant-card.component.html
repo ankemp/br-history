@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-content>
+    <!-- {{data | json}} -->
     <ul>
-      <li>Player: {{ (data$ | async)?.relationships.player.data.id }}</li>
-      <li>Champion: {{ (data$ | async)?.attributes.actor }}</li>
+      <li>Player: {{ data.relationships.player.data.id }}</li>
+      <li>Champion: {{ data.attributes.actor }}</li>
     </ul>
-    <!-- {{ data$ | async | json}} -->
   </mat-card-content>
 </mat-card>

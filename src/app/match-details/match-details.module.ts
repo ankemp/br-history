@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { MatExpansionModule, MatCardModule } from '@angular/material';
 
-import { MatchDetailsService } from './match-details.service';
-
 import { MatchListComponent } from './match-list/match-list.component';
 import { TeamRosterComponent } from './team-roster/team-roster.component';
 import { MatchRoundComponent } from './match-round/match-round.component';
@@ -23,9 +21,6 @@ import { ParticipantCardComponent } from './participant-card/participant-card.co
     MatchRoundComponent,
     PlayerCardComponent,
     ParticipantCardComponent
-  ],
-  providers: [
-    MatchDetailsService
   ],
   exports: [MatchListComponent]
 })

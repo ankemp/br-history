@@ -1,23 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
-import { MatchDetailsService } from '../match-details.service';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'brh-team-roster',
   templateUrl: './team-roster.component.html',
-  styleUrls: ['./team-roster.component.css']
+  styleUrls: ['./team-roster.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamRosterComponent implements OnInit {
-  @Input() dataid: string;
-  roster$: Observable<any>;
+export class TeamRosterComponent {
+  @Input() data: any;
 
-  constructor(
-    public details: MatchDetailsService
-  ) { }
-
-  ngOnInit() {
-    this.roster$ = this.details.get('roster', this.dataid);
-  }
+  constructor() { }
 
 }

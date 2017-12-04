@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MatchService {
@@ -9,12 +10,13 @@ export class MatchService {
     private db: AngularFirestore,
   ) { }
 
-  private get matches(): AngularFirestoreCollection<any> {
-    return this.db.collection('match');
+  private matches(query?: any): AngularFirestoreCollection<any> {
+    return this.db.collection('match', query);
   }
 
   public recent(): Observable<any[]> {
-    return this.matches.valueChanges();
+    const query = ref => ref.limit(5);
+    return this.matches(query).valueChanges();
   }
 
 }

@@ -5,16 +5,16 @@
         {{ match.attributes.createdAt | date:'medium' }} ({{ matchLength(match.attributes.duration) }})
       </mat-panel-title>
       <mat-panel-description>
-        {{ match.attributes.stats.type }} - {{ match.relationships.rounds.data.length }} Rounds
+        {{ match.attributes.stats.type }} - {{ match.relationships.rounds.length }} Rounds
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!-- {{match|json}} -->
     <div class="rosters">
-      <brh-team-roster *ngFor="let roster of match.relationships.rosters.data" [dataid]="roster.id"></brh-team-roster>
+      <brh-team-roster *ngFor="let roster of match.relationships.rosters" [data]="roster"></brh-team-roster>
     </div>
     <div class="rounds">
       <h1>Rounds</h1>
-      <brh-match-round *ngFor="let round of match.relationships.rounds.data" [dataid]="round.id"></brh-match-round>
+      <brh-match-round *ngFor="let round of match.relationships.rounds" [data]="round"></brh-match-round>
     </div>
   </mat-expansion-panel>
 </div>

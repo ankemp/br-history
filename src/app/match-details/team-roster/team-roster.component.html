@@ -1,15 +1,14 @@
 <div class="roster">
-  <mat-card [ngClass]="{'winner': (roster$ | async)?.attributes.won === 'true'}">
-    <mat-card-header *ngIf="!!(roster$ | async)?.relationships.team.data">
-      <img mat-card-avatar src="{{ (roster$ | async)?.relationships.team.data }}" alt="TEAM AVATAR">
-      <mat-card-title>{{ (roster$ | async)?.relationships.team.data.name }}</mat-card-title>
+  <mat-card [ngClass]="{'winner': data.attributes.won === 'true'}">
+    <mat-card-header *ngIf="!data.relationships.team">
+      <img mat-card-avatar src="{{ data.relationships.team }}" alt="TEAM AVATAR">
+      <mat-card-title>{{ data.relationships.team.data.name }}</mat-card-title>
       <mat-card-subtitle>ELO Rank</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <!-- {{roster$ | async | json}} -->
       <div class="participants">
         <h3>Players</h3>
-        <brh-participant-card *ngFor="let participant of (roster$ | async)?.relationships.participants.data" [dataid]="participant.id"></brh-participant-card>
+        <brh-participant-card *ngFor="let participant of data.relationships.participants" [data]="participant"></brh-participant-card>
       </div>
     </mat-card-content>
   </mat-card>

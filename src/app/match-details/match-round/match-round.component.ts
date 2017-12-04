@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { MatchDetailsService } from '../match-details.service';
@@ -6,23 +6,17 @@ import { MatchDetailsService } from '../match-details.service';
 @Component({
   selector: 'brh-match-round',
   templateUrl: './match-round.component.html',
-  styleUrls: ['./match-round.component.css']
+  styleUrls: ['./match-round.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatchRoundComponent implements OnInit {
-  @Input() dataid: string;
-  data$: Observable<any>;
+export class MatchRoundComponent {
+  @Input() data: any;
 
-  constructor(
-    public details: MatchDetailsService
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.data$ = this.details.get('round', this.dataid);
-  }
-
-  roundLength(duration: number): string {
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration - (minutes * 60);
+  roundLength(): string {
+    const minutes = Math.floor(this.data.attributes.duration / 60);
+    const seconds = this.data.attributes.duration - (minutes * 60);
     return `${minutes}m ${seconds}s`;
   }
 
