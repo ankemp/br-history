@@ -17,12 +17,20 @@
   word-wrap: break-word;
 }
 
-.participants {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.participants .mat-card + .mat-card {
+  margin-top: 8px;
 }
 
-.participants >>> brh-participants-card {
-  width: 50%;
+.participants .mat-card {
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  display: block;
+}
+
+.participants .mat-card.mvp {
+  border-left-color: gold;
+}
+
+.participants .mat-card-content {
+  word-wrap: break-word;
 }

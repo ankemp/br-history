@@ -15,7 +15,7 @@ export class MatchService {
   }
 
   public recent(): Observable<any[]> {
-    const query = ref => ref.limit(5);
+    const query = ref => ref.orderBy('attributes.createdAt', 'desc').limit(5);
     return this.matches(query).valueChanges();
   }
 
