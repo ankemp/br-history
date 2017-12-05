@@ -13,16 +13,23 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <!-- {{data|json}} -->
+      <div>
+        <h3>Outgoing</h3>
+        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="outgoingChart()"></google-chart>
+        <h3>Incoming</h3>
+        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="incomingChart()"></google-chart>
+        <h3>Energy</h3>
+        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="energyChart()"></google-chart>
+      </div>
       <div class="participants">
         <h3>Players</h3>
         <mat-card *ngFor="let participant of data.relationships.participants">
+          <mat-card-header>
+            <mat-card-title>{{ participant.relationships.player.data.id }}</mat-card-title>
+            <mat-card-subtitle>{{ participant.attributes.actor }}</mat-card-subtitle>
+          </mat-card-header>
           <mat-card-content>
-            <!-- {{participant | json}} -->
-            <ul>
-              <li>Player: {{ participant.relationships.player.data.id }}</li>
-              <li>Champion: {{ participant.attributes.actor }}</li>
-            </ul>
+            {{participant.attributes.stats | json}}
           </mat-card-content>
         </mat-card>
       </div>
