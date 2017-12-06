@@ -7,6 +7,4 @@ export interface Round {
   stats: {
     winningTeam: number
   };
-
-  participants: Participant[];
 }

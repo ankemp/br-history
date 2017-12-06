@@ -1,0 +1,44 @@
+:host() {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-nav-list {
+  width: 40%;
+}
+
+.mat-list-item {
+  border-left: 4px solid transparent;
+  width: 100%;
+}
+
+.mat-list-item.won {
+  border-left-color: gold;
+}
+
+.mat-list-item.selected {
+  background: rgba(0, 0, 0, 0.10);
+}
+
+.mat-list-item-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.where {
+  width: 40%;
+}
+
+.when {
+  text-align: center;
+  width: 40%;
+}
+
+.stats {
+  text-align: right;
+  width: 20%;
+}
+
+.details {
+  width: 60%;
+}

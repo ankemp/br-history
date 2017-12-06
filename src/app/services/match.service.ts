@@ -20,4 +20,8 @@ export class MatchService {
     return this.matches().valueChanges();
   }
 
+  public getMatch(matchId: string): Observable<Match> {
+    return this.matches().doc<Match>(matchId).valueChanges();
+  }
+
 }
