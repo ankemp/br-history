@@ -1,5 +1,5 @@
 <div class="roster">
-  <mat-card [ngClass]="{'winner': roster.won === 'true'}">
+  <mat-card [ngClass]="{'winner': roster.won}">
     <mat-card-header *ngIf="roster.team">
       <img mat-card-avatar src="{{ roster.team }}" alt="TEAM AVATAR">
       <mat-card-title>
