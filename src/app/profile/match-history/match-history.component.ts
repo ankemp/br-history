@@ -33,19 +33,32 @@ export class MatchHistoryComponent {
     return kd !== Infinity ? kd : false;
   }
 
-  score(match: Match): number | boolean {
-    const score = match.rosters.reduce((acc, roster) =>
-      roster.participants
-        .filter(p => (p.player.id === this.user))
-        .reduce((a, p) => p.stats.score, 0)
-      , 0);
-    return score || false;
-  }
-
   isWinner(match: Match): boolean {
     return match.rosters.find(roster =>
       !!roster.participants.find(p => p.player.id === this.user)
     ).won;
+  }
+
+  reduceStat(match: Match, stat: string): number {
+    return match.rosters.reduce((acc, roster) =>
+      roster.participants
+        .filter(p => (p.player.id === this.user))
+        .reduce((a, p) => p.stats[stat], 0)
+      , 0);
+  }
+
+  reduceStats(stat: string, average = false): number {
+    let s = 0;
+    if (!!this.matches) {
+      s = this.matches.reduce((acc, match) => {
+        acc += this.reduceStat(match, stat);
+        return acc;
+      }, 0);
+      if (average) {
+        s = Math.round(s /= this.matches.length);
+      }
+    }
+    return s;
   }
 
 }

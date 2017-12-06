@@ -1,5 +1,36 @@
 :host() {
   display: flex;
+  flex-direction: column;
+}
+
+.summary {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding: 16px 16px 16px 0;
+}
+
+.summary .title {
+  font-size: 20px;
+  font-weight: 500;
+  border-right: 1px solid #000000;
+  padding-right: 32px;
+}
+
+.summary > div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 32px;
+}
+
+.summary .stat div:first-of-type {
+  text-transform: uppercase;
+}
+
+.history {
+  display: flex;
   flex-direction: row;
 }
 
@@ -25,20 +56,20 @@
   flex-direction: row;
 }
 
-.where {
+.history .where {
   width: 40%;
 }
 
-.when {
+.history .when {
   text-align: center;
   width: 40%;
 }
 
-.stats {
+.history .stats {
   text-align: right;
   width: 20%;
 }
 
-.details {
+.history .details {
   width: 60%;
 }
