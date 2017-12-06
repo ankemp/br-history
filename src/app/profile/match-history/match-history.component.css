@@ -71,5 +71,7 @@
 }
 
 .history .details {
+  box-sizing: border-box;
+  padding: 0 16px;
   width: 60%;
 }

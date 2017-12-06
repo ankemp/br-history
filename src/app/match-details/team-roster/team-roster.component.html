@@ -1,38 +1,9 @@
-<div class="roster">
-  <mat-card [ngClass]="{'winner': roster.won}">
-    <mat-card-header *ngIf="roster.team">
-      <img mat-card-avatar src="{{ roster.team }}" alt="TEAM AVATAR">
-      <mat-card-title>
-        <h2>{{ roster.team }}</h2>
-      </mat-card-title>
-      <mat-card-subtitle>{{ roster.team }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-header *ngIf="!roster.team">
-      <mat-card-title>
-        <h2>Team: {{roster.stats.side}}</h2>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div>
-        <h3>Outgoing</h3>
-        <google-chart *ngIf="roster.participants[0].stats" [data]="outgoingChart()"></google-chart>
-        <h3>Incoming</h3>
-        <google-chart *ngIf="roster.participants[0].stats" [data]="incomingChart()"></google-chart>
-        <h3>Energy</h3>
-        <google-chart *ngIf="roster.participants[0].stats" [data]="energyChart()"></google-chart>
-      </div>
-      <div class="participants">
-        <h3>Players</h3>
-        <mat-card *ngFor="let participant of roster.participants">
-          <mat-card-header>
-            <mat-card-title>{{ participant.player.id }}</mat-card-title>
-            <mat-card-subtitle>{{ participant.actor }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            {{participant.stats | json}}
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-card-content>
-  </mat-card>
+<div class="details">
+  <h2>Team: {{roster.participants[0].stats.side}} // Score: {{roster.stats.score}}</h2>
 </div>
+<mat-expansion-panel *ngFor="let participant of roster.participants">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{participant.player.id}} - {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-description>{{participant.stats.score}} | {{participant.stats.damageDone}} | {{participant.stats.healingDone}}</mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>

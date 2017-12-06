@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { MatTabsModule, MatListModule } from '@angular/material';
 
+import { MatchDetailsModule } from '../match-details/match-details.module';
+
 import { MatchService } from '../services/match.service';
 
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -16,6 +18,7 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
     CommonModule,
     MatTabsModule,
     MatListModule,
+    MatchDetailsModule,
     ProfileRoutingModule
   ],
   declarations: [
