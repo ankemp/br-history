@@ -2,7 +2,9 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const _ = require('lodash');
 const fetch = require('node-fetch');
+const bjs = require('battlerite.js');
 admin.initializeApp(functions.config().firebase);
+const sdb = admin.firestore();
 
 const battlerite_api_key = functions.config().battlerite.api_key;
 
@@ -12,15 +14,65 @@ const headers = {
 };
 
 exports.getRecentMatches = functions.https.onRequest((req, resp) => {
-  const sdb = admin.firestore();
+  const client = new bjs.Client(battlerite_api_key);
+  const dbRef = sdb.collection('match');
+
+  const { playerIds } = req.query;
+
+  if (!playerIds) {
+    resp.status(500).send('Missing Params');
+    return;
+  }
+
+  client
+    .searchMatches({ playerIds: playerIds }, 5)
+    .then(matches => JSON.parse(JSON.stringify(matches)))
+    .then(matches => _(matches))
+    .then(matches =>
+      matches.map(match => {
+        match.createdAt = new Date(match.createdAt);
+        return match;
+      })
+    )
+    .then(matches => {
+      const batch = sdb.batch();
+      matches.forEach(match => {
+        const matchRef = dbRef.doc(match.id);
+        batch.set(matchRef, match);
+      });
+      return batch
+        .commit()
+        .then(() => {
+          return matches;
+        })
+        .catch(err => Promise.reject(err));
+    })
+    .then(matches => {
+      resp.send(matches.value());
+    })
+    .catch(err => {
+      resp.status(500).send(err)
+    });
+});
+
+exports.getRecentMatchesOLD = functions.https.onRequest((req, resp) => {
   const matchCol = sdb.collection('match');
-  fetch('https://api.dc01.gamelockerapp.com/shards/global/matches?filter[playerIds]=805576310947717120,934855283782594560', { headers })
+
+  const { playerIds } = req.query;
+
+  if (!playerIds) {
+    resp.status(500).send('Missing Params');
+    return;
+  }
+
+  fetch(`https://api.dc01.gamelockerapp.com/shards/global/matches?filter[playerIds]=${playerIds}&filter[createdAt-start]=2017-12-03T00:00:00.870Z`, { headers })
     .then(res => res.json())
     .then(res => res.errors ? Promise.reject(res.errors) : res)
     .then(res => {
       // console.log(_.sample(res.data));
       const includes = _(res.included);
       res.data = _.map(res.data, match => {
+        match.attributes.createdAt = new Date(match.attributes.createdAt);
         match.relationships = _.mapValues(match.relationships, rel => {
           return _.map(rel.data, data => {
             if (data.type === 'roster') {
