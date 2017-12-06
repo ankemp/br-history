@@ -2,25 +2,24 @@
   <mat-expansion-panel [expanded]="index === 0">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ match.attributes.createdAt | date:'medium' }} ({{ toMinSec(match.attributes.duration) }})
+        {{ match.createdAt | date:'medium' }} ({{ toMinSec(match.duration) }})
       </mat-panel-title>
       <mat-panel-description>
-        {{ match.attributes.stats.type }} - {{ match.relationships.rounds.length }} Rounds
+        {{ match.stats.type }} - {{ match.rounds.length }} Rounds
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!-- {{match|json}} -->
     <div class="">
-      
+
     </div>
     <div class="rosters">
-      <brh-team-roster *ngFor="let roster of match.relationships.rosters" [data]="roster"></brh-team-roster>
+      <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
     </div>
     <div class="rounds">
       <h1>Rounds</h1>
       <mat-list>
-        <mat-list-item *ngFor="let round of match.relationships.rounds | orderBy:'attributes.ordinal'">
-          Round: {{ round.attributes.ordinal }} ({{ toMinSec(round.attributes.duration) }}) Team {{ round.attributes.stats.winningTeam
-          }} Wins
+        <mat-list-item *ngFor="let round of match.rounds | orderBy:'attributes.ordinal'">
+          Round: {{ round.ordinal }} ({{ toMinSec(round.duration) }}) Team {{ round.stats.winningTeam }} Wins
         </mat-list-item>
       </mat-list>
     </div>

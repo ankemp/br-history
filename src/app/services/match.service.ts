@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, QueryFn } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+
+import { Match } from '../models/match';
 
 @Injectable()
 export class MatchService {
@@ -10,13 +11,13 @@ export class MatchService {
     private db: AngularFirestore,
   ) { }
 
-  private matches(query?: any): AngularFirestoreCollection<any> {
+  private matches(query?: QueryFn): AngularFirestoreCollection<Match> {
     return this.db.collection('match', query);
   }
 
-  public recent(): Observable<any[]> {
-    const query = ref => ref.orderBy('attributes.createdAt', 'desc').limit(5);
-    return this.matches(query).valueChanges();
+  public recent(playerId: string): Observable<Match[]> {
+    const query: QueryFn = (ref) => ref.where('rosters.participants.player.id', '==', playerId).orderBy('createdAt', 'desc').limit(5);
+    return this.matches().valueChanges();
   }
 
 }

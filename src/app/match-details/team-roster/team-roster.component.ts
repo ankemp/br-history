@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-// import {  } from 'ng2-google-charts';
+
+import { Roster } from '../../models/roster';
 
 @Component({
   selector: 'brh-team-roster',
@@ -8,7 +9,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamRosterComponent {
-  @Input() data: any;
+  @Input() roster: Roster;
   private chartOptions = {
     height: 300,
     legend: { position: 'top', maxLines: 3 },
@@ -51,10 +52,10 @@ export class TeamRosterComponent {
 
   private buildDataTable(cols: string[]): any[] {
     const data = [['UserID', ...cols]];
-    const { participants } = this.data.relationships;
+    const { participants } = this.roster;
     data.push(
       ...participants.map(participant =>
-        [participant.attributes.stats.userID, ...cols.map(col => participant.attributes.stats[col])]
+        [participant.player.id, ...cols.map(col => participant.stats[col])]
       )
     );
     return data;

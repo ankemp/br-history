@@ -1,35 +1,35 @@
 <div class="roster">
-  <mat-card [ngClass]="{'winner': data.attributes.won === 'true'}">
-    <mat-card-header *ngIf="data.relationships.team.data">
-      <img mat-card-avatar src="{{ data.relationships.team }}" alt="TEAM AVATAR">
+  <mat-card [ngClass]="{'winner': roster.won === 'true'}">
+    <mat-card-header *ngIf="roster.team">
+      <img mat-card-avatar src="{{ roster.team }}" alt="TEAM AVATAR">
       <mat-card-title>
-        <h2>{{ data.relationships.team.data.name }}</h2>
+        <h2>{{ roster.team }}</h2>
       </mat-card-title>
-      <mat-card-subtitle>ELO Rank</mat-card-subtitle>
+      <mat-card-subtitle>{{ roster.team }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-header *ngIf="!data.relationships.team.data">
+    <mat-card-header *ngIf="!roster.team">
       <mat-card-title>
-        <h2>Team: {{data.relationships.participants[0].attributes.stats.side}}</h2>
+        <h2>Team: {{roster.stats.side}}</h2>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div>
         <h3>Outgoing</h3>
-        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="outgoingChart()"></google-chart>
+        <google-chart *ngIf="roster.participants[0].stats" [data]="outgoingChart()"></google-chart>
         <h3>Incoming</h3>
-        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="incomingChart()"></google-chart>
+        <google-chart *ngIf="roster.participants[0].stats" [data]="incomingChart()"></google-chart>
         <h3>Energy</h3>
-        <google-chart *ngIf="data.relationships.participants[0].attributes.stats" [data]="energyChart()"></google-chart>
+        <google-chart *ngIf="roster.participants[0].stats" [data]="energyChart()"></google-chart>
       </div>
       <div class="participants">
         <h3>Players</h3>
-        <mat-card *ngFor="let participant of data.relationships.participants">
+        <mat-card *ngFor="let participant of roster.participants">
           <mat-card-header>
-            <mat-card-title>{{ participant.relationships.player.data.id }}</mat-card-title>
-            <mat-card-subtitle>{{ participant.attributes.actor }}</mat-card-subtitle>
+            <mat-card-title>{{ participant.player.id }}</mat-card-title>
+            <mat-card-subtitle>{{ participant.actor }}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            {{participant.attributes.stats | json}}
+            {{participant.stats | json}}
           </mat-card-content>
         </mat-card>
       </div>
