@@ -26,7 +26,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ) { }
 
   selectMatch(match: Match): void {
-    console.log(match);
     this.selectedMatch$ = this.match.getMatch(match.id);
   }
 
