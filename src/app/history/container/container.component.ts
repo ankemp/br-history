@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { MatchService } from '../../services/match.service';
 import { Match } from '../../models/match';
@@ -12,16 +14,23 @@ import { Match } from '../../models/match';
   `,
   styleUrls: ['./container.component.css']
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent implements OnInit, OnDestroy {
   public history$: Observable<Match[]>;
+  private routeSub: Subscription;
 
   constructor(
     private match: MatchService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.history$ = this.match.recent();
-    this.history$.subscribe(his => console.log(his));
+    this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
+      this.history$ = this.match.recent(params['userId']);
+    });
+  }
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 
 }
