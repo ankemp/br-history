@@ -31,7 +31,6 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
     MatchDetailsComponent
   ],
   exports: [
-    MatchListComponent,
     MatchDetailsComponent
   ]
 })
