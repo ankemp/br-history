@@ -4,6 +4,7 @@ import { Roster } from './roster';
 import { Round } from './round';
 
 export interface Match {
+  id: string;
   createdAt: Date;
   duration: number;
   gameMode: string;

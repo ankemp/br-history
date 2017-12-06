@@ -2,6 +2,7 @@ import { IChampion } from './champion';
 import { Player } from './player';
 
 export interface Participant {
+  id: string;
   actor: string;
   champion: IChampion;
   stats: {
