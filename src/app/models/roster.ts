@@ -4,7 +4,6 @@ export interface Roster {
   id: string;
   stats: {
     score: number;
-    side: number;
   };
 
   won: boolean;

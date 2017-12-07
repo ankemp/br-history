@@ -359,13 +359,6 @@ base64url@2.0.0, base64url@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/base64url/-/base64url-2.0.0.tgz#eac16e03ea1438eff9423d69baa36262ed1f70bb"
 
-battlerite.js@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/battlerite.js/-/battlerite.js-3.1.1.tgz#6b8c165c3887f5da8e1b425a4b6e3f08d7de6e2d"
-  dependencies:
-    request "^2.83.0"
-    request-promise-native "^1.0.5"
-
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"

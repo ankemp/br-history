@@ -9,11 +9,11 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "battlerite.js": "^3.1.1",
     "firebase-admin": "^5.5.1",
     "firebase-functions": "^0.7.1",
     "lodash": "^4.17.4",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "request-promise-native": "^1.0.5"
   },
   "private": true
 }
