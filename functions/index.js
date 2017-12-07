@@ -22,7 +22,10 @@ exports.getMatch = functions.https.onRequest((req, resp) => {
     .then(response => mapMatch(response))
     .then(match => matchRef.doc(match.id).set(match))
     .then(() => resp.status(200).send('SUCCESS'))
-    .catch(err => resp.status(500).send(err));
+    .catch(err => {
+      console.error(err);
+      resp.status(500).send('ERROR');
+    });
 });
 
 
@@ -48,5 +51,8 @@ exports.searchMatches = functions.https.onRequest((req, resp) => {
       return batch.commit();
     })
     .then(() => resp.status(200).send('SUCCESS'))
-    .catch(err => resp.status(500).send(err));
+    .catch(err => {
+      console.error(err);
+      resp.status(500).send('ERROR')
+    });
 })
