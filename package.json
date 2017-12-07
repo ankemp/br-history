@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot --progress  --named-chunks",
+    "build": "ng build --prod --aot --progress=false  --named-chunks",
     "deploy:ci": "firebase deploy --only hosting --token '$FIREBASE_TOKEN'",
     "test": "ng test",
     "lint": "ng lint",
