@@ -77,3 +77,54 @@ exports.getRecentMatches = functions.https.onRequest((req, resp) => {
       resp.status(500).send(err)
     });
 });
+
+exports.getRecentMatchesOLD = functions.https.onRequest((req, resp) => {
+  const matchCol = sdb.collection('match');
+
+  const { playerIds } = req.query;
+
+  if (!playerIds) {
+    resp.status(500).send('Missing Params');
+    return;
+  }
+
+  fetch(`https://api.dc01.gamelockerapp.com/shards/global/matches?filter[playerIds]=${playerIds}&filter[createdAt-start]=2017-12-03T00:00:00.870Z`, { headers })
+    .then(res => res.json())
+    .then(res => res.errors ? Promise.reject(res.errors) : res)
+    .then(res => {
+      // console.log(_.sample(res.data));
+      const includes = _(res.included);
+      res.data = _.map(res.data, match => {
+        match.attributes.createdAt = new Date(match.attributes.createdAt);
+        match.relationships = _.mapValues(match.relationships, rel => {
+          return _.map(rel.data, data => {
+            if (data.type === 'roster') {
+              const included = includes.find({ 'type': data.type, 'id': data.id });
+              included.relationships = _.mapValues(included.relationships, iRel =>
+                _.map(iRel.data, iData =>
+                  includes.find({ 'type': iData.type, 'id': iData.id })
+                )
+              )
+              return included;
+            }
+            return includes.find({ 'type': data.type, 'id': data.id });
+          });
+        });
+        return match;
+      });
+      return res;
+    })
+    .then(res => {
+      _.forEach(res.data, match => {
+        matchCol.doc(match.id).set(match);
+      });
+      // _.forEach(res.included, i => {
+      //   sdb.collection(i.type).doc(i.id).set(_.omit(i, ['type', 'id']));
+      // })
+      resp.status(200).send(`Saved ${res.data.length} matches`);
+    })
+    .catch(err => {
+      console.log('error: ', err)
+      resp.status(500).send(err);
+    });
+});
