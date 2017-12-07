@@ -25,6 +25,7 @@ jobs:
           paths:
             - dist/*
             - package.json
+            - yarn.lock
   deploy:
     <<: *defaults
     steps:
