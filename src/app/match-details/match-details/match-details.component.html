@@ -7,7 +7,7 @@
       </span>
     </mat-card-title>
     <mat-card-subtitle>{{match.map.name}}</mat-card-subtitle>
-    <img src="assets/maxresdefault.jpg">
+    <img src="assets/maps/{{match.map.id}}.jpg">
   </mat-card-title-group>
   <mat-card-content>
     <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
