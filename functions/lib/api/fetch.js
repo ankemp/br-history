@@ -8,7 +8,7 @@ const headers = {
   'Authorization': `Bearer ${battlerite_api_key}`
 };
 
-exports.apiGet = function (endpoint, options) {
+module.exports = function (endpoint, options) {
   const defaults = {
     uri: `${API_ROOT}/${endpoint}`,
     method: 'GET',

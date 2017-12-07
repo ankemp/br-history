@@ -69,6 +69,11 @@ function _mapMatch({ data, included }) {
   return match;
 }
 
-exports.mapMatch = function (response) {
-  return _mapMatch(response);
+function _mapMatches(matches) {
+  return _.map(matches, match => _mapMatch(match))
+}
+
+module.exports = {
+  mapMatch: _mapMatch,
+  mapMatches: _mapMatches
 }
