@@ -2,25 +2,34 @@ const _ = require('lodash');
 const { getChampionById } = require('./data/champions');
 const { getMapById } = require('./data/maps');
 
+function _mapPlayerMatches({ data, included }) {
+  const _included = _(included);
+  return _.map(data, match => {
+    const rosters = match.relationships.rosters.data;
+    let players = _.map(rosters, r =>
+      _mapIncluded(_included, r)
+        .participants
+        .map(p => p.player.id));
+    players = _.flatten(players);
+    return { matchId: match.id, players };
+  });
+}
+
 function _mapIncluded(_included, { type, id }) {
   let include = _included.find(i => i.id === id);
   if (!_.isUndefined(include) && !_.isUndefined(include.attributes)) {
     include = _.assign(include, _flattenAttributes(include.attributes))
     include = _.omit(include, 'attributes');
   }
-  if (!_.isUndefined(include) && !_.isUndefined(include.relationships)) {
+  if (!_.isUndefined(include) && !_.isUndefined(include.relationships) && !!_.keys(include.relationships).length) {
     _.forEach(include.relationships, (relationship, key) => {
       if (!!relationship.data) {
-        if (_.isArray(relationship.data)) {
-          _.forEach(relationship.data, d => {
-            (include[`${key}`] = include[`${key}`] || [])
-              .push(_mapIncluded(_included, d));
+        if (_.isArray(relationship.data) && !!relationship.data.length) {
+          include[`${key}`] = _.map(relationship.data, d => {
+            return _mapIncluded(_included, d);
           })
         } else {
-          if (!_.isUndefined(relationship[`${key}`])) {
-            (include[`${key}`] = include[`${key}`] || [])
-              .push(_mapIncluded(_included, relationship[`${key}`].data));
-          }
+          _.set(include, [`${key}`], _mapIncluded(_included, relationship.data));
         }
       }
     })
@@ -35,8 +44,9 @@ function _flattenAttributes(attributes) {
       case 'createdAt':
         obj[key] = new Date(value);
         break;
+
       case 'titleId':
-        obj.stats[key] = value;
+        //  Die.
         break;
 
       case 'actor':
@@ -78,5 +88,6 @@ function _mapMatches({ data, included }) {
 
 module.exports = {
   mapMatch: _mapMatch,
-  mapMatches: _mapMatches
+  mapMatches: _mapMatches,
+  mapPlayerMatches: _mapPlayerMatches
 }
