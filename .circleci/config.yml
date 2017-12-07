@@ -25,3 +25,16 @@ jobs:
 
       # Run angular/cli build
       - run: yarn build
+
+  deploy:
+    step:
+      - run: firebase deploy --only hosting --token=$FIREBASE_TOKEN --non-interactive
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy
+        requires:
+          - build
