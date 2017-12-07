@@ -26,14 +26,15 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ) { }
 
   selectMatch(match: Match): void {
-    this.selectedMatch$ = this.match.getMatch(match.id);
+    this.selectedMatch$ = this.match.find(match.id);
   }
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.user = params['userId'];
-      this.history$ = this.match.recent(params['userId']);
+      this.history$ = this.match.recentByPlayer(params['userId']);
     });
+    this.history$.subscribe(his => console.log(his));
   }
 
   ngOnDestroy() {
