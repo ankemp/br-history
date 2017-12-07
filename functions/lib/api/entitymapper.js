@@ -53,6 +53,7 @@ function _flattenAttributes(attributes) {
 function _mapMatch({ data, included }) {
   const _included = _(included);
   const match = _flattenAttributes(data.attributes);
+  _.set(match, ['id'], data.id);
   _.set(match, ['map'], getMapById(match.stats.mapID));
   if (data.relationships) {
     for (const [name, relData] of _.toPairs(data.relationships)) {
