@@ -13,11 +13,40 @@ const headers = {
   'Authorization': `Bearer ${battlerite_api_key}`
 };
 
+exports.getMatch = functions.https.onRequest((req, resp) => {
+  const client = new bjs.Client(battlerite_api_key);
+  const dbRef = sdb.collection('match');
+
+  const { matchId } = req.query;
+
+  console.log('getMatch: ', matchId);
+
+  if (!matchId) {
+    resp.status(500).send('Missing Params');
+    return;
+  }
+
+  client
+    .getMatch(matchId)
+    .then(match => JSON.parse(JSON.stringify(match)))
+    .then(match => {
+      dbRef.doc(match.id).set(match);
+    })
+    .then(() => {
+      resp.status(200).send('Done');
+    })
+    .catch(err => {
+      resp.status(500).send(err)
+    });
+});
+
 exports.getRecentMatches = functions.https.onRequest((req, resp) => {
   const client = new bjs.Client(battlerite_api_key);
   const dbRef = sdb.collection('match');
 
-  const { playerIds } = req.query;
+  const { playerIds, toDate } = req.query;
+
+  console.log('searchMatches: ', playerIds);
 
   if (!playerIds) {
     resp.status(500).send('Missing Params');
@@ -25,15 +54,9 @@ exports.getRecentMatches = functions.https.onRequest((req, resp) => {
   }
 
   client
-    .searchMatches({ playerIds: playerIds }, 5)
+    .searchMatches({ playerIds, toDate }, 20)
     .then(matches => JSON.parse(JSON.stringify(matches)))
     .then(matches => _(matches))
-    .then(matches =>
-      matches.map(match => {
-        match.createdAt = new Date(match.createdAt);
-        return match;
-      })
-    )
     .then(matches => {
       const batch = sdb.batch();
       matches.forEach(match => {
@@ -43,12 +66,12 @@ exports.getRecentMatches = functions.https.onRequest((req, resp) => {
       return batch
         .commit()
         .then(() => {
-          return matches;
+          return matches.value();
         })
         .catch(err => Promise.reject(err));
     })
     .then(matches => {
-      resp.send(matches.value());
+      resp.status(200).send(`Saved ${matches.length} matches`);
     })
     .catch(err => {
       resp.status(500).send(err)

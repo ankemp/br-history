@@ -33,6 +33,7 @@ npm-debug.log
 firebase-debug.log
 testem.log
 /typings
+functions/.runtimeconfig.json
 
 # e2e
 /e2e/*.js
