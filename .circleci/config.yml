@@ -18,14 +18,13 @@ jobs:
             - node_modules
           key: 'v1-dependencies-{{ checksum "yarn.lock" }}'
       - run: yarn build
-      - store_artifacts:
-          path: /dist
       - persist_to_workspace:
           root: ~/repo
           paths:
             - dist/*
             - package.json
             - yarn.lock
+            - firebase.json
   deploy:
     <<: *defaults
     steps:
