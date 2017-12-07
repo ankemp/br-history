@@ -25,8 +25,17 @@ jobs:
 
       # Run angular/cli build
       - run: yarn build
+      - store_artifacts:
+        path: /dist
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist/*
 
   deploy:
+    docker:
+      - image: circleci/node:8.9
+
     steps:
       - run: firebase deploy --only hosting --token=$FIREBASE_TOKEN --non-interactive
 
@@ -38,3 +47,6 @@ workflows:
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only: master
