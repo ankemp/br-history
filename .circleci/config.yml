@@ -25,6 +25,8 @@ jobs:
             - package.json
             - yarn.lock
             - firebase.json
+            - .firebaserc
+
   deploy:
     <<: *defaults
     steps:
