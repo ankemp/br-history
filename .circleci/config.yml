@@ -24,24 +24,22 @@ jobs:
             - dist/*
             - package.json
             - yarn.lock
-            - firebase.json
-            - .firebaserc
 
-  deploy:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - restore_cache:
-          keys:
-            - 'v1-dependencies-{{ checksum "yarn.lock" }}'
-            - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: 'v1-dependencies-{{ checksum "yarn.lock" }}'
-      - run: 'yarn run deploy:ci'
+  # deploy:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - restore_cache:
+  #         keys:
+  #           - 'v1-dependencies-{{ checksum "yarn.lock" }}'
+  #           - v1-dependencies-
+  #     - run: yarn install
+  #     - save_cache:
+  #         paths:
+  #           - node_modules
+  #         key: 'v1-dependencies-{{ checksum "yarn.lock" }}'
+  #     - run: 'yarn run deploy:ci'
 
 workflows:
   version: 2
@@ -51,6 +49,6 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy:
-          requires:
-            - build
+      # - deploy:
+      #     requires:
+      #       - build
