@@ -24,7 +24,7 @@ export class ContentComponent implements OnInit {
       this.page = params['pageId'];
     });
 
-    this.content.getPage(this.page)
+    this.content.getPageBySlug(this.page)
       .then(p=> this.contentPage = p.fields);
   }
 

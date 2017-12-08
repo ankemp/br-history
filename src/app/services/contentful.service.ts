@@ -20,7 +20,12 @@ export class ContentfulService {
   });
   constructor() { }
 
-  getPage(pageId:string): Promise<Entry<Page>> {
+  getPageById(pageId:string): Promise<Entry<Page>> {
     return this.cdaClient.getEntry(pageId);
   }
-}
+   
+  getPageBySlug(slugValue:string): Promise<Entry<Page>> {
+    return this.cdaClient.getEntries({'content_type':contentful.contentTypeIds.page, 
+      'fields.slug':slugValue}).then(r=>r.items.pop());
+  }
+} 
