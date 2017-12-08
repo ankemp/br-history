@@ -4,6 +4,8 @@ import { Page } from '../../models/page';
 import { Entry } from 'contentful';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params } from '@angular/router';
+import { IConverterOptionsChangeable } from 'ngx-showdown';
+
 
 @Component({
   selector: 'brh-content',
@@ -23,6 +25,7 @@ export class ContentComponent implements OnInit {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.page = params['pageId'];
     });
+
 
     this.content.getPageBySlug(this.page)
       .then(p=> this.contentPage = p.fields);

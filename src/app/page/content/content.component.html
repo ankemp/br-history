@@ -1,4 +1,2 @@
 <div>{{ contentPage.title }}</div>
-<div>
-  {{ contentPage.content }}
-</div>
+<showdown [value]="contentPage.content"></showdown>
