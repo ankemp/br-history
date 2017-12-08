@@ -9,7 +9,8 @@ function _mapPlayerMatches({ data, included }) {
     let players = _.map(rosters, r =>
       _mapIncluded(_included, r)
         .participants
-        .map(p => p.player.id));
+        .map(p => p.player.id)
+    );
     players = _.flatten(players);
     return { matchId: match.id, players };
   });
@@ -68,16 +69,13 @@ function _mapMatch({ data, included }) {
   if (data.relationships) {
     for (const [name, relData] of _.toPairs(data.relationships)) {
       if (_.isArray(relData.data)) {
-        _.set(match, [`${name}`], _.map(relData.data, d => {
-          return _mapIncluded(_included, d);
-        }))
+        _.set(match, [`${name}`], _.map(relData.data, d => _mapIncluded(_included, d)))
       } else {
-        const key = `${relData.data.type}-${relData.data.id}`;
         _.set(match, [`${name}`], relData.data);
       }
     }
   }
-  return match;
+  return JSON.parse(JSON.stringify(match));
 }
 
 function _mapMatches({ data, included }) {
