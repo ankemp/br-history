@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: 'google/cloud-sdk:alpine'
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS: "~/repo/gcloud-service-key.json"
+      - GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcloud-service-key.json"
     steps:
       - attach_workspace:
           at: ~/repo
@@ -42,7 +42,7 @@ jobs:
     docker:
       - image: 'google/cloud-sdk:alpine'
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS: "~/repo/gcloud-service-key.json"
+      - GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcloud-service-key.json"
     steps:
       - attach_workspace:
           at: ~/repo
