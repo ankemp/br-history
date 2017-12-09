@@ -1,11 +1,9 @@
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: 'circleci/node:8.9'
 version: 2
 jobs:
   build:
-    <<: *defaults
+    working_directory: ~/repo
+    docker:
+      - image: 'circleci/node:8.9'
     steps:
       - checkout
       - restore_cache:
@@ -22,33 +20,52 @@ jobs:
           root: ~/repo
           paths:
             - dist/*
-            - package.json
-            - yarn.lock
+            - app.yaml
 
-  # deploy:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/repo
-  #     - restore_cache:
-  #         keys:
-  #           - 'v1-dependencies-{{ checksum "yarn.lock" }}'
-  #           - v1-dependencies-
-  #     - run: yarn install
-  #     - save_cache:
-  #         paths:
-  #           - node_modules
-  #         key: 'v1-dependencies-{{ checksum "yarn.lock" }}'
-  #     - run: 'yarn run deploy:ci'
+  deploy_prod:
+    working_directory: ~/repo
+    docker:
+      - image: 'google/cloud-sdk:alpine'
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcloud-service-key.json"
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: 'touch $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'gcloud config set project $GCLOUD_PROJECT'
+      - run: 'gcloud -q app deploy app.yaml'
+
+  deploy_other:
+    working_directory: ~/repo
+    docker:
+      - image: 'google/cloud-sdk:alpine'
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcloud-service-key.json"
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: 'touch $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'gcloud config set project $GCLOUD_PROJECT'
+      - run: 'gcloud -q app deploy app.yaml --version=${CIRCLE_BRANCH//\//-} --no-promote'
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build:
+      - build
+      - deploy_other:
+          filters:
+            branches:
+              ignore: master
+          requires:
+            - build
+      - deploy_prod:
           filters:
             branches:
               only: master
-      # - deploy:
-      #     requires:
-      #       - build
+          requires:
+            - build
