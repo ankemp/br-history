@@ -18,13 +18,13 @@ export class MatchService {
   get(matchId: string): Observable<Match> {
     return this.http
       .get<Match>(`${this.MATCHES_API}/${matchId}`)
-      .map((response: any) => response.data);
+      .map((response: any) => response as Match);
   }
 
   byPlayer(playerId: string, options?: any): Observable<Match[]> {
     return this.http
       .get<Match[]>(`${this.MATCHES_API}`)
-      .map((response: any) => response.data);
+      .map((response: any) => response.data as Match[]);
   }
 
 }

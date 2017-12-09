@@ -10,6 +10,7 @@
     <img src="assets/maps/{{match.map.id}}.jpg">
   </mat-card-title-group>
   <mat-card-content>
+    {{match|json}}
     <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
   </mat-card-content>
 </mat-card>

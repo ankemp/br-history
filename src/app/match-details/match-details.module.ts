@@ -11,9 +11,13 @@ import {
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
+import { MatchService } from '../services/match.service';
+
+import { ProfileRoutingModule } from './match-details-routing.module';
 import { MatchListComponent } from './match-list/match-list.component';
 import { TeamRosterComponent } from './team-roster/team-roster.component';
 import { MatchDetailsComponent } from './match-details/match-details.component';
+import { MatchDetailsContainerComponent } from './match-details-container/match-details-container.component';
 
 @NgModule({
   imports: [
@@ -23,12 +27,17 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
     MatExpansionModule,
     MatCardModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    ProfileRoutingModule
   ],
   declarations: [
     MatchListComponent,
     TeamRosterComponent,
-    MatchDetailsComponent
+    MatchDetailsComponent,
+    MatchDetailsContainerComponent
+  ],
+  providers: [
+    MatchService
   ],
   exports: [
     MatchDetailsComponent
