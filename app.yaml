@@ -8,8 +8,8 @@ default_expiration: "30d"
 handlers:
 # All files that can be compiled in angular. Luckily, they all have suffixes.
 - url: /(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
-  static_files: ../client/dist/\1
-  upload: ../client/dist/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+  static_files: dist/\1
+  upload: dist/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
   http_headers:
     X-UA-Compatible: "IE=edge"
     ## ADD CPS HEADERS
@@ -18,8 +18,8 @@ handlers:
 # Site root, plus anything else, like deep urls
 # Make this be secure, otherwise oauth redirect won't work if they want to us with http://
 - url: /.*
-  static_files: ../client/dist/index.html
-  upload: ../client/dist/index.html
+  static_files: dist/index.html
+  upload: dist/index.html
   secure: always
   expiration: "1s"
   http_headers:
@@ -43,7 +43,3 @@ skip_files:
   - \.gitignore
   - ^\.git/.*
   - \.*\.lint$
-  - ^fabfile\.py
-  - ^testrunner\.py
-  - ^grunt\.js
-  - ^node_modules/(.*/)?
