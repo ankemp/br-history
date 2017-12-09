@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 
 import { Match } from '../../models/match';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'brh-tabs',
@@ -15,7 +16,7 @@ import { Match } from '../../models/match';
 export class TabsComponent {
   @Input() matches: Match[];
   @Input() match: Match;
-  @Input() user: string;  // Eventually will be an object
+  @Input() player: Player;
   @Output() matchSelected = new EventEmitter<Match>();
 
   constructor() { }
