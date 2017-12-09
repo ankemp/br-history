@@ -7,9 +7,9 @@ default_expiration: "30d"
 
 handlers:
 # All files that can be compiled in angular. Luckily, they all have suffixes.
-- url: /(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+- url: /(.*\.(css|eot|gz|html|ico|js|map|png|jpg|gif|svg|ttf|woff|woff2))
   static_files: dist/\1
-  upload: dist/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+  upload: dist/(.*\.(css|eot|gz|html|ico|js|map|png|jpg|gif|svg|ttf|woff|woff2))
   http_headers:
     X-UA-Compatible: "IE=edge"
     ## ADD CPS HEADERS
@@ -43,3 +43,9 @@ skip_files:
   - \.gitignore
   - ^\.git/.*
   - \.*\.lint$
+  - ^fabfile\.py
+  - ^testrunner\.py
+  - ^grunt\.js
+  - ^node_modules/(.*/)?
+  - ^src/(.*/)?
+  - ^e2e/(.*/)?
