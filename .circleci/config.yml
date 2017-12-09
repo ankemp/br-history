@@ -50,9 +50,7 @@ jobs:
       - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud config set project $GCLOUD_PROJECT'
-      - run: '$VERSION=%$CIRCLE_BRANCH:/=-%'
-      - run: 'echo $VERSION'
-      - run: 'gcloud -q app deploy app.yaml --version=$VERSION --no-promote'
+      - run: 'gcloud -q app deploy app.yaml --version=${CIRCLE_BRANCH//\//-} --no-promote'
 
 workflows:
   version: 2
