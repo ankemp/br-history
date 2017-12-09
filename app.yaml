@@ -1,4 +1,4 @@
-service: fe_client
+service: client
 runtime: python27
 api_version: 1
 threadsafe: true
