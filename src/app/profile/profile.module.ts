@@ -6,6 +6,7 @@ import { MatTabsModule, MatListModule } from '@angular/material';
 import { MatchDetailsModule } from '../match-details/match-details.module';
 
 import { MatchService } from '../services/match.service';
+import { PlayerService } from '../services/player.service';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ContainerComponent } from './container/container.component';
@@ -27,6 +28,9 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
     TabsComponent,
     MatchHistoryComponent
   ],
-  providers: [MatchService]
+  providers: [
+    MatchService,
+    PlayerService
+  ]
 })
 export class ProfileModule { }
