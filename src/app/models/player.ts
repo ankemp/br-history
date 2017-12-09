@@ -5,4 +5,5 @@ export interface Player {
   patchVersion: string;
   shardId: string;
   titleId: string;
+  stats: any;
 }
