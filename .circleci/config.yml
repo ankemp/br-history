@@ -32,7 +32,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: 'touch $GOOGLE_APPLICATION_CREDENTIALS'
-      - run: 'echo $GCLOUD_SA_203 | base64 --decode --ignore-garbage > $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud config set project $GCLOUD_PROJECT'
       - run: 'gcloud -q app deploy app.yaml'
@@ -47,7 +47,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: 'touch $GOOGLE_APPLICATION_CREDENTIALS'
-      - run: 'echo $GCLOUD_SA_203 | base64 --decode --ignore-garbage > $GOOGLE_APPLICATION_CREDENTIALS'
+      - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud config set project $GCLOUD_PROJECT'
       - run: 'gcloud -q app deploy app.yaml --version=$CIRCLE_BRANCH --no-promote'
