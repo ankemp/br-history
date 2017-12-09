@@ -5,6 +5,8 @@ import { Action } from '@ngrx/store';
 import { Player } from '../../models/player';
 import * as profileActions from './profile.actions';
 
+import { PlayerService } from '../../services/player.service';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
@@ -14,8 +16,17 @@ import 'rxjs/add/operator/catch';
 export class ProfileEffects {
 
   constructor(
+    private api: PlayerService,
     private actions$: Actions,
   ) { }
 
+  @Effect()
+  load$: Observable<Action> = this.actions$
+    .ofType(profileActions.LOAD)
+    .map((action: profileActions.SetCurrentProfile) => action.payload)
+    .switchMap((playerId: string) =>
+      this.api.get(playerId)
+        .map((p: Player) => new profileActions.LoadSuccess(p))
+    );
 
 }
