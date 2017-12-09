@@ -9,7 +9,10 @@ import { Match } from '../../models/match';
 @Component({
   selector: 'brh-match-details-container',
   template: `
-    <brh-match-details [match]="match$ | async"></brh-match-details>
+    <brh-match-details
+    *ngIf="!!(match$ | async)"
+    [match]="match$ | async">
+    </brh-match-details>
   `,
   styleUrls: ['./match-details-container.component.css']
 })
@@ -24,7 +27,7 @@ export class MatchDetailsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.match$ = this.match.getMatch(params['matchId']);
+      this.match$ = this.match.get(params['matchId']);
     });
   }
 
