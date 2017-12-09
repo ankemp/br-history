@@ -43,6 +43,7 @@ jobs:
       - image: 'google/cloud-sdk:alpine'
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcloud-service-key.json"
+      - VERSION: "%$CIRCLE_BRANCH:/=-%"
     steps:
       - attach_workspace:
           at: ~/repo
@@ -50,7 +51,6 @@ jobs:
       - run: 'echo $GCLOUD_SA_203 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
       - run: 'gcloud config set project $GCLOUD_PROJECT'
-      - run: 'SET _VERSION=%$CIRCLE_BRANCH:/=-%'
       - run: 'gcloud -q app deploy app.yaml --version=_VERSION --no-promote'
 
 workflows:
