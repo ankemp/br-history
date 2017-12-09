@@ -34,9 +34,8 @@ export class MatchHistoryComponent {
   }
 
   isWinner(match: Match): boolean {
-    return match.rosters.find(roster =>
-      !!roster.participants.find(p => p.player.id === this.user)
-    ).won;
+    const roster = match.rosters.find(r => !!r.participants.find(p => p.player.id === this.user));
+    return roster ? roster.won : false;
   }
 
   reduceStat(match: Match, stat: string): number {
