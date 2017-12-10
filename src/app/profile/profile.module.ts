@@ -8,7 +8,7 @@ import { ProfileEffects } from './store/profile.effects';
 
 import { MatTabsModule, MatListModule } from '@angular/material';
 
-import { MatchDetailsModule } from '../match-details/match-details.module';
+import { MatchesModule } from '../matches/matches.module';
 
 import { MatchService } from '../services/match.service';
 import { PlayerService } from '../services/player.service';
@@ -22,11 +22,11 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('books', reducers),
+    StoreModule.forFeature('profile', reducers),
     EffectsModule.forFeature([ProfileEffects]),
     MatTabsModule,
     MatListModule,
-    MatchDetailsModule,
+    MatchesModule,
     ProfileRoutingModule
   ],
   declarations: [

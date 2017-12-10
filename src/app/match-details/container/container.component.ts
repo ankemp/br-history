@@ -1,33 +1,38 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MatchService } from '../../services/match.service';
+import { State } from '../../reducers/index';
+import * as fromMatches from '../../matches/store/matches.init';
+import * as matchesActions from '../../matches/store/matches.actions';
 import { Match } from '../../models/match';
 
 @Component({
-  selector: 'brh-match-details-container',
+  selector: 'brh-container',
   template: `
     <brh-match-details
     *ngIf="!!(match$ | async)"
     [match]="match$ | async">
     </brh-match-details>
   `,
-  styleUrls: ['./match-details-container.component.css']
+  styleUrls: ['./container.component.css']
 })
-export class MatchDetailsContainerComponent implements OnInit, OnDestroy {
+export class ContainerComponent implements OnInit, OnDestroy {
   public match$: Observable<Match>;
   private routeSub: Subscription;
 
   constructor(
-    private match: MatchService,
+    private store: Store<State>,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {
+    this.match$ = store.select<Match>(fromMatches.getSelectedMatch);
+  }
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.match$ = this.match.get(params['matchId']);
+      this.store.dispatch(new matchesActions.LoadMatch(params['matchId']));
     });
   }
 

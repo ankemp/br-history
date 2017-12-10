@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MatchDetailsContainerComponent } from './match-details-container/match-details-container.component';
+import { ContainerComponent } from './container/container.component';
 
 const routes: Routes = [
   {
     path: '', children: [
-      { path: ':matchId', component: MatchDetailsContainerComponent }
+      { path: ':matchId', component: ContainerComponent }
     ]
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProfileRoutingModule { }
+export class MatchDetailsRoutingModule { }

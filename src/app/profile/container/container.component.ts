@@ -1,10 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MatchService } from '../../services/match.service';
-import { PlayerService } from '../../services/player.service';
+import { State } from '../../reducers/index';
+import * as fromProfile from '../store/profile.init';
+import * as profileActions from '../store/profile.actions';
+import * as fromMatches from '../../matches/store/matches.init';
+import * as matchesActions from '../../matches/store/matches.actions';
 import { Match } from '../../models/match';
 import { Player } from '../../models/player';
 
@@ -29,19 +33,22 @@ export class ContainerComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(
-    private match: MatchService,
-    private player: PlayerService,
+    private store: Store<State>,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {
+    this.selectedMatch$ = store.select<Match>(fromMatches.getSelectedMatch);
+    this.history$ = store.select<Match[]>(fromMatches.getAllMatches);
+    this.player$ = store.select<Player>(fromProfile.getSelectedProfile);
+  }
 
   selectMatch(match: Match): void {
-    this.selectedMatch$ = this.match.get(match.id);
+    this.store.dispatch(new matchesActions.LoadMatch(match.id));
   }
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.player$ = this.player.get(params['userId']);
-      this.history$ = this.match.byPlayer(params['userId']);
+      this.store.dispatch(new profileActions.LoadProfile(params['userId']));
+      this.store.dispatch(new matchesActions.LoadByPlayer(params['userId']));
     });
   }
 

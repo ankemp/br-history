@@ -22,7 +22,7 @@ export function reducer(state = INIT_STATE, action: profileActions.All) {
       return { ...state, currentProfileId: action.payload };
     }
 
-    case profileActions.LOAD_SUCCESS: {
+    case profileActions.LOAD_PROFILE_SUCCESS: {
       return { ...state, ...profileAdapter.addOne(action.payload as Player, state), currentProfileId: action.payload.id };
     }
 

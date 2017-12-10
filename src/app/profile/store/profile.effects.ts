@@ -22,11 +22,11 @@ export class ProfileEffects {
 
   @Effect()
   load$: Observable<Action> = this.actions$
-    .ofType(profileActions.LOAD)
-    .map((action: profileActions.SetCurrentProfile) => action.payload)
+    .ofType(profileActions.LOAD_PROFILE)
+    .map((action: profileActions.LoadProfile) => action.payload)
     .switchMap((playerId: string) =>
       this.api.get(playerId)
-        .map((p: Player) => new profileActions.LoadSuccess(p))
+        .map((p: Player) => new profileActions.LoadProfileSuccess(p))
     );
 
 }
