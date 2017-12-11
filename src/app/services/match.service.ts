@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { environment } from '../../environments/environment';
 import { Match } from '../models/match';
 
 @Injectable()
 export class MatchService {
 
-  private API_ROOT = 'http://localhost:3030';
-  private MATCHES_API = `${this.API_ROOT}/matches`;
+  private MATCHES_API = `${environment.apiRoot}/matches`;
 
   constructor(
     private http: HttpClient,
