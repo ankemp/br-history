@@ -15,6 +15,7 @@ import {
 
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { SharedModule } from '../shared/shared.module';
 
 import { MatchService } from '../services/match.service';
 
@@ -29,6 +30,7 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
     EffectsModule.forFeature([MatchesEffects]),
     NgArrayPipesModule,
     Ng2GoogleChartsModule,
+    SharedModule,
     MatExpansionModule,
     MatCardModule,
     MatListModule,

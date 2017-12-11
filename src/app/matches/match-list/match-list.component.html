@@ -2,16 +2,12 @@
   <mat-expansion-panel [expanded]="index === 0">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ match.createdAt | date:'medium' }} ({{ toMinSec(match.duration) }})
+        {{ match.createdAt | date:'medium' }} ({{ match.duration | secToMin }})
       </mat-panel-title>
       <mat-panel-description>
         {{ match.stats.type }} - {{ match.rounds.length }} Rounds
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <!-- {{match|json}} -->
-    <div class="">
-
-    </div>
     <div class="rosters">
       <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
     </div>
@@ -19,7 +15,7 @@
       <h1>Rounds</h1>
       <mat-list>
         <mat-list-item *ngFor="let round of match.rounds | orderBy:'attributes.ordinal'">
-          Round: {{ round.ordinal }} ({{ toMinSec(round.duration) }}) Team {{ round.stats.winningTeam }} Wins
+          Round: {{ round.ordinal }} ({{ round.duration | secToMin }}) Team {{ round.stats.winningTeam }} Wins
         </mat-list-item>
       </mat-list>
     </div>
