@@ -18,11 +18,16 @@ export class MatchHistoryComponent {
   @Input() match: Match;
   @Input() player: Player;
   @Output() matchSelected = new EventEmitter<Match>();
+  @Output() viewProfile = new EventEmitter<Player>();
 
   constructor() { }
 
   select(match: Match): void {
     this.matchSelected.emit(match);
+  }
+
+  profile(player: Player): void {
+    this.viewProfile.emit(player);
   }
 
   kdRatio(match: Match): number | boolean {

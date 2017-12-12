@@ -1,6 +1,13 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 import { Match } from '../../models/match';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'brh-match-details',
@@ -10,6 +17,12 @@ import { Match } from '../../models/match';
 })
 export class MatchDetailsComponent {
   @Input() match: Match;
+  @Output() viewProfile = new EventEmitter<Player>();
 
   constructor() { }
+
+  profile(player: Player): void {
+    this.viewProfile.emit(player);
+  }
+
 }

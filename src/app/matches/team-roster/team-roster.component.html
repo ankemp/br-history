@@ -6,4 +6,8 @@
     <mat-panel-title>{{participant.player.id}} as {{participant.champion.name}}</mat-panel-title>
     <mat-panel-description>{{participant.stats.score}} | {{participant.stats.damageDone}} | {{participant.stats.healingDone}}</mat-panel-description>
   </mat-expansion-panel-header>
+  {{participant|json}}
+  <mat-action-row>
+    <button mat-button color="primary" (click)="profile(participant.player)">View Profile</button>
+  </mat-action-row>
 </mat-expansion-panel>

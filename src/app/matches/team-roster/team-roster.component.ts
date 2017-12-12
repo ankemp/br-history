@@ -1,6 +1,13 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 import { Roster } from '../../models/roster';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'brh-team-roster',
@@ -10,6 +17,7 @@ import { Roster } from '../../models/roster';
 })
 export class TeamRosterComponent {
   @Input() roster: Roster;
+  @Output() viewProfile = new EventEmitter<Player>();
   private chartOptions = {
     height: 300,
     legend: { position: 'top', maxLines: 3 },
@@ -18,6 +26,10 @@ export class TeamRosterComponent {
   };
 
   constructor() { }
+
+  profile(player: Player): void {
+    this.viewProfile.emit(player);
+  }
 
   outgoingChart(): object {
     const data = Object.assign({});

@@ -10,6 +10,7 @@ import {
   MatExpansionModule,
   MatCardModule,
   MatListModule,
+  MatButtonModule,
   MatIconModule
 } from '@angular/material';
 
@@ -34,6 +35,7 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
     MatExpansionModule,
     MatCardModule,
     MatListModule,
+    MatButtonModule,
     MatIconModule
   ],
   declarations: [
