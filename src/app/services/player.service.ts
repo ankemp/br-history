@@ -18,7 +18,7 @@ export class PlayerService {
   get(playerId: string): Observable<Player> {
     return this.http
       .get<Player>(`${this.PLAYERS_API}/${playerId}`)
-      .map((response: any) => response.data);
+      .map((response: any) => response);
   }
 
 }
