@@ -1,9 +1,9 @@
 <div class="details">
-  <h2>Team: {{roster.participants[0].stats.side}} // Score: {{roster.stats.score}}</h2>
+  <h2>Team: {{roster.participants[0].stats.side}} // Score: {{roster.score}}</h2>
 </div>
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{participant.player.id}} - {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-title>{{participant.player.id}} as {{participant.champion.name}}</mat-panel-title>
     <mat-panel-description>{{participant.stats.score}} | {{participant.stats.damageDone}} | {{participant.stats.healingDone}}</mat-panel-description>
   </mat-expansion-panel-header>
 </mat-expansion-panel>

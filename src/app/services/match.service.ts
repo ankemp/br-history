@@ -10,6 +10,7 @@ import { Match } from '../models/match';
 export class MatchService {
 
   private MATCHES_API = `${environment.apiRoot}/matches`;
+  private PARTICIPANTS_API = `${environment.apiRoot}/participants`;
 
   constructor(
     private http: HttpClient,
@@ -23,7 +24,7 @@ export class MatchService {
 
   byPlayer(playerId: string, options?: any): Observable<Match[]> {
     return this.http
-      .get<Match[]>(`${this.MATCHES_API}`)
+      .get<Match[]>(`${this.PARTICIPANTS_API}?playerId=${playerId}`)
       .map((response: any) => response.data as Match[]);
   }
 

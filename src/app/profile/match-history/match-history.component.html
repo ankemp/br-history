@@ -21,7 +21,7 @@
   <mat-nav-list>
     <a mat-list-item *ngFor="let m of matches" (click)="select(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
       <div class="where">
-        <h4 mat-line>{{m.stats.type}}</h4>
+        <h4 mat-line>{{m.matchType}}</h4>
         <p mat-line *ngIf="m.map">{{m.map.name}}</p>
       </div>
       <div class="when">
