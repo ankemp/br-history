@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { SecToMinPipe } from './sec-to-min.pipe';
+import { ReduceStatPipe } from './reduce-stat.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    SecToMinPipe
+    SecToMinPipe,
+    ReduceStatPipe
   ],
   exports: [
-    SecToMinPipe
+    SecToMinPipe,
+    ReduceStatPipe
   ]
 })
 export class SharedModule { }

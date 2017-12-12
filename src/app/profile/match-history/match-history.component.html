@@ -2,15 +2,15 @@
   <div class="title">Session Stats:</div>
   <div class="stat">
     <div>Kills</div>
-    <div>{{reduceStats('kills')}}</div>
+    <div>{{matches | reduceStat:'kills':player.id}}</div>
   </div>
   <div class="stat">
     <div>Deaths</div>
-    <div>{{reduceStats('deaths')}}</div>
+    <div>{{matches | reduceStat:'deaths':player.id}}</div>
   </div>
   <div class="stat">
     <div>Avg Score</div>
-    <div>{{reduceStats('score', true)}}</div>
+    <div>{{ matches | reduceStat:'score':player.id:'average' }}</div>
   </div>
 </div>
 <div *ngIf="!hasStats" class="summary">
@@ -30,7 +30,7 @@
       </div>
       <div class="stats">
         <!-- <p mat-line *ngIf="kdRatio(m)">K/D: {{kdRatio(m)}}</p> -->
-        <p mat-line *ngIf="hasStats">Score: {{reduceStat(m, 'score')}}</p>
+        <p mat-line *ngIf="hasStats">Score: {{ m | reduceStat:'score':player.id }}</p>
       </div>
     </a>
   </mat-nav-list>

@@ -8,6 +8,7 @@ import { ProfileEffects } from './store/profile.effects';
 
 import { MatTabsModule, MatListModule } from '@angular/material';
 
+import { SharedModule } from '../shared/shared.module';
 import { MatchesModule } from '../matches/matches.module';
 
 import { MatchService } from '../services/match.service';
@@ -26,6 +27,7 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
     EffectsModule.forFeature([ProfileEffects]),
     MatTabsModule,
     MatListModule,
+    SharedModule,
     MatchesModule,
     ProfileRoutingModule
   ],
