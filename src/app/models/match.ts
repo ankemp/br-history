@@ -1,4 +1,4 @@
-import { IMap } from './map';
+import { Map } from './map';
 import { Asset } from './asset';
 import { Roster } from './roster';
 import { Round } from './round';
@@ -6,14 +6,16 @@ import { Round } from './round';
 export interface Match {
   id: string;
   createdAt: Date;
+  updatedAt: Date;
   duration: number;
   gameMode: string;
   patchVersion: string;
   shardId: string;
-  stats: any;
-  map: IMap;
+  matchType: string;
+  telemetry: string;
+  map: Map;
 
-  assets: Asset[];
+  assets?: Asset[];
   rosters: Roster[];
   rounds: Round[];
 }

@@ -2,12 +2,9 @@ import { Participant } from './participant';
 
 export interface Roster {
   id: string;
-  stats: {
-    score: number;
-    side: number;
-  };
-
+  createdAt: Date;
+  updatedAt: Date;
+  score: number;
   won: boolean;
   participants: Participant[];
-  team: null;
 }

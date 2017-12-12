@@ -1,16 +1,15 @@
 <mat-card>
   <mat-card-title-group>
     <mat-card-title>
-      <span>{{match.stats.type}}</span>
+      <span>{{match.matchType}}</span>
       <span>
-        <mat-icon>timer</mat-icon> {{match.duration}}
+        <mat-icon>timer</mat-icon> {{match.duration | secToMin}}
       </span>
     </mat-card-title>
-    <mat-card-subtitle>{{match.map.name}}</mat-card-subtitle>
-    <img src="assets/maps/{{match.map.id}}.jpg">
+    <mat-card-subtitle *ngIf="match.map">{{match.map.name}}</mat-card-subtitle>
+    <img *ngIf="match.map" src="assets/maps/{{match.map.id}}.jpg" alt="">
   </mat-card-title-group>
   <mat-card-content>
-    {{match|json}}
     <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
   </mat-card-content>
 </mat-card>

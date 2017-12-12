@@ -1,10 +1,10 @@
-import { IChampion } from './champion';
+import { Champion } from './champion';
 import { Player } from './player';
 
 export interface Participant {
   id: string;
-  actor: string;
-  champion: IChampion;
+  createdAt: Date;
+  updatedAt: Date;
   stats: {
     abilityUses: number;
     attachment: number;
@@ -27,5 +27,6 @@ export interface Participant {
     userID: string;
   };
 
+  champion: Champion;
   player: Player;
 }

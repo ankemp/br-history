@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/profile.init';
+import { ProfileEffects } from './store/profile.effects';
+
 import { MatTabsModule, MatListModule } from '@angular/material';
 
-import { MatchDetailsModule } from '../match-details/match-details.module';
+import { SharedModule } from '../shared/shared.module';
+import { MatchesModule } from '../matches/matches.module';
 
 import { MatchService } from '../services/match.service';
 import { PlayerService } from '../services/player.service';
@@ -17,9 +23,12 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
 @NgModule({
   imports: [
     CommonModule,
+    StoreModule.forFeature('profile', reducers),
+    EffectsModule.forFeature([ProfileEffects]),
     MatTabsModule,
     MatListModule,
-    MatchDetailsModule,
+    SharedModule,
+    MatchesModule,
     ProfileRoutingModule
   ],
   declarations: [

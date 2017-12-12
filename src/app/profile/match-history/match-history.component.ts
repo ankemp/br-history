@@ -35,30 +35,15 @@ export class MatchHistoryComponent {
   }
 
   isWinner(match: Match): boolean {
-    const roster = match.rosters.find(r => !!r.participants.find(p => p.player.id === this.player.id));
+    let roster;
+    if (!!match.rosters) {
+      roster = match.rosters.find(r => !!r.participants.find(p => p.player.id === this.player.id) || false);
+    }
     return roster ? roster.won : false;
   }
 
-  reduceStat(match: Match, stat: string): number {
-    return match.rosters.reduce((acc, roster) =>
-      roster.participants
-        .filter(p => (p.player.id === this.player.id))
-        .reduce((a, p) => p.stats[stat], 0)
-      , 0);
-  }
-
-  reduceStats(stat: string, average = false): number {
-    let s = 0;
-    if (!!this.matches) {
-      s = this.matches.reduce((acc, match) => {
-        acc += this.reduceStat(match, stat);
-        return acc;
-      }, 0);
-      if (average) {
-        s = Math.round(s /= this.matches.length);
-      }
-    }
-    return s;
+  get hasStats(): boolean {
+    return !!this.matches.findIndex(match => typeof match.rosters === 'undefined');
   }
 
 }

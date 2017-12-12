@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { environment } from '../../environments/environment';
 import { Match } from '../models/match';
 
 @Injectable()
 export class MatchService {
 
-  private API_ROOT = 'http://localhost:3030';
-  private MATCHES_API = `${this.API_ROOT}/matches`;
+  private MATCHES_API = `${environment.apiRoot}/matches`;
+  private PARTICIPANTS_API = `${environment.apiRoot}/participants`;
 
   constructor(
     private http: HttpClient,
@@ -23,7 +24,7 @@ export class MatchService {
 
   byPlayer(playerId: string, options?: any): Observable<Match[]> {
     return this.http
-      .get<Match[]>(`${this.MATCHES_API}`)
+      .get<Match[]>(`${this.PARTICIPANTS_API}?playerId=${playerId}`)
       .map((response: any) => response.data as Match[]);
   }
 
