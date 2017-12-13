@@ -5,7 +5,7 @@
       <span>
         <mat-icon>timer</mat-icon> {{match.duration | secToMin}}
       </span>
-      <span class="open-match">
+      <span *ngIf="showOpenMatch" class="open-match">
         <button mat-icon-button (click)="open()">
           <mat-icon>open_in_new</mat-icon>
         </button>

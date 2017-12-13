@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -15,13 +16,18 @@ import { Player } from '../../models/player';
   styleUrls: ['./match-details.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatchDetailsComponent {
+export class MatchDetailsComponent implements OnInit {
   @Input() match: Match;
   @Input() player?: Player = { id: '', name: '' };
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
+  showOpenMatch = false;
 
   constructor() { }
+
+  ngOnInit() {
+    this.showOpenMatch = this.openMatch.observers.length > 0;
+  }
 
   profile(player: Player): void {
     this.viewProfile.emit(player);
