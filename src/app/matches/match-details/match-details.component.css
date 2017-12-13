@@ -11,6 +11,11 @@
   max-height: 400px;
 }
 
+:host() >>> .mat-card-title-group span {
+  display: inline-block;
+  height: 40px;
+}
+
 :host() >>> .mat-card-title-group > div {
   left: 16px;
   position: absolute;

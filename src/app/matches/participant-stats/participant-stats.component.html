@@ -1,0 +1,41 @@
+<div class="column">
+  <img src="assets/champions/{{ participant.champion.id }}.png" alt="{{ participant.champion.name }}" />
+</div>
+<div class="column">
+  <div class="stat-container">
+    <div class="title">Damange Done</div>
+    <div class="stat">{{ participant.stats.damageDone }}</div>
+  </div>
+  <div class="stat-container">
+    <div class="title">Healing Done</div>
+    <div class="stat">{{ participant.stats.healingDone }}</div>
+  </div>
+  <div class="stat-container">
+    <div class="title">Disables Done</div>
+    <div class="stat">{{ participant.stats.disablesDone }}</div>
+  </div>
+</div>
+<div class="column">
+  <div class="stat-container">
+    <div class="title">Damage Received</div>
+    <div class="stat">{{ participant.stats.damageReceived }}</div>
+  </div>
+  <div class="stat-container">
+    <div class="title">Healing Received</div>
+    <div class="stat">{{ participant.stats.healingReceived }}</div>
+  </div>
+  <div class="stat-container">
+    <div class="title">Disables Received</div>
+    <div class="stat">{{ participant.stats.disablesReceived }}</div>
+  </div>
+</div>
+<div class="column">
+  <div class="stat-container">
+    <div class="title">Energy Used</div>
+    <div class="stat">{{ participant.stats.energyUsed }}</div>
+  </div>
+  <div class="stat-container">
+    <div class="title">Energy Gained</div>
+    <div class="stat">{{ participant.stats.energyGained }}</div>
+  </div>
+</div>

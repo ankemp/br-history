@@ -1,0 +1,30 @@
+:host() {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  border-left: 1px solid transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px;
+  padding: 0 8px;
+}
+
+.column + .column {
+  border-left-color: #000000;
+}
+
+.stat-container {
+  max-width: 160px;
+  text-align: center;
+}
+
+.stat-container + .stat-container {
+  margin-top: 16px;
+}
+
+.stat-container .title {
+  text-transform: uppercase;
+}
