@@ -31,8 +31,8 @@ export class TabsComponent {
     this.viewProfile.emit(player);
   }
 
-  open(): void {
-    this.openMatch.emit(this.match);
+  open(match: Match): void {
+    this.openMatch.emit(match);
   }
 
 }
