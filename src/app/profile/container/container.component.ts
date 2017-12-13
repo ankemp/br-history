@@ -20,6 +20,7 @@ import { Player } from '../../models/player';
     *ngIf="(player$ | async) && (history$ | async)"
     (matchSelected)="selectMatch($event)"
     (viewProfile)="viewProfile($event)"
+    (openMatch)="openMatch($event)"
     [player]="player$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async">
@@ -50,6 +51,11 @@ export class ContainerComponent implements OnInit, OnDestroy {
   viewProfile(player: Player): void {
     this.store.dispatch(new profileActions.SetCurrentProfile(player.id));
     this.router.navigate(['/profile', player.id]);
+  }
+
+  openMatch(match: Match): void {
+    this.store.dispatch(new matchesActions.SetCurrentMatch(match.id));
+    this.router.navigate(['/match', match.id]);
   }
 
   ngOnInit() {

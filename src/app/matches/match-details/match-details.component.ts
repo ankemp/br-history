@@ -19,11 +19,16 @@ export class MatchDetailsComponent {
   @Input() match: Match;
   @Input() player?: Player;
   @Output() viewProfile = new EventEmitter<Player>();
+  @Output() openMatch = new EventEmitter<Match>();
 
   constructor() { }
 
   profile(player: Player): void {
     this.viewProfile.emit(player);
+  }
+
+  open(): void {
+    this.openMatch.emit(this.match);
   }
 
 }

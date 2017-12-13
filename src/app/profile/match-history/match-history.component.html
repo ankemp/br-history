@@ -36,6 +36,6 @@
   </mat-nav-list>
   <div class="details">
     <div *ngIf="!match">Select a match</div>
-    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="profile($event)"></brh-match-details>
+    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="profile($event)" (openMatch)="open($event)"></brh-match-details>
   </div>
 </div>

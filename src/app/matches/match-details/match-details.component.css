@@ -29,6 +29,13 @@
   width: 100%;
 }
 
+:host() >>> .mat-card-title-group .open-match {
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 :host() >>> .mat-card-content {
   padding-top: 16px;
 }
