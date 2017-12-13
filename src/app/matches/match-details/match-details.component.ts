@@ -17,6 +17,7 @@ import { Player } from '../../models/player';
 })
 export class MatchDetailsComponent {
   @Input() match: Match;
+  @Input() player?: Player;
   @Output() viewProfile = new EventEmitter<Player>();
 
   constructor() { }

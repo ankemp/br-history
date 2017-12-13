@@ -10,6 +10,6 @@
     <img *ngIf="match.map" src="assets/maps/{{match.map.id}}.jpg" alt="">
   </mat-card-title-group>
   <mat-card-content>
-    <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster" (viewProfile)="profile($event)"></brh-team-roster>
+    <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster" [player]="player" (viewProfile)="profile($event)"></brh-team-roster>
   </mat-card-content>
 </mat-card>

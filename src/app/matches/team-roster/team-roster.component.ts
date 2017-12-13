@@ -17,6 +17,7 @@ import { Player } from '../../models/player';
 })
 export class TeamRosterComponent {
   @Input() roster: Roster;
+  @Input() player?: Player;
   @Output() viewProfile = new EventEmitter<Player>();
   private chartOptions = {
     height: 300,

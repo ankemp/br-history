@@ -8,6 +8,6 @@
   </mat-expansion-panel-header>
   {{participant|json}}
   <mat-action-row>
-    <button mat-button color="primary" (click)="profile(participant.player)">View Profile</button>
+    <button mat-button color="primary" (click)="profile(participant.player)" [disabled]="participant.player.id === player.id">View Profile</button>
   </mat-action-row>
 </mat-expansion-panel>
