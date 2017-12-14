@@ -7,11 +7,12 @@ import { reducers } from './store/matches.init';
 import { MatchesEffects } from './store/matches.effects';
 
 import {
-  MatExpansionModule,
-  MatCardModule,
-  MatListModule,
   MatButtonModule,
-  MatIconModule
+  MatCardModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatListModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 import { NgArrayPipesModule } from 'ngx-pipes';
@@ -33,11 +34,12 @@ import { ParticipantStatsComponent } from './participant-stats/participant-stats
     NgArrayPipesModule,
     Ng2GoogleChartsModule,
     SharedModule,
-    MatExpansionModule,
-    MatCardModule,
-    MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    MatTooltipModule,
   ],
   declarations: [
     MatchListComponent,

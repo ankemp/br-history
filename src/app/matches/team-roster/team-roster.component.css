@@ -4,33 +4,13 @@
   box-sizing: border-box;
 }
 
-.mat-card {
-  border-top: 4px solid transparent;
+.mat-expansion-panel-header-description span:first-of-type {
+  padding-right: 4px;
+}
+
+.mat-expansion-panel-header-description span + span {
+  border-left: 1px solid rgba(0, 0, 0, 0.34);
+  margin-right: 4px;
+  padding-left: 4px;
   box-sizing: border-box;
-}
-
-.mat-card.winner {
-  border-top-color: gold;
-}
-
-.mat-card-content {
-  word-wrap: break-word;
-}
-
-.participants .mat-card + .mat-card {
-  margin-top: 8px;
-}
-
-.participants .mat-card {
-  border-left: 4px solid transparent;
-  box-sizing: border-box;
-  display: block;
-}
-
-.participants .mat-card.mvp {
-  border-left-color: gold;
-}
-
-.participants .mat-card-content {
-  word-wrap: break-word;
 }

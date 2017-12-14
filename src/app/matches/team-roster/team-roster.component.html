@@ -4,7 +4,11 @@
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
     <mat-panel-title>{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
-    <mat-panel-description>S: {{participant.stats.score}} | D: {{participant.stats.damageDone}} | H: {{participant.stats.healingDone}}</mat-panel-description>
+    <mat-panel-description>
+      <span matTooltip="Score">{{ participant.stats.score }}</span>
+      <span matTooltip="Damange Done">{{ participant.stats.damageDone }}</span>
+      <span matTooltip="Healing Done">{{ participant.stats.healingDone }}</span>
+    </mat-panel-description>
   </mat-expansion-panel-header>
   <brh-participant-stats [participant]="participant"></brh-participant-stats>
   <mat-action-row>
