@@ -3,8 +3,8 @@ export interface Player {
   name: string;
   title?: string;
   picture?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   newestMatch?: Date;
   oldestMatch?: Date;
 }
