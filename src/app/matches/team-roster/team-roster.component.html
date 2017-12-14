@@ -3,11 +3,11 @@
 </div>
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{participant.player.id}} as {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-title>{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
     <mat-panel-description>S: {{participant.stats.score}} | D: {{participant.stats.damageDone}} | H: {{participant.stats.healingDone}}</mat-panel-description>
   </mat-expansion-panel-header>
   <brh-participant-stats [participant]="participant"></brh-participant-stats>
   <mat-action-row>
-    <button mat-button color="primary" (click)="profile(participant.player)" [disabled]="participant.player.id === player.id">View Profile</button>
+    <button mat-button color="primary" (click)="profile(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
   </mat-action-row>
 </mat-expansion-panel>

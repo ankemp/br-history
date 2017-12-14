@@ -8,6 +8,7 @@ import {
 
 import { Roster } from '../../models/roster';
 import { Player } from '../../models/player';
+import { Participant } from '../../models/participant';
 
 @Component({
   selector: 'brh-team-roster',
@@ -30,6 +31,10 @@ export class TeamRosterComponent {
 
   profile(player: Player): void {
     this.viewProfile.emit(player);
+  }
+
+  viewProfileDisabled(participant: Participant): boolean {
+    return (!!participant.player && participant.player.id === this.player.id);
   }
 
   outgoingChart(): object {
