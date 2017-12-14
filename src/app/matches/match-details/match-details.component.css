@@ -28,6 +28,10 @@
   color: #ffffff;
 }
 
+:host() >>> .mat-card-subtitle {
+  font-size: 18px;
+}
+
 :host() >>> .mat-card-title-group > img {
   height: auto;
   object-fit: cover;

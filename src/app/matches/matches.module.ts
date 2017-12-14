@@ -25,6 +25,7 @@ import { MatchListComponent } from './match-list/match-list.component';
 import { TeamRosterComponent } from './team-roster/team-roster.component';
 import { MatchDetailsComponent } from './match-details/match-details.component';
 import { ParticipantStatsComponent } from './participant-stats/participant-stats.component';
+import { MatchStatsComponent } from './match-stats/match-stats.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { ParticipantStatsComponent } from './participant-stats/participant-stats
     MatchListComponent,
     TeamRosterComponent,
     MatchDetailsComponent,
-    ParticipantStatsComponent
+    ParticipantStatsComponent,
+    MatchStatsComponent
   ],
   providers: [
     MatchService

@@ -1,5 +1,6 @@
 <div class="details">
   <h2>Team: {{roster.participants[0].stats.side}} // Score: {{roster.score}}</h2>
+  <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats>
 </div>
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
