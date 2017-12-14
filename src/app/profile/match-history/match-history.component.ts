@@ -44,6 +44,14 @@ export class MatchHistoryComponent {
     return kd !== Infinity ? kd : false;
   }
 
+  get wlRatio(): string {
+    let w = 0, l = 0;
+    this.matches.forEach(match => {
+      this.isWinner(match) ? w++ : l++;
+    });
+    return (w / (w + l)).toFixed(2);
+  }
+
   isWinner(match: Match): boolean {
     let roster;
     if (!!match.rosters) {
