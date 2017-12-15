@@ -18,11 +18,21 @@ export class MatchHistoryComponent {
   @Input() match: Match;
   @Input() player: Player;
   @Output() matchSelected = new EventEmitter<Match>();
+  @Output() viewProfile = new EventEmitter<Player>();
+  @Output() openMatch = new EventEmitter<Match>();
 
   constructor() { }
 
   select(match: Match): void {
     this.matchSelected.emit(match);
+  }
+
+  profile(player: Player): void {
+    this.viewProfile.emit(player);
+  }
+
+  open(match: Match): void {
+    this.openMatch.emit(match);
   }
 
   kdRatio(match: Match): number | boolean {
@@ -32,6 +42,14 @@ export class MatchHistoryComponent {
         .reduce((a, p) => p.stats.kills / p.stats.deaths, 0)
       , 0);
     return kd !== Infinity ? kd : false;
+  }
+
+  get wlRatio(): string {
+    let w = 0, l = 0;
+    this.matches.forEach(match => {
+      this.isWinner(match) ? w++ : l++;
+    });
+    return (w / (w + l)).toFixed(2);
   }
 
   isWinner(match: Match): boolean {

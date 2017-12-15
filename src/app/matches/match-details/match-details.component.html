@@ -5,11 +5,16 @@
       <span>
         <mat-icon>timer</mat-icon> {{match.duration | secToMin}}
       </span>
+      <span *ngIf="showOpenMatch" class="open-match">
+        <button mat-icon-button (click)="open()">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </span>
     </mat-card-title>
     <mat-card-subtitle *ngIf="match.map">{{match.map.name}}</mat-card-subtitle>
     <img *ngIf="match.map" src="assets/maps/{{match.map.id}}.jpg" alt="">
   </mat-card-title-group>
   <mat-card-content>
-    <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster"></brh-team-roster>
+    <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster" [player]="player" (viewProfile)="profile($event)"></brh-team-roster>
   </mat-card-content>
 </mat-card>

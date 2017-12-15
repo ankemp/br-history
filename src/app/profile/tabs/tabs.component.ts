@@ -18,10 +18,21 @@ export class TabsComponent {
   @Input() match: Match;
   @Input() player: Player;
   @Output() matchSelected = new EventEmitter<Match>();
+  @Output() viewProfile = new EventEmitter<Player>();
+  @Output() openMatch = new EventEmitter<Match>();
 
   constructor() { }
 
   select(match: Match): void {
     this.matchSelected.emit(match);
   }
+
+  profile(player: Player): void {
+    this.viewProfile.emit(player);
+  }
+
+  open(match: Match): void {
+    this.openMatch.emit(match);
+  }
+
 }

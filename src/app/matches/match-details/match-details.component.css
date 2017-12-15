@@ -11,6 +11,11 @@
   max-height: 400px;
 }
 
+:host() >>> .mat-card-title-group span {
+  display: inline-block;
+  height: 40px;
+}
+
 :host() >>> .mat-card-title-group > div {
   left: 16px;
   position: absolute;
@@ -23,10 +28,21 @@
   color: #ffffff;
 }
 
+:host() >>> .mat-card-subtitle {
+  font-size: 18px;
+}
+
 :host() >>> .mat-card-title-group > img {
   height: auto;
   object-fit: cover;
   width: 100%;
+}
+
+:host() >>> .mat-card-title-group .open-match {
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 :host() >>> .mat-card-content {

@@ -1,9 +1,18 @@
 <div class="details">
   <h2>Team: {{roster.participants[0].stats.side}} // Score: {{roster.score}}</h2>
+  <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats>
 </div>
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{participant.player.id}} as {{participant.champion.name}}</mat-panel-title>
-    <mat-panel-description>{{participant.stats.score}} | {{participant.stats.damageDone}} | {{participant.stats.healingDone}}</mat-panel-description>
+    <mat-panel-title>{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-description>
+      <span matTooltip="Score">{{ participant.stats.score }}</span>
+      <span matTooltip="Damange Done">{{ participant.stats.damageDone }}</span>
+      <span matTooltip="Healing Done">{{ participant.stats.healingDone }}</span>
+    </mat-panel-description>
   </mat-expansion-panel-header>
+  <brh-participant-stats [participant]="participant"></brh-participant-stats>
+  <mat-action-row>
+    <button mat-button color="primary" (click)="profile(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
+  </mat-action-row>
 </mat-expansion-panel>

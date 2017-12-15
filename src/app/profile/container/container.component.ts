@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -19,6 +19,8 @@ import { Player } from '../../models/player';
     <brh-tabs
     *ngIf="(player$ | async) && (history$ | async)"
     (matchSelected)="selectMatch($event)"
+    (viewProfile)="viewProfile($event)"
+    (openMatch)="openMatch($event)"
     [player]="player$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async">
@@ -34,7 +36,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<State>,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.selectedMatch$ = store.select<Match>(fromMatches.getSelectedMatch);
     this.history$ = store.select<Match[]>(fromMatches.getAllMatches);
@@ -43,6 +46,16 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   selectMatch(match: Match): void {
     this.store.dispatch(new matchesActions.LoadMatch(match.id));
+  }
+
+  viewProfile(player: Player): void {
+    this.store.dispatch(new profileActions.SetCurrentProfile(player.id));
+    this.router.navigate(['/profile', player.id]);
+  }
+
+  openMatch(match: Match): void {
+    this.store.dispatch(new matchesActions.SetCurrentMatch(match.id));
+    this.router.navigate(['/match', match.id]);
   }
 
   ngOnInit() {

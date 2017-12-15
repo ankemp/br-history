@@ -12,6 +12,10 @@
     <div>Avg Score</div>
     <div>{{ matches | reduceStat:'score':player.id:'average' }}</div>
   </div>
+  <div class="stat">
+    <div>W/L Ratio</div>
+    <div>{{ wlRatio }}</div>
+  </div>
 </div>
 <div *ngIf="!hasStats" class="summary">
   <div class="title">Session Stats:</div>
@@ -36,6 +40,6 @@
   </mat-nav-list>
   <div class="details">
     <div *ngIf="!match">Select a match</div>
-    <brh-match-details *ngIf="match" [match]="match"></brh-match-details>
+    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="profile($event)" (openMatch)="open($event)"></brh-match-details>
   </div>
 </div>

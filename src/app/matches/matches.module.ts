@@ -7,10 +7,12 @@ import { reducers } from './store/matches.init';
 import { MatchesEffects } from './store/matches.effects';
 
 import {
-  MatExpansionModule,
+  MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
+  MatIconModule,
   MatListModule,
-  MatIconModule
+  MatTooltipModule,
 } from '@angular/material';
 
 import { NgArrayPipesModule } from 'ngx-pipes';
@@ -22,6 +24,8 @@ import { MatchService } from '../services/match.service';
 import { MatchListComponent } from './match-list/match-list.component';
 import { TeamRosterComponent } from './team-roster/team-roster.component';
 import { MatchDetailsComponent } from './match-details/match-details.component';
+import { ParticipantStatsComponent } from './participant-stats/participant-stats.component';
+import { MatchStatsComponent } from './match-stats/match-stats.component';
 
 @NgModule({
   imports: [
@@ -31,15 +35,19 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
     NgArrayPipesModule,
     Ng2GoogleChartsModule,
     SharedModule,
-    MatExpansionModule,
+    MatButtonModule,
     MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
     MatListModule,
-    MatIconModule
+    MatTooltipModule,
   ],
   declarations: [
     MatchListComponent,
     TeamRosterComponent,
-    MatchDetailsComponent
+    MatchDetailsComponent,
+    ParticipantStatsComponent,
+    MatchStatsComponent
   ],
   providers: [
     MatchService

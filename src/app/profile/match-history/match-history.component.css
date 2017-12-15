@@ -75,3 +75,12 @@
   padding: 0 16px;
   width: 60%;
 }
+
+:host() >>> brh-team-roster >>> brh-participant-stats .column.avatar {
+  max-width: 200px;
+}
+:host() >>> brh-team-roster >>> brh-participant-stats .column.avatar img {
+  object-fit: cover;
+  height: 100%;
+  width: auto;
+}

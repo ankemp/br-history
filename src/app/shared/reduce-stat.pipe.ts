@@ -10,7 +10,7 @@ export class ReduceStatPipe implements PipeTransform {
   private reduceStat(match: Match, stat: string, playerId: string): number {
     const participant = match.rosters.map(roster => {
       return roster.participants.find(p => (p.player.id === playerId));
-    }).shift();
+    }).filter(Boolean).pop();
     return participant.stats[stat];
   }
 

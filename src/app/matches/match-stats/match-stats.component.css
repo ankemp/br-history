@@ -1,0 +1,13 @@
+:host() {
+  display: block;
+}
+
+.match-charts {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.match-charts .chart {
+  width: 33%;
+}
