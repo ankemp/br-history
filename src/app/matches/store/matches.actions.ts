@@ -33,7 +33,7 @@ export class LoadByPlayerSuccess implements Action {
   constructor(public payload: Match[]) { }
 }
 
-export type All =
+export type Actions =
   | SetCurrentMatch
   | LoadMatch
   | LoadMatchSuccess

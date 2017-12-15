@@ -20,7 +20,7 @@ export class LoadProfileSuccess implements Action {
   constructor(public payload: Player) { }
 }
 
-export type All =
+export type Actions =
   | SetCurrentProfile
   | LoadProfile
   | LoadProfileSuccess

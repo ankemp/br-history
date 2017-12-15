@@ -16,7 +16,7 @@ export const INIT_STATE: State = matchesAdapter.getInitialState({
   currentMatchId: undefined,
 });
 
-export function reducer(state = INIT_STATE, action: matchesActions.All) {
+export function reducer(state = INIT_STATE, action: matchesActions.Actions) {
   switch (action.type) {
     case matchesActions.SET_CURRENT_MATCH: {
       return { ...state, currentMatchId: action.payload };
