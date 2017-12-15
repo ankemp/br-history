@@ -1,2 +1,4 @@
-<div>{{ contentPage.title }}</div>
-<showdown [value]="contentPage.content"></showdown>
+<h1 *ngIf="contentPage">{{ contentPage.title }}</h1>
+<div class="page-content">
+  <showdown *ngIf="contentPage" [value]="contentPage.content"></showdown>
+</div>

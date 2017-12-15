@@ -13,14 +13,13 @@ import { IConverterOptionsChangeable } from 'ngx-showdown';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  
   private routeSub: Subscription;
-  public page:string;
+  public page: string;
   public contentPage: Page;
 
-  constructor(private content: ContentfulService,private activatedRoute: ActivatedRoute) { }
+  constructor(private content: ContentfulService, private activatedRoute: ActivatedRoute) { }
 
-  
+
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.page = params['pageId'];
@@ -28,7 +27,7 @@ export class ContentComponent implements OnInit {
 
 
     this.content.getPageBySlug(this.page)
-      .then(p=> this.contentPage = p.fields);
+      .then(p => this.contentPage = p.fields);
   }
 
 }

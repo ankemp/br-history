@@ -10,7 +10,7 @@ export const contentful = {
   contentTypeIds: {
     page: 'page'
   }
-}
+};
 
 @Injectable()
 export class ContentfulService {
@@ -18,14 +18,18 @@ export class ContentfulService {
     space: contentful.space,
     accessToken: contentful.accessToken
   });
+
   constructor() { }
 
-  getPageById(pageId:string): Promise<Entry<Page>> {
+  getPageById(pageId: string): Promise<Entry<Page>> {
     return this.cdaClient.getEntry(pageId);
   }
-   
-  getPageBySlug(slugValue:string): Promise<Entry<Page>> {
-    return this.cdaClient.getEntries({'content_type':contentful.contentTypeIds.page, 
-      'fields.slug':slugValue}).then(r=>r.items.pop());
+
+  getPageBySlug(slugValue: string): Promise<Entry<Page>> {
+    return this.cdaClient.getEntries({
+      'content_type': contentful.contentTypeIds.page,
+      'fields.slug': slugValue
+    })
+      .then(r => r.items.pop());
   }
-} 
+}
