@@ -1,33 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ContentfulService } from '../../services/contentful.service';
-import { Page } from '../../models/page';
-import { Entry } from 'contentful';
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params } from '@angular/router';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
+
 import { IConverterOptionsChangeable } from 'ngx-showdown';
 
+import { Page } from '../../models/page';
 
 @Component({
   selector: 'brh-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentComponent implements OnInit {
-  private routeSub: Subscription;
-  public page: string;
-  public contentPage: Page;
+export class ContentComponent {
+  @Input() page: Page;
 
-  constructor(private content: ContentfulService, private activatedRoute: ActivatedRoute) { }
-
-
-  ngOnInit() {
-    this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.page = params['pageId'];
-    });
-
-
-    this.content.getPageBySlug(this.page)
-      .then(p => this.contentPage = p.fields);
-  }
+  constructor() { }
 
 }

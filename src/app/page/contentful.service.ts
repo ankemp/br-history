@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { createClient, Entry } from 'contentful';
 import { Page } from '../models/page';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 
 export const contentful = {
   space: 'hglvhaaej7q4',
@@ -25,11 +27,12 @@ export class ContentfulService {
     return this.cdaClient.getEntry(pageId);
   }
 
-  getPageBySlug(slugValue: string): Promise<Entry<Page>> {
-    return this.cdaClient.getEntries({
-      'content_type': contentful.contentTypeIds.page,
-      'fields.slug': slugValue
-    })
-      .then(r => r.items.pop());
+  getBySlug(slugValue: string): Observable<Entry<Page>> {
+    return Observable.fromPromise(
+      this.cdaClient.getEntries({
+        'content_type': contentful.contentTypeIds.page,
+        'fields.slug': slugValue
+      }).then(r => r.items.pop())
+    );
   }
 }

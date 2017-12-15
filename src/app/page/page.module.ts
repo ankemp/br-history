@@ -1,18 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContentfulService } from '../services/contentful.service';
-import { ContentComponent } from './content/content.component';
-import { PageRoutingModule } from './page-routing.module';
 import { ShowdownModule } from 'ngx-showdown';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/pages.init';
+import { PagesEffects } from './store/pages.effects';
+
+import { PageRoutingModule } from './page-routing.module';
+import { ContentfulService } from './contentful.service';
+
+import { ContentComponent } from './content/content.component';
+import { ContentfulContainerComponent } from './contentful-container/contentful-container.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    StoreModule.forFeature('pages', reducers),
+    EffectsModule.forFeature([PagesEffects]),
+    ShowdownModule,
     PageRoutingModule,
-    ShowdownModule 
   ],
-  declarations: [ContentComponent],
-  providers: [ContentfulService]
+  declarations: [ContentComponent, ContentfulContainerComponent],
+  providers: [
+    PagesEffects,
+    ContentfulService
+  ]
 })
 export class PageModule { }

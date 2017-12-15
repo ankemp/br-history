@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContentComponent } from './content/content.component';
+
+import { ContentfulContainerComponent } from './contentful-container/contentful-container.component';
 
 const routes: Routes = [
   {
-    path: ':pageId', component: ContentComponent
+    path: ':pageSlug', component: ContentfulContainerComponent
   }
 ];
 
