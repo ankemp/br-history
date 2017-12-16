@@ -15,5 +15,5 @@ export const getMenuEntitiesState = createSelector(getMenuState, state => state.
 export const {
   selectIds: getMenuNames,
   selectEntities: getMenuEntities,
-  selectAll: getAllMenus,
+  selectAll: getAllMenuItems,
 } = fromMenu.menuAdapter.getSelectors(getMenuEntitiesState);
