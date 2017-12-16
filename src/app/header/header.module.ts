@@ -7,7 +7,7 @@ import { reducers } from './menu/store/menu.init';
 import { MenuEffects } from './menu/store/menu.effects';
 import { ContentfulService } from '../services/contentful.service';
 
-import { MatToolbarModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
 
 import { HeaderComponent } from './header/header.component';
 
@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
     StoreModule.forFeature('menu', reducers),
     EffectsModule.forFeature([MenuEffects]),
     MatToolbarModule,
+    MatButtonModule,
     MatIconModule,
     MatInputModule
   ],
