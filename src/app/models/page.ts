@@ -1,7 +1,5 @@
-
 export interface Page {
-    title: string;
-    content: string;
-    slug: string;
-    };
-  
+  title: string;
+  content: string;
+  slug: string;
+}

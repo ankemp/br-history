@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 
-import { Entry } from 'contentful';
 import { Page } from '../../models/page';
 
 export const SET_CURRENT_PAGE = '[Page] SET CURRENT PAGE';
