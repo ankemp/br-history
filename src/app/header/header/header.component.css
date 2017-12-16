@@ -3,6 +3,10 @@
   justify-content: space-between;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 nav {
   flex: 1 1 0;
   padding: 0 16px;
