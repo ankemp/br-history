@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SecToMinPipe } from './sec-to-min.pipe';
 import { ReduceStatPipe } from './reduce-stat.pipe';
+import { AssetRoutePipe } from './asset-route.pipe';
 
 @NgModule({
   imports: [
@@ -10,11 +11,13 @@ import { ReduceStatPipe } from './reduce-stat.pipe';
   ],
   declarations: [
     SecToMinPipe,
-    ReduceStatPipe
+    ReduceStatPipe,
+    AssetRoutePipe
   ],
   exports: [
     SecToMinPipe,
-    ReduceStatPipe
+    ReduceStatPipe,
+    AssetRoutePipe
   ]
 })
 export class SharedModule { }

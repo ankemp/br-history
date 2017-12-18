@@ -12,7 +12,7 @@
       </span>
     </mat-card-title>
     <mat-card-subtitle *ngIf="match.map">{{match.map.name}}</mat-card-subtitle>
-    <img *ngIf="match.map" src="assets/maps/{{match.map.id}}.jpg" alt="">
+    <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'maps':'jpg' }}" alt="">
   </mat-card-title-group>
   <mat-card-content>
     <brh-team-roster *ngFor="let roster of match.rosters" [roster]="roster" [player]="player" (viewProfile)="profile($event)"></brh-team-roster>
