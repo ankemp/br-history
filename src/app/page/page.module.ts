@@ -8,6 +8,7 @@ import { reducers } from './store/pages.init';
 import { PagesEffects } from './store/pages.effects';
 
 import { PageRoutingModule } from './page-routing.module';
+import { PageResolver } from './page.resolver';
 import { ContentfulService } from '../services/contentful.service';
 
 import { ContentComponent } from './content/content.component';
@@ -24,6 +25,7 @@ import { ContentfulContainerComponent } from './contentful-container/contentful-
   declarations: [ContentComponent, ContentfulContainerComponent],
   providers: [
     PagesEffects,
+    PageResolver,
     ContentfulService
   ]
 })
