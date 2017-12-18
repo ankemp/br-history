@@ -14,7 +14,7 @@ import { Player } from '../../models/player';
 @Component({
   selector: 'brh-container',
   template: `
-    <brh-match-details *ngIf="!!(match$ | async)" [match]="match$ | async" (viewProfile)="viewProfile($event)"></brh-match-details>
+    <brh-match-details *ngIf="(match$ | async)" [match]="match$ | async" (viewProfile)="viewProfile($event)"></brh-match-details>
   `,
   styleUrls: ['./container.component.css']
 })

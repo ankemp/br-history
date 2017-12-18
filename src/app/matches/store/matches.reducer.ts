@@ -27,7 +27,7 @@ export function reducer(state = INIT_STATE, action: matchesActions.Actions) {
     }
 
     case matchesActions.LOAD_BY_PLAYER_SUCCESS: {
-      return { ...state, ...matchesAdapter.addMany(action.payload as Match[], state) };
+      return { ...state, ...matchesAdapter.addAll(action.payload as Match[], state) };
     }
 
     default:
