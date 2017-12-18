@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
@@ -7,15 +8,19 @@ import * as matchesActions from './matches.actions';
 
 import { MatchService } from '../../services/match.service';
 
+import { environment } from '../../../environments/environment';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class MatchesEffects {
 
   constructor(
+    private title: Title,
     private api: MatchService,
     private actions$: Actions,
   ) { }
@@ -38,4 +43,12 @@ export class MatchesEffects {
         .map((m: Match[]) => new matchesActions.LoadByPlayerSuccess(m))
     );
 
+  @Effect({ dispatch: false })
+  setTitle: Observable<Action> = this.actions$
+    .ofType(matchesActions.LOAD_MATCH_SUCCESS)
+    .map((action: matchesActions.LoadMatchSuccess) => action.payload)
+    .switchMap((match: Match) => {
+      this.title.setTitle(`${match.matchType} - ${environment.appTitle}`);
+      return Observable.of();
+    });
 }
