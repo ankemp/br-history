@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { Menu } from '../../../models/menu';
 
 export const LOAD = '[Menu] LOAD';
-export const LOAD_SUCCESS = '[Menu] LOAD';
+export const LOAD_SUCCESS = '[Menu] LOAD SUCCESS';
 
 export class Load implements Action {
   readonly type = LOAD;
