@@ -12,7 +12,7 @@ import { Menu } from '../../models/menu';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  private menu$: Observable<Menu[]>;
+  menu$: Observable<Menu[]>;
 
   constructor(
     private store: Store<Menu[]>

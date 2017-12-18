@@ -1,3 +1,17 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+brh-menu {
+  flex: 1 1 0;
+  padding: 0 16px;
+}
+
 .search {
   box-sizing: border-box;
   min-width: 300px;

@@ -49,7 +49,7 @@ export class MatchHistoryComponent {
     this.matches.forEach(match => {
       this.isWinner(match) ? w++ : l++;
     });
-    return (w / (w + l)).toFixed(2);
+    return `${w}:${l}`;
   }
 
   isWinner(match: Match): boolean {

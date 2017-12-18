@@ -25,11 +25,11 @@ export class ContentfulService {
 
   constructor() { }
 
-  getMenuItems(): Observable<Entry<Menu>[]> {
+  getMenuItems(): Observable<Menu[]> {
     return Observable.fromPromise(
       this.cdaClient.getEntries({
         'content_type': contentful.contentTypeIds.menu
-      }).then(r => r.items)
+      }).then(r => r.items.map(i => i.fields))
     );
   }
 

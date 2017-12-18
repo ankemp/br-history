@@ -17,7 +17,7 @@ import { Player } from '../../models/player';
   template: `
     <brh-header *ngIf="(player$ | async)" [player]="player$ | async"></brh-header>
     <brh-tabs
-    *ngIf="(player$ | async) && (history$ | async)"
+    *ngIf="(history$ | async) && (player$ | async)"
     (matchSelected)="selectMatch($event)"
     (viewProfile)="viewProfile($event)"
     (openMatch)="openMatch($event)"
@@ -60,7 +60,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.store.dispatch(new profileActions.LoadProfile(params['userId']));
+      this.store.dispatch(new profileActions.SetCurrentProfile(params['userId']));
       this.store.dispatch(new matchesActions.LoadByPlayer(params['userId']));
     });
   }

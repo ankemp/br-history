@@ -11,9 +11,10 @@
 }
 
 .summary .title {
+  border-right: 1px solid #000000;
   font-size: 20px;
   font-weight: 500;
-  border-right: 1px solid #000000;
+  margin-right: 32px;
   padding-right: 32px;
 }
 
@@ -26,6 +27,7 @@
 }
 
 .summary .stat div:first-of-type {
+  font-weight: 500;
   text-transform: uppercase;
 }
 

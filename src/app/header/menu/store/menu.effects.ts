@@ -13,7 +13,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 
-
 @Injectable()
 export class MenuEffects {
 
@@ -28,7 +27,7 @@ export class MenuEffects {
     .map((action: menuActions.Load) => action.payload)
     .switchMap(() =>
       this.api.getMenuItems()
-        .map((p: Entry<Menu>[]) => new menuActions.LoadSuccess(p.map(i => i.fields)))
+        .map((m: Menu[]) => new menuActions.LoadSuccess(m))
     );
 
 }

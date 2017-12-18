@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
-  <div>Battlerite Match History</div>
+  <div class="logo" [routerLink]="['/']">BattleLegend</div>
+  <brh-menu [menu]="menu$ | async"></brh-menu>
   <div class="search">
     <mat-form-field [floatPlaceholder]="'never'">
       <mat-icon matPrefix>search</mat-icon>
