@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new menuActions.Load);
-    this.menu$.subscribe(menu => console.log(menu));
   }
 
 }
