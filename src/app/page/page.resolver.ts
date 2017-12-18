@@ -1,10 +1,8 @@
-import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
-import 'rxjs/add/observable/of';
 
 import * as fromPages from './store/pages.init';
 import * as pageActions from './store/pages.actions';
