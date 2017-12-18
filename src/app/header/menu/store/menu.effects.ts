@@ -27,7 +27,7 @@ export class MenuEffects {
     .map((action: menuActions.Load) => action.payload)
     .switchMap(() =>
       this.api.getMenuItems()
-        .map((p: Entry<Menu>[]) => new menuActions.LoadSuccess(p.map(i => i.fields)))
+        .map((m: Menu[]) => new menuActions.LoadSuccess(m))
     );
 
 }
