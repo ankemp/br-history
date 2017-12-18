@@ -15,9 +15,8 @@ import { Player } from '../../models/player';
 @Component({
   selector: 'brh-container',
   template: `
-    <brh-header *ngIf="(player$ | async)" [player]="player$ | async"></brh-header>
+    <brh-header [player]="player$ | async"></brh-header>
     <brh-tabs
-    *ngIf="(player$ | async) && (history$ | async)"
     (matchSelected)="selectMatch($event)"
     (viewProfile)="viewProfile($event)"
     (openMatch)="openMatch($event)"
