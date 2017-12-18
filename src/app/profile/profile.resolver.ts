@@ -22,6 +22,6 @@ export class ProfileResolver implements Resolve<Player> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Player> {
     this.store.dispatch(new profileActions.LoadProfile(route.params['userId']));
-    return this.player$.take(1);
+    return this.player$.take(2);
   }
 }
