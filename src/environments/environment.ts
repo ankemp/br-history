@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   apiRoot: 'http://localhost:3030',
-  assetsRoute: '/assets'
+  assetsRoute: 'https://storage.googleapis.com/br-assets/assets'
 };
