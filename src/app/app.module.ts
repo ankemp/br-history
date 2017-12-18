@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers/index';
 
-import { MenuResolver } from './header/menu/menu.resolver';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HeaderModule } from './header/header.module';
@@ -29,9 +28,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
-  providers: [
-    MenuResolver
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
