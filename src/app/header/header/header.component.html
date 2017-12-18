@@ -1,10 +1,6 @@
 <mat-toolbar color="primary">
   <div class="logo" [routerLink]="['/']">BattleLegend</div>
-  <nav>
-    <a mat-button routerLink=".">Link 1</a>
-    <a mat-button routerLink=".">Link 2</a>
-    <a mat-button routerLink=".">Link 3</a>
-  </nav>
+  <brh-menu [menu]="menu$ | async"></brh-menu>
   <div class="search">
     <mat-form-field [floatPlaceholder]="'never'">
       <mat-icon matPrefix>search</mat-icon>

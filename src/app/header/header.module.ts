@@ -11,6 +11,7 @@ import { ContentfulService } from '../services/contentful.service';
 import { MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
 
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     MatInputModule
   ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, MenuComponent],
   providers: [
     MenuEffects,
     ContentfulService

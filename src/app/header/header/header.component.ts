@@ -12,7 +12,7 @@ import { Menu } from '../../models/menu';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  private menu$: Observable<Menu[]>;
+  menu$: Observable<Menu[]>;
 
   constructor(
     private store: Store<Menu[]>
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new menuActions.Load);
+    this.menu$.subscribe(menu => console.log(menu));
   }
 
 }
