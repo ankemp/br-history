@@ -16,7 +16,7 @@ export const INIT_STATE: State = profileAdapter.getInitialState({
   currentProfileId: undefined,
 });
 
-export function reducer(state = INIT_STATE, action: profileActions.All) {
+export function reducer(state = INIT_STATE, action: profileActions.Actions) {
   switch (action.type) {
     case profileActions.SET_CURRENT_PROFILE: {
       return { ...state, currentProfileId: action.payload };
