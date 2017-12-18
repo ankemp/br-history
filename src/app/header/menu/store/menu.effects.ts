@@ -15,7 +15,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class PagesEffects {
+export class MenuEffects {
 
   constructor(
     private api: ContentfulService,
