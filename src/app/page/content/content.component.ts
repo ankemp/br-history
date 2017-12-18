@@ -4,8 +4,6 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { IConverterOptionsChangeable } from 'ngx-showdown';
-
 import { Page } from '../../models/page';
 
 @Component({
