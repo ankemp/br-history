@@ -4,7 +4,8 @@
 </div>
 <mat-expansion-panel *ngFor="let participant of roster.participants">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-title *ngIf="participant.player.name">{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
+    <mat-panel-title *ngIf="!participant.player.name">{{participant.champion.name}}</mat-panel-title>
     <mat-panel-description>
       <span matTooltip="Score">{{ participant.stats.score }}</span>
       <span matTooltip="Damange Done">{{ participant.stats.damageDone }}</span>
