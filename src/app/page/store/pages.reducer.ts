@@ -1,6 +1,6 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 
-import { Page } from '../../models/page';
+import { Page } from '../../models';
 
 import * as pageActions from './pages.actions';
 

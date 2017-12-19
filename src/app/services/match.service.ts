@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
-import { Match } from '../models/match';
+import { Match } from '../models';
 
 @Injectable()
 export class MatchService {

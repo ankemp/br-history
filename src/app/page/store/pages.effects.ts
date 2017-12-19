@@ -4,7 +4,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Entry } from 'contentful';
-import { Page } from '../../models/page';
+import { Page } from '../../models';
 import * as pageActions from './pages.actions';
 
 import { ContentfulService } from '../../services/contentful.service';

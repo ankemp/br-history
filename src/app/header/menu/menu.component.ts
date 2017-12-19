@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Menu } from '../../models/menu';
+import { Menu } from '../../models';
 
 @Component({
   selector: 'brh-menu',

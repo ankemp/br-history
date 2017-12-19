@@ -8,8 +8,7 @@ import { State } from '../../reducers/index';
 import * as fromMatches from '../../matches/store/matches.init';
 import * as matchesActions from '../../matches/store/matches.actions';
 import * as profileActions from '../../profile/store/profile.actions';
-import { Match } from '../../models/match';
-import { Player } from '../../models/player';
+import { Match, Player } from '../../models';
 
 @Component({
   selector: 'brh-container',

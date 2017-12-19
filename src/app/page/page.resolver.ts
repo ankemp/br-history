@@ -6,7 +6,7 @@ import 'rxjs/add/operator/take';
 
 import * as fromPages from './store/pages.init';
 import * as pageActions from './store/pages.actions';
-import { Page } from '../models/page';
+import { Page } from '../models';
 
 @Injectable()
 export class PageResolver implements Resolve<Page> {

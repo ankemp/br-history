@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromPages from '../store/pages.init';
 import * as pageActions from '../store/pages.actions';
-import { Page } from '../../models/page';
+import { Page } from '../../models';
 
 @Component({
   selector: 'brh-contentful-container',

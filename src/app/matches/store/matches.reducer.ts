@@ -1,5 +1,5 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
-import { Match } from '../../models/match';
+import { Match } from '../../models';
 
 import * as matchesActions from './matches.actions';
 

@@ -8,7 +8,7 @@ import 'rxjs/add/observable/of';
 
 import * as fromProfile from './store/profile.init';
 import * as profileActions from './store/profile.actions';
-import { Player } from '../models/player';
+import { Player } from '../models';
 
 @Injectable()
 export class ProfileResolver implements Resolve<Player> {

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Menu } from '../../../models/menu';
+import { Menu } from '../../../models';
 
 export const LOAD = '[Menu] LOAD';
 export const LOAD_SUCCESS = '[Menu] LOAD SUCCESS';

@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
-import { Player } from '../../models/player';
+import { Player } from '../../models';
 import * as profileActions from './profile.actions';
 
 import { PlayerService } from '../../services/player.service';
