@@ -7,4 +7,5 @@ export interface Player {
   updatedAt?: Date;
   newestMatch?: Date;
   oldestMatch?: Date;
+  stats?: any;
 }

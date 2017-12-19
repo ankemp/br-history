@@ -1,0 +1,10 @@
+<div *ngFor="let champion of player.stats.champions | orderBy: '-xp'" class="champion-container">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{ champion.champion }}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ champion | json }}
+    </mat-card-content>
+  </mat-card>
+</div>
