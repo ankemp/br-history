@@ -1,6 +1,6 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 
-import { Menu } from '../../../models/menu';
+import { Menu } from '../../../models';
 
 import * as menuActions from './menu.actions';
 

@@ -4,8 +4,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { Match } from '../../models/match';
-import { Roster } from '../../models/roster';
+import { Match, Roster } from '../../models';
 
 @Component({
   selector: 'brh-match-stats',

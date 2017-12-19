@@ -3,7 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Entry } from 'contentful';
-import { Menu } from '../../../models/menu';
+import { Menu } from '../../../models';
 import * as menuActions from './menu.actions';
 
 import { ContentfulService } from '../../../services/contentful.service';

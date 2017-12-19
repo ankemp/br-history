@@ -1,5 +1,5 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
-import { Player } from '../../models/player';
+import { Player } from '../../models';
 
 import * as profileActions from './profile.actions';
 

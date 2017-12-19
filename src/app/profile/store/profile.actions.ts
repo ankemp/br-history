@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Player } from '../../models/player';
+import { Player } from '../../models';
 
 export const SET_CURRENT_PROFILE = '[Profile] SET CURRENT PROFILE';
 export const LOAD_PROFILE = '[Profile] LOAD';

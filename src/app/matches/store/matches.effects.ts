@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
-import { Match } from '../../models/match';
+import { Match } from '../../models';
 import * as matchesActions from './matches.actions';
 
 import { MatchService } from '../../services/match.service';

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
-import { Player } from '../models/player';
+import { Player } from '../models';
 
 @Injectable()
 export class PlayerService {

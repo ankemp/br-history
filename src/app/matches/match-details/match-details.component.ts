@@ -7,8 +7,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { Match } from '../../models/match';
-import { Player } from '../../models/player';
+import { Match, Player } from '../../models';
 
 @Component({
   selector: 'brh-match-details',

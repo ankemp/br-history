@@ -9,8 +9,7 @@ import * as fromProfile from '../store/profile.init';
 import * as profileActions from '../store/profile.actions';
 import * as fromMatches from '../../matches/store/matches.init';
 import * as matchesActions from '../../matches/store/matches.actions';
-import { Match } from '../../models/match';
-import { Player } from '../../models/player';
+import { Match, Player } from '../../models';
 
 @Component({
   selector: 'brh-container',

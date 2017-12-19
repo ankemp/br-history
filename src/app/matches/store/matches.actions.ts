@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Match } from '../../models/match';
+import { Match } from '../../models';
 
 export const SET_CURRENT_MATCH = '[Match] SET CURRENT MATCH';
 export const LOAD_MATCH = '[Match] LOAD';

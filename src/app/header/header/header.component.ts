@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import * as menuActions from '../menu/store/menu.actions';
 import * as fromMenu from '../menu/store/menu.init';
-import { Menu } from '../../models/menu';
+import { Menu } from '../../models';
 
 @Component({
   selector: 'brh-header',
