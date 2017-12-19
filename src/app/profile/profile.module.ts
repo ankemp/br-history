@@ -6,7 +6,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/profile.init';
 import { ProfileEffects } from './store/profile.effects';
 
-import { MatTabsModule, MatListModule, MatCardModule } from '@angular/material';
+import {
+  MatButtonToggleModule,
+  MatCardModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
 import { NgArrayPipesModule } from 'ngx-pipes';
 
 import { SharedModule } from '../shared/shared.module';
@@ -27,9 +36,14 @@ import { ChampionsComponent } from './champions/champions.component';
     CommonModule,
     StoreModule.forFeature('profile', reducers),
     EffectsModule.forFeature([ProfileEffects]),
-    MatTabsModule,
-    MatListModule,
+    MatButtonToggleModule,
     MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
     NgArrayPipesModule,
     SharedModule,
     MatchesModule,

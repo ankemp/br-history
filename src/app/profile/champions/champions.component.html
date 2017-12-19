@@ -1,10 +1,34 @@
-<div *ngFor="let champion of player.stats.champions | orderBy: '-xp'" class="champion-container">
-  <mat-card>
+<mat-toolbar>
+  <div class="champion-sort">
+    <mat-button-toggle-group #championSort="matButtonToggleGroup">
+      <mat-button-toggle value="-xp" checked="true">
+        Level
+      </mat-button-toggle>
+      <mat-button-toggle value="-characterWins">
+        Wins
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="champion-search">
+    <mat-form-field [floatPlaceholder]="'never'">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" placeholder="Find Champion">
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+<div *ngFor="let champion of player.stats.champions | orderBy: championSort.value" class="champion-container">
+  <mat-card *ngIf="champion.champion">
+    <img mat-card-image src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
     <mat-card-title-group>
-      <mat-card-title>{{ champion.champion }}</mat-card-title>
+      <mat-card-title>{{ champion.champion.name }}</mat-card-title>
+      <mat-card-subtitle>Level: {{ champion.level || 0 }}</mat-card-subtitle>
     </mat-card-title-group>
     <mat-card-content>
-      {{ champion | json }}
+      <!-- {{ champion | json }} -->
+      <div class="win-loss">
+        <span matTooltip="Wins">{{ champion.characterWins || 0 }}</span> :
+        <span matTooltip="Losses">{{ champion.characterLosses || 0 }}</span>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
