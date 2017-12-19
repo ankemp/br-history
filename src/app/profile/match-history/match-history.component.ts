@@ -54,7 +54,7 @@ export class MatchHistoryComponent {
   isWinner(match: Match): boolean {
     let roster;
     if (!!match.rosters) {
-      roster = match.rosters.find(r => !!r.participants.find(p => p.player.id === this.player.id) || false);
+      roster = match.rosters.find(r => r.participants.length ? !!r.participants.find(p => p.player.id === this.player.id) : false);
     }
     return roster ? roster.won : false;
   }
