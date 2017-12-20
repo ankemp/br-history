@@ -1,26 +1,28 @@
-<div *ngIf="hasStats" class="summary">
-  <h3 class="title">Session Stats:</h3>
-  <div class="stat">
-    <div>Kills</div>
-    <div>{{matches | reduceStat:'kills':player.id}}</div>
-  </div>
-  <div class="stat">
-    <div>Deaths</div>
-    <div>{{matches | reduceStat:'deaths':player.id}}</div>
-  </div>
-  <div class="stat">
-    <div>Avg Score</div>
-    <div>{{ matches | reduceStat:'score':player.id:'average' }}</div>
-  </div>
-  <div class="stat">
-    <div>W/L Ratio</div>
-    <div>{{ wlRatio }}</div>
-  </div>
-</div>
-<div *ngIf="!hasStats" class="summary">
-  <div class="title">Session Stats:</div>
-  <div class="stat">Couldn't load stats</div>
-</div>
+<mat-toolbar class="summary">
+  <mat-toolbar-row *ngIf="hasStats">
+    <h3 class="title">Session Stats:</h3>
+    <div class="stat">
+      <div>Kills</div>
+      <div>{{matches | reduceStat:'kills':player.id}}</div>
+    </div>
+    <div class="stat">
+      <div>Deaths</div>
+      <div>{{matches | reduceStat:'deaths':player.id}}</div>
+    </div>
+    <div class="stat">
+      <div>Avg Score</div>
+      <div>{{ matches | reduceStat:'score':player.id:'average' }}</div>
+    </div>
+    <div class="stat">
+      <div>W/L Ratio</div>
+      <div>{{ wlRatio }}</div>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="!hasStats">
+    <div class="title">Session Stats:</div>
+    <div class="stat">Couldn't load stats</div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="history">
   <mat-nav-list>
     <a mat-list-item *ngFor="let m of matches" (click)="select(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
@@ -39,7 +41,7 @@
     </a>
   </mat-nav-list>
   <div class="details">
-    <div *ngIf="!match">Select a match</div>
+    <div class="nomatch" *ngIf="!match">Select a match</div>
     <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="profile($event)" (openMatch)="open($event)"></brh-match-details>
   </div>
 </div>

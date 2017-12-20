@@ -60,7 +60,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   tabChange($event: MatTabChangeEvent): void {
-    this.router.navigate([`${$event.index}-${$event.tab.textLabel}`], { relativeTo: this.activatedRoute });
+    // this.router.navigate([`${$event.index}-${$event.tab.textLabel}`], { relativeTo: this.activatedRoute });
   }
 
   ngOnInit() {
