@@ -12,4 +12,10 @@ export class HeaderComponent {
 
   constructor() { }
 
+  get winRate(): string {
+    const { wins, losses } = this.player.stats;
+    const totalPlayed = wins + losses;
+    const winRate = (wins / totalPlayed * 100).toFixed(2);
+    return `${winRate}%`;
+  }
 }
