@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Player } from '../../models';
 
@@ -8,12 +8,16 @@ import { Player } from '../../models';
   styleUrls: ['./champions.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChampionsComponent implements OnInit {
+export class ChampionsComponent {
   @Input() player: Player;
 
   constructor() { }
 
-  ngOnInit() {
+  winRate(champion: any): string {
+    const { characterWins, characterLosses } = champion;
+    const totalPlayed = (characterWins || 0) + (characterLosses || 0);
+    const winRate = (characterWins / totalPlayed * 100);
+    return !isNaN(winRate) ? `${winRate.toFixed(2)}%` : 'N/A';
   }
 
 }

@@ -14,8 +14,8 @@ export class HeaderComponent {
 
   get winRate(): string {
     const { wins, losses } = this.player.stats;
-    const totalPlayed = wins + losses;
-    const winRate = (wins / totalPlayed * 100).toFixed(2);
-    return `${winRate}%`;
+    const totalPlayed = (wins || 0) + (losses || 0);
+    const winRate = (wins / totalPlayed * 100);
+    return isNaN(winRate) ? `${winRate.toFixed(2)}%` : 'N/A';
   }
 }

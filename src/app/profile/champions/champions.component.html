@@ -28,7 +28,7 @@
       <mat-card-subtitle>Level: {{ champion.level || 0 }}</mat-card-subtitle>
     </mat-card-title-group>
     <mat-card-content>
-      <!-- {{ champion | json }} -->
+      <div class="win-rate">{{ winRate(champion) }}</div>
       <div class="win-loss">
         <span matTooltip="Wins">{{ champion.characterWins || 0 }}</span> :
         <span matTooltip="Losses">{{ champion.characterLosses || 0 }}</span>
