@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MatTabChangeEvent } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,6 +21,7 @@ import { Match, Player } from '../../models';
     (matchSelected)="selectMatch($event)"
     (viewProfile)="viewProfile($event)"
     (openMatch)="openMatch($event)"
+    (tabChange)="tabChange($event)"
     [player]="player$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async">
@@ -55,6 +57,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
   openMatch(match: Match): void {
     this.store.dispatch(new matchesActions.SetCurrentMatch(match.id));
     this.router.navigate(['/match', match.id]);
+  }
+
+  tabChange($event: MatTabChangeEvent): void {
+    this.router.navigate([`${$event.index}-${$event.tab.textLabel}`], { relativeTo: this.activatedRoute });
   }
 
   ngOnInit() {

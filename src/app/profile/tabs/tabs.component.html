@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="tabChange.emit($event)">
   <mat-tab label="Overview">
     <brh-champions [player]="player"></brh-champions>
   </mat-tab>

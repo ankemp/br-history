@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material';
 
 import { Match, Player } from '../../models';
 
@@ -19,6 +20,7 @@ export class TabsComponent {
   @Output() matchSelected = new EventEmitter<Match>();
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
+  @Output() tabChange = new EventEmitter<MatTabChangeEvent>();
 
   constructor() { }
 
