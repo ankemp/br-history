@@ -10,7 +10,6 @@ import { Player } from '../../models';
 })
 export class ChampionsComponent implements OnInit {
   @Input() player: Player;
-  // championSearch: string;
 
   constructor() { }
 
