@@ -10,13 +10,17 @@
     </mat-button-toggle-group>
   </div>
   <div class="champion-search">
-    <mat-form-field [floatPlaceholder]="'never'">
+    <mat-form-field floatPlaceholder="never">
       <mat-icon matPrefix>search</mat-icon>
-      <input matInput type="search" placeholder="Find Champion">
+      <input matInput type="search" placeholder="Find Champion" #championSearch>
+      <button mat-button *ngIf="championSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="championSearch.value=''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
   </div>
 </mat-toolbar>
-<div *ngFor="let champion of player.stats.champions | orderBy: championSort.value" class="champion-container">
+<div *ngFor="let champion of player.stats.champions | orderBy: championSort.value | filterBy: ['champion.name']: championSearch.value"
+  class="champion-container">
   <mat-card *ngIf="champion.champion">
     <img mat-card-image src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
     <mat-card-title-group>
