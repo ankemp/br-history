@@ -16,6 +16,7 @@ export const getSelectedProfileId = createSelector(getProfileEntitiesState, from
 export const {
   selectIds: getProfileIds,
   selectEntities: getProfileEntities,
+  selectAll: getAllProfiles,
 } = fromProfile.profileAdapter.getSelectors(getProfileEntitiesState);
 export const getSelectedProfile = createSelector(
   getProfileEntities,

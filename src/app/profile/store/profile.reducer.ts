@@ -22,6 +22,10 @@ export function reducer(state = INIT_STATE, action: profileActions.Actions) {
       return { ...state, currentProfileId: action.payload };
     }
 
+    case profileActions.SEARCH_BY_NAME_SUCCESS: {
+      return { ...state, ...profileAdapter.addOne(action.payload as Player, state) };
+    }
+
     case profileActions.LOAD_PROFILE_SUCCESS: {
       return { ...state, ...profileAdapter.addOne(action.payload as Player, state), currentProfileId: action.payload.id };
     }

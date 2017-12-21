@@ -1,4 +1,10 @@
 <mat-form-field floatPlaceholder="never">
   <mat-icon matPrefix>search</mat-icon>
-  <input matInput type="search" placeholder="Player Search">
+  <input matInput type="search" placeholder="Player Search" [matAutocomplete]="auto" [formControl]="playerCtrl">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="goToProfile($event)">
+    <mat-option *ngFor="let player of filteredPlayers | async" [value]="player.id">
+      <span>{{ player.name }}</span> |
+      <span>{{ player.stats.accountLevel }}</span>
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>

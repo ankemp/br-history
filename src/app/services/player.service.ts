@@ -21,4 +21,10 @@ export class PlayerService {
       .map((response: any) => response);
   }
 
+  search(playerName: string): Observable<Player> {
+    return this.http
+      .get<Player>(`${this.PLAYERS_API}/?name=${playerName}`)
+      .map((response: any) => response);
+  }
+
 }
