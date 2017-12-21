@@ -8,8 +8,9 @@ import { reducers } from './menu/store/menu.init';
 import { MenuEffects } from './menu/store/menu.effects';
 import { ContentfulService } from '../services/contentful.service';
 
-import { MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule } from '@angular/material';
 
+import { SearchModule } from '../search/search.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 
@@ -21,8 +22,7 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
-    MatInputModule
+    SearchModule
   ],
   declarations: [HeaderComponent, MenuComponent],
   providers: [

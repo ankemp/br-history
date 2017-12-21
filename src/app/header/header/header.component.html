@@ -1,10 +1,5 @@
 <mat-toolbar color="primary">
   <div class="logo" [routerLink]="['/']">BattleLegend</div>
   <brh-menu [menu]="menu$ | async"></brh-menu>
-  <div class="search">
-    <mat-form-field [floatPlaceholder]="'never'">
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput type="search" placeholder="Find player or team">
-    </mat-form-field>
-  </div>
+  <brh-search-bar></brh-search-bar>
 </mat-toolbar>

@@ -1,0 +1,27 @@
+:host() {
+  box-sizing: border-box;
+  min-width: 300px;
+  padding: 16px;
+}
+
+:host() >>> mat-form-field {
+  width: 100%;
+}
+
+:host() >>> .mat-form-field-prefix {
+  align-self: center;
+  display: flex;
+}
+
+:host() >>> .mat-form-field-prefix mat-icon {
+  height: 0.5em;
+}
+
+:host() >>> .mat-input-element,
+:host() >>> .mat-form-field-placeholder {
+  color: #fff;
+}
+
+:host() >>> .mat-form-field-underline {
+  background-color: #fff;
+}
