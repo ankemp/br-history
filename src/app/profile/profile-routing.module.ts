@@ -7,7 +7,8 @@ import { ContainerComponent } from './container/container.component';
 const routes: Routes = [
   {
     path: '', children: [
-      { path: ':userId', component: ContainerComponent, resolve: { profile: ProfileResolver } }
+      { path: ':userId', component: ContainerComponent, resolve: { profile: ProfileResolver } },
+      { path: ':userId/:tab', component: ContainerComponent, resolve: { profile: ProfileResolver } }
     ]
   }
 ];

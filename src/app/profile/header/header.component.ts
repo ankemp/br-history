@@ -12,4 +12,10 @@ export class HeaderComponent {
 
   constructor() { }
 
+  get winRate(): string {
+    const { wins, losses } = this.player.stats;
+    const totalPlayed = (wins || 0) + (losses || 0);
+    const winRate = (wins / totalPlayed * 100);
+    return !isNaN(winRate) ? `${winRate.toFixed(2)}%` : 'N/A';
+  }
 }
