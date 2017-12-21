@@ -10,9 +10,9 @@ import { PlayerService } from '../../services/player.service';
 
 import { environment } from '../../../environments/environment';
 
+import { startWith, debounceTime, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
@@ -42,5 +42,17 @@ export class ProfileEffects {
       this.title.setTitle(`${player.name} - ${environment.appTitle}`);
       return Observable.of();
     });
+
+  @Effect()
+  search: Observable<Action> = this.actions$
+    .ofType(profileActions.SEARCH_BY_NAME)
+    .map((action: profileActions.SearchByName) => action.payload)
+    .pipe(
+    debounceTime(300),
+    switchMap(playerName =>
+      this.api.search(playerName)
+        .map((p: Player) => new profileActions.SearchByNameSuccess(p))
+    )
+    );
 
 }
