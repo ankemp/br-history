@@ -5,12 +5,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { State } from '../../reducers/index';
-import * as fromProfile from '../store/profile.init';
-import * as profileActions from '../store/profile.actions';
-import * as fromMatches from '../../matches/store/matches.init';
-import * as matchesActions from '../../matches/store/matches.actions';
-import { Match, Player } from '../../models';
+import { State } from '@app/reducers';
+import * as fromProfile from '@app/state/profile';
+import * as playersActions from '@app/state/actions/players';
+import * as matchesActions from '@app/state/actions/matches';
+import { Match, Player } from '@app/models';
 
 @Component({
   selector: 'brh-container',
@@ -40,8 +39,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    this.selectedMatch$ = store.select<Match>(fromMatches.getSelectedMatch);
-    this.history$ = store.select<Match[]>(fromMatches.getAllMatches);
+    this.selectedMatch$ = store.select<Match>(fromProfile.getSelectedMatch);
+    this.history$ = store.select<Match[]>(fromProfile.getAllMatches);
     this.player$ = store.select<Player>(fromProfile.getSelectedProfile);
   }
 
@@ -50,7 +49,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   viewProfile(player: Player): void {
-    this.store.dispatch(new profileActions.SetCurrentProfile(player.id));
+    this.store.dispatch(new playersActions.SetCurrentPlayer(player.id));
     this.router.navigate(['/profile', player.id]);
   }
 
@@ -65,8 +64,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      this.store.dispatch(new profileActions.SetCurrentProfile(params['userId']));
-      this.store.dispatch(new matchesActions.LoadByPlayer(params['userId']));
+      this.store.dispatch(new playersActions.SetCurrentPlayer(params['userId']));
+      this.store.dispatch(new playersActions.LoadMatches(params['userId']));
     });
   }
 
