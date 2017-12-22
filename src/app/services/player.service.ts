@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { environment } from '../../environments/environment';
-import { Player } from '../models';
+import { environment } from 'environments/environment';
+import { Player } from '@app/models';
 
 @Injectable()
 export class PlayerService {
@@ -21,10 +21,10 @@ export class PlayerService {
       .map((response: any) => response);
   }
 
-  search(playerName: string): Observable<Player> {
+  search(playerName: string): Observable<Player[]> {
     return this.http
       .get<Player>(`${this.PLAYERS_API}/?name=${playerName}`)
-      .map((response: any) => response);
+      .map((response: any) => response.data);
   }
 
 }

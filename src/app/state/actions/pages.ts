@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Page } from '../../models';
+import { Page } from '@app/models';
 
 export const SET_CURRENT_PAGE = '[Page] SET CURRENT PAGE';
 export const LOAD_PAGE = '[Page] LOAD PAGE';

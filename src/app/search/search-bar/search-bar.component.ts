@@ -1,44 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatOptionSelectionChange } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import { getAllProfiles } from '../../profile/store/profile.init';
-import * as profileActions from '../../profile/store/profile.actions';
-import { Player } from '../../models';
+import * as fromProfile from '@state/profile';
+import * as profileActions from '@state/actions/players';
+import { Player } from '@app/models';
 
 @Component({
   selector: 'brh-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
   playerCtrl: FormControl;
-  filteredPlayers: Observable<Player[]>;
+  searchQuery$: Observable<string>;
+  players$: Observable<Player[]>;
+  loading$: Observable<boolean>;
+  error$: Observable<string>;
 
   constructor(
     private router: Router,
-    private store: Store<Player[]>
+    private store: Store<fromProfile.State>
   ) {
-    this.filteredPlayers = store.select(getAllProfiles);
+    this.searchQuery$ = store.select(fromProfile.getSearchQuery);
+    this.players$ = store.select(fromProfile.getSearchResults);
+    this.loading$ = store.select(fromProfile.getSearchLoading);
+    this.error$ = store.select(fromProfile.getSearchError);
+
     this.playerCtrl = new FormControl();
     this.playerCtrl.valueChanges
       .subscribe(playerName => {
-        if (!!playerName) {
+        if (!!playerName && playerName !== '') {
           this.store.dispatch(new profileActions.SearchByName(playerName));
         }
       });
   }
 
-  ngOnInit() {
-  }
-
-  goToProfile(event: MatAutocompleteSelectedEvent): void {
-    console.log(event);
-    this.router.navigate(['/profile', event.option.value]);
+  goToProfile(event: MatOptionSelectionChange, player: Player): void {
+    this.router.navigate(['/profile', player.id]);
   }
 
 }

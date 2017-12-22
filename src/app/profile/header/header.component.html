@@ -1,6 +1,6 @@
 <div class="info">
   <h1>{{ player.name }}</h1>
-  <div class="level">Level {{ player.stats.accountLevel }}</div>
+  <div *ngIf="player.stats" class="level">Level {{ player.stats.accountLevel }}</div>
 </div>
 <div *ngIf="player.stats" class="summary">
   <h3 class="title">Lifetime Stats:</h3>

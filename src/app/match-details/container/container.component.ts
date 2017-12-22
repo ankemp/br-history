@@ -4,11 +4,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { State } from '../../reducers/index';
-import * as fromMatches from '../../matches/store/matches.init';
-import * as matchesActions from '../../matches/store/matches.actions';
-import * as profileActions from '../../profile/store/profile.actions';
-import { Match, Player } from '../../models';
+import { State } from '@app/reducers';
+import * as fromMatches from '@state/matches';
+import * as matchesActions from '@state/actions/matches';
+import { Match, Player } from '@app/models';
 
 @Component({
   selector: 'brh-container',
@@ -40,7 +39,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   viewProfile(player: Player): void {
-    this.store.dispatch(new profileActions.SetCurrentProfile(player.id));
     this.router.navigate(['/profile', player.id]);
   }
 

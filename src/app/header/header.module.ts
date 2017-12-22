@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './menu/store/menu.init';
-import { MenuEffects } from './menu/store/menu.effects';
-import { ContentfulService } from '../services/contentful.service';
+import { reducers } from '@state/menu';
+import { MenuEffects } from '@state/effects/menu';
+import { ContentfulService } from '@app/services';
 
 import { MatToolbarModule, MatButtonModule } from '@angular/material';
 
@@ -26,7 +26,6 @@ import { MenuComponent } from './menu/menu.component';
   ],
   declarations: [HeaderComponent, MenuComponent],
   providers: [
-    MenuEffects,
     ContentfulService
   ],
   exports: [HeaderComponent]

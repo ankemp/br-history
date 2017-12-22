@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import * as fromPages from './store/pages.init';
-import * as pageActions from './store/pages.actions';
-import { Page } from '../models';
+import * as fromPages from '@state/pages';
+import * as pageActions from '@state/actions/pages';
+import { Page } from '@app/models';
 
 @Injectable()
 export class PageResolver implements Resolve<Page> {
@@ -20,6 +20,6 @@ export class PageResolver implements Resolve<Page> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page> {
     this.store.dispatch(new pageActions.LoadPage(route.params['pageSlug']));
-    return this.player$.take(2);
+    return this.player$.take(1);
   }
 }

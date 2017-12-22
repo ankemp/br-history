@@ -8,7 +8,15 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@state/*": [
+        "app/state/*"
+      ]
+    }
   },
   "files": [
     "test.ts"

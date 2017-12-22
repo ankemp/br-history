@@ -1,7 +1,8 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
-import { Match } from '../../models';
+import { Match } from '@app/models';
 
-import * as matchesActions from './matches.actions';
+import * as matchesActions from '@state/actions/matches';
+import * as playerActions from '@state/actions/players';
 
 export const matchesAdapter = createEntityAdapter<Match>({
   selectId: (match: Match) => match.id,
@@ -16,22 +17,26 @@ export const INIT_STATE: State = matchesAdapter.getInitialState({
   currentMatchId: undefined,
 });
 
-export function reducer(state = INIT_STATE, action: matchesActions.Actions) {
+export function reducer(state = INIT_STATE, action: matchesActions.Actions | playerActions.Actions) {
   switch (action.type) {
     case matchesActions.SET_CURRENT_MATCH: {
       return { ...state, currentMatchId: action.payload };
     }
 
-    case matchesActions.LOAD_MATCH_SUCCESS: {
-      return { ...state, ...matchesAdapter.addOne(action.payload as Match, state), currentMatchId: action.payload.id };
+    case playerActions.SET_CURRENT_PLAYER: {
+      return { ...matchesAdapter.removeAll(state), currentMatchId: undefined };
     }
 
-    case matchesActions.LOAD_BY_PLAYER_SUCCESS: {
-      return { ...state, ...matchesAdapter.addAll(action.payload as Match[], state) };
+    case matchesActions.LOAD_MATCH_SUCCESS: {
+      return { ...matchesAdapter.addOne(action.payload as Match, state), currentMatchId: action.payload.id };
+    }
+
+    case playerActions.LOAD_MATCHES_SUCCESS: {
+      return { ...matchesAdapter.addAll(action.payload as Match[], state) };
     }
 
     default:
-      return { ...state };
+      return state;
   }
 }
 

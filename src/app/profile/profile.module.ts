@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './store/profile.init';
-import { ProfileEffects } from './store/profile.effects';
+import { reducers } from '@state/profile';
+import { PlayersEffects } from '@state/effects/players';
+import { MatchesEffects } from '@state/effects/matches';
+import { PlayerService, MatchService } from '@app/services';
 
 import {
   MatButtonModule,
@@ -18,12 +20,12 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+
 import { NgArrayPipesModule } from 'ngx-pipes';
 
-import { SharedModule } from '../shared/shared.module';
-import { MatchesModule } from '../matches/matches.module';
+import { SharedModule } from '@app/shared/shared.module';
+import { MatchesModule } from '@app/matches/matches.module';
 
-import { PlayerService } from '../services/player.service';
 import { ProfileResolver } from './profile.resolver';
 
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -38,7 +40,7 @@ import { ChampionsComponent } from './champions/champions.component';
     CommonModule,
     FormsModule,
     StoreModule.forFeature('profile', reducers),
-    EffectsModule.forFeature([ProfileEffects]),
+    EffectsModule.forFeature([PlayersEffects, MatchesEffects]),
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -62,6 +64,7 @@ import { ChampionsComponent } from './champions/champions.component';
   ],
   providers: [
     PlayerService,
+    MatchService,
     ProfileResolver
   ]
 })

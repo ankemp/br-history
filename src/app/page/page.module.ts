@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShowdownModule } from 'ngx-showdown';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './store/pages.init';
-import { PagesEffects } from './store/pages.effects';
+import { reducers } from '@state/pages';
+import { PagesEffects } from '@state/effects/pages';
+import { ContentfulService } from '@app/services';
+
+import { ShowdownModule } from 'ngx-showdown';
 
 import { PageRoutingModule } from './page-routing.module';
 import { PageResolver } from './page.resolver';
-import { ContentfulService } from '../services/contentful.service';
 
 import { ContentComponent } from './content/content.component';
 import { ContentfulContainerComponent } from './contentful-container/contentful-container.component';
@@ -24,9 +25,8 @@ import { ContentfulContainerComponent } from './contentful-container/contentful-
   ],
   declarations: [ContentComponent, ContentfulContainerComponent],
   providers: [
-    PagesEffects,
-    PageResolver,
-    ContentfulService
+    ContentfulService,
+    PageResolver
   ]
 })
 export class PageModule { }

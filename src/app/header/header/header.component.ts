@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as menuActions from '../menu/store/menu.actions';
-import * as fromMenu from '../menu/store/menu.init';
-import { Menu } from '../../models';
+import * as menuActions from '@state/actions/menu';
+import * as fromMenu from '@state/menu';
+import { Menu } from '@app/models';
 
 @Component({
   selector: 'brh-header',

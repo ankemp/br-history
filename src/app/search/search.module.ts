@@ -4,11 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from '../profile/store/profile.init';
-import { ProfileEffects } from '../profile/store/profile.effects';
-import { PlayerService } from '../services/player.service';
+import { reducers } from '@state/profile';
+import { PlayersEffects } from '@state/effects/players';
+import { PlayerService } from '@app/services';
 
-import { MatAutocompleteModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatAutocompleteModule, MatIconModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
@@ -18,15 +18,13 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     CommonModule,
     ReactiveFormsModule,
     StoreModule.forFeature('profile', reducers),
-    EffectsModule.forFeature([ProfileEffects]),
+    EffectsModule.forFeature([PlayersEffects]),
     MatAutocompleteModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
-  providers: [
-    PlayerService,
-    ProfileEffects
-  ],
+  providers: [PlayerService],
   declarations: [SearchBarComponent],
   exports: [SearchBarComponent]
 })

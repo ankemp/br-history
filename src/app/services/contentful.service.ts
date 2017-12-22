@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createClient, Entry, EntryCollection } from 'contentful';
-import { Page, Menu } from '../models';
+import { Page, Menu } from '@app/models';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
