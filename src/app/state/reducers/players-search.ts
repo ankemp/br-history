@@ -1,4 +1,4 @@
-import * as playersActions from '@app/state/actions/players';
+import * as playersActions from '@state/actions/players';
 import { Player } from '@app/models';
 
 export interface State {

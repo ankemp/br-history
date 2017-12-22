@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { switchMap, map } from 'rxjs/operators';
 
-import * as pagesActions from '@app/state/actions/pages';
+import * as pagesActions from '@state/actions/pages';
 import { Entry } from 'contentful';
 import { Page } from '@app/models';
 

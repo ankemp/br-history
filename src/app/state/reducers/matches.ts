@@ -1,8 +1,8 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Match } from '@app/models';
 
-import * as matchesActions from '@app/state/actions/matches';
-import * as playerActions from '@app/state/actions/players';
+import * as matchesActions from '@state/actions/matches';
+import * as playerActions from '@state/actions/players';
 
 export const matchesAdapter = createEntityAdapter<Match>({
   selectId: (match: Match) => match.id,

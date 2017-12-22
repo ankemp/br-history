@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import * as fromPages from '@app/state/pages';
-import * as pageActions from '@app/state/actions/pages';
+import * as fromPages from '@state/pages';
+import * as pageActions from '@state/actions/pages';
 import { Page } from '@app/models';
 
 @Injectable()

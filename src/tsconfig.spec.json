@@ -12,6 +12,9 @@
     "paths": {
       "@app/*": [
         "app/*"
+      ],
+      "@state/*": [
+        "app/state/*"
       ]
     }
   },

@@ -2,7 +2,7 @@ import { EntityState, createEntityAdapter } from '@ngrx/entity';
 
 import { Page } from '@app/models';
 
-import * as pagesActions from '@app/state/actions/pages';
+import * as pagesActions from '@state/actions/pages';
 
 export const pageAdapter = createEntityAdapter<Page>({
   selectId: (page: Page) => page.slug,

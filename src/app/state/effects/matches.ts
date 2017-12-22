@@ -6,8 +6,8 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
 
-import * as matchesActions from '@app/state/actions/matches';
-import * as playerActions from '@app/state/actions/players';
+import * as matchesActions from '@state/actions/matches';
+import * as playerActions from '@state/actions/players';
 import { MatchService } from '@app/services';
 import { Match } from '@app/models';
 

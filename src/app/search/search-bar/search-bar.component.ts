@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import * as fromProfile from '@app/state/profile';
-import * as profileActions from '@app/state/actions/players';
+import * as fromProfile from '@state/profile';
+import * as profileActions from '@state/actions/players';
 import { Player } from '@app/models';
 
 @Component({

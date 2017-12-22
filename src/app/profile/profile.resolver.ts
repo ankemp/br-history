@@ -4,8 +4,8 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import * as fromProfile from '@app/state/profile';
-import * as playersActions from '@app/state/actions/players';
+import * as fromProfile from '@state/profile';
+import * as playersActions from '@state/actions/players';
 import { Player } from '@app/models';
 
 @Injectable()

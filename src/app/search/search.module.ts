@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from '@app/state/profile';
-import { PlayersEffects } from '@app/state/effects/players';
+import { reducers } from '@state/profile';
+import { PlayersEffects } from '@state/effects/players';
 import { PlayerService } from '@app/services';
 
 import { MatAutocompleteModule, MatIconModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';

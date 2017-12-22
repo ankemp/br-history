@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { State } from '@app/reducers';
-import * as fromProfile from '@app/state/profile';
-import * as playersActions from '@app/state/actions/players';
-import * as matchesActions from '@app/state/actions/matches';
+import * as fromProfile from '@state/profile';
+import * as playersActions from '@state/actions/players';
+import * as matchesActions from '@state/actions/matches';
 import { Match, Player } from '@app/models';
 
 @Component({

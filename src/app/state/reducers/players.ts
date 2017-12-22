@@ -1,7 +1,7 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Player } from '@app/models';
 
-import * as playersActions from '@app/state/actions/players';
+import * as playersActions from '@state/actions/players';
 
 export const playersAdapter = createEntityAdapter<Player>({
   selectId: (player: Player) => player.id,

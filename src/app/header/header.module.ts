@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from '@app/state/menu';
-import { MenuEffects } from '@app/state/effects/menu';
+import { reducers } from '@state/menu';
+import { MenuEffects } from '@state/effects/menu';
 import { ContentfulService } from '@app/services';
 
 import { MatToolbarModule, MatButtonModule } from '@angular/material';

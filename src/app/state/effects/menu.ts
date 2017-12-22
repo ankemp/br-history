@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { switchMap, map } from 'rxjs/operators';
 
-import * as menuActions from '@app/state/actions/menu';
+import * as menuActions from '@state/actions/menu';
 import { Entry } from 'contentful';
 import { Menu } from '@app/models';
 

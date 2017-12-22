@@ -8,7 +8,7 @@ import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
 import { debounceTime, switchMap, map, skip, takeUntil, catchError } from 'rxjs/operators';
 
-import * as playersActions from '@app/state/actions/players';
+import * as playersActions from '@state/actions/players';
 import { PlayerService } from '@app/services';
 import { Player } from '@app/models';
 

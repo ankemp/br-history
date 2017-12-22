@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from '@app/state/profile';
-import { PlayersEffects } from '@app/state/effects/players';
-import { MatchesEffects } from '@app/state/effects/matches';
+import { reducers } from '@state/profile';
+import { PlayersEffects } from '@state/effects/players';
+import { MatchesEffects } from '@state/effects/matches';
 import { PlayerService, MatchService } from '@app/services';
 
 import {
