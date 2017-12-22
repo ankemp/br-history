@@ -1,0 +1,25 @@
+:host() {
+  display: flex;
+  flex-direction: row;
+}
+
+.summary-item {
+  min-width: 300px;
+  box-sizing: border-box;
+  padding: 16px 8px;
+}
+
+.mat-card-content {
+  font-size: 16px;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+dt, dd {
+  display: flex;
+  width: 50%;
+  margin: 0 0 8px;
+}

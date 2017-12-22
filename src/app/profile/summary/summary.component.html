@@ -1,0 +1,36 @@
+<div class="summary-item">
+  <mat-card>
+    <mat-card-title>Quickmatch</mat-card-title>
+    <mat-card-content>
+      <dl>
+        <dt>2v2</dt>
+        <dd>{{player.stats.unranked2V2Wins || 0}} - {{player.stats.unranked2V2Losses || 0}} {{winRate(player.stats.unranked2V2Wins,
+          player.stats.unranked2V2Losses)}}
+        </dd>
+        <dt>3v3</dt>
+        <dd>{{player.stats.unranked3V3Wins || 0}} - {{player.stats.unranked3V3Losses || 0}} {{winRate(player.stats.unranked3V3Wins,
+          player.stats.unranked3V3Losses)}}
+        </dd>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="summary-item">
+  <mat-card>
+    <mat-card-title>League</mat-card-title>
+    <mat-card-content>
+      <dl>
+        <dt>2v2</dt>
+        <dd>{{player.stats.ranked2V2Wins || 0}} - {{player.stats.ranked2V2Losses || 0}} {{winRate(player.stats.ranked2V2Wins,
+          player.stats.ranked2V2Losses)}}
+        </dd>
+        <dt>3v3</dt>
+        <dd>{{player.stats.ranked3V3Wins || 0}} - {{player.stats.ranked3V3Losses || 0}} {{winRate(player.stats.ranked3V3Wins,
+          player.stats.ranked3V3Losses)}}
+        </dd>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- {{player.stats|json}} -->
