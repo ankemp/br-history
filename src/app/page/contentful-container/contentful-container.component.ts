@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromPages from '../store/pages.init';
-import * as pageActions from '../store/pages.actions';
-import { Page } from '../../models';
+import * as fromPages from '@app/state/pages';
+import * as pageActions from '@app/state/actions/pages';
+import { Page } from '@app/models';
 
 @Component({
   selector: 'brh-contentful-container',

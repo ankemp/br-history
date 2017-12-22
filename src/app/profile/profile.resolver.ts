@@ -6,7 +6,7 @@ import 'rxjs/add/operator/take';
 
 import * as fromProfile from '@app/state/profile';
 import * as playersActions from '@app/state/actions/players';
-import { Player } from '../models';
+import { Player } from '@app/models';
 
 @Injectable()
 export class ProfileResolver implements Resolve<Player> {

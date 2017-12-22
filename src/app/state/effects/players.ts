@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
 import { debounceTime, switchMap, map, skip, takeUntil, catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
 
 import * as playersActions from '@app/state/actions/players';
 import { PlayerService } from '@app/services/player.service';
@@ -39,7 +38,7 @@ export class PlayersEffects {
     map((action: playersActions.LoadPlayerSuccess) => action.payload),
     switchMap((player: Player) => {
       this.title.setTitle(`${player.name} - ${environment.appTitle}`);
-      return Observable.of();
+      return empty();
     })
     );
 
