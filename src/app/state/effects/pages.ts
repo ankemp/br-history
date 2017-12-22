@@ -11,10 +11,9 @@ import * as pagesActions from '@app/state/actions/pages';
 import { Entry } from 'contentful';
 import { Page } from '@app/models';
 
-import { ContentfulService } from '@app/services/contentful.service';
+import { ContentfulService } from '@app/services';
 
 import { environment } from 'environments/environment';
-
 
 @Injectable()
 export class PagesEffects {

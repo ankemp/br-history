@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '@app/state/pages';
 import { PagesEffects } from '@app/state/effects/pages';
-import { ContentfulService } from '@app/services/contentful.service';
+import { ContentfulService } from '@app/services';
 
 import { ShowdownModule } from 'ngx-showdown';
 

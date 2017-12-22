@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import * as fromRoot from '../../../reducers';
-import * as fromMenu from './menu.reducer';
+import * as fromRoot from '@app/reducers';
+import * as fromMenu from './reducers/menu';
 
 export interface State extends fromRoot.State {
   'menu': fromMenu.State;

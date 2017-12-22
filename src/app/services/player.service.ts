@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { environment } from '../../environments/environment';
-import { Player } from '../models';
+import { environment } from 'environments/environment';
+import { Player } from '@app/models';
 
 @Injectable()
 export class PlayerService {

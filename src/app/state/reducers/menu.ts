@@ -1,8 +1,8 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 
-import { Menu } from '../../../models';
+import { Menu } from '@app/models';
 
-import * as menuActions from './menu.actions';
+import * as menuActions from '@app/state/actions/menu';
 
 export const menuAdapter = createEntityAdapter<Menu>({
   selectId: (menu: Menu) => menu.title,

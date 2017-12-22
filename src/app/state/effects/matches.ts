@@ -8,7 +8,7 @@ import { switchMap, map } from 'rxjs/operators';
 
 import * as matchesActions from '@app/state/actions/matches';
 import * as playerActions from '@app/state/actions/players';
-import { MatchService } from '@app/services/match.service';
+import { MatchService } from '@app/services';
 import { Match } from '@app/models';
 
 @Injectable()
