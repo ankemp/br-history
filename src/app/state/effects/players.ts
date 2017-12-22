@@ -31,6 +31,14 @@ export class PlayersEffects {
     map((p: Player) => new playersActions.LoadPlayerSuccess(p))
     );
 
+  @Effect()
+  loadPlayerMatches: Observable<Action> = this.actions$
+    .ofType(playersActions.LOAD_PLAYER_SUCCESS)
+    .pipe(
+    map((action: playersActions.LoadPlayerSuccess) => action.payload),
+    map((player: Player) => new playersActions.LoadMatches(player.id))
+    );
+
   @Effect({ dispatch: false })
   setTitle$: Observable<Action> = this.actions$
     .ofType(playersActions.LOAD_PLAYER_SUCCESS)

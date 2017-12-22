@@ -64,7 +64,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       this.store.dispatch(new playersActions.SetCurrentPlayer(params['userId']));
-      this.store.dispatch(new playersActions.LoadMatches(params['userId']));
     });
   }
 
