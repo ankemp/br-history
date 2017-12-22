@@ -48,11 +48,12 @@ export class PlayersEffects {
     .ofType(playersActions.SEARCH_BY_NAME)
     .pipe(
     map((action: playersActions.SearchByName) => action.payload),
-    debounceTime(300),
+    debounceTime(400),
     switchMap(query => {
       if (query === '') {
         return empty();
       }
+
       const nextSearch$ = this.actions$
         .ofType(playersActions.SEARCH_BY_NAME)
         .pipe(skip(1));

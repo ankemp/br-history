@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatOptionSelectionChange } from '@angular/material';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
@@ -34,14 +34,14 @@ export class SearchBarComponent {
     this.playerCtrl = new FormControl();
     this.playerCtrl.valueChanges
       .subscribe(playerName => {
-        if (!!playerName) {
+        if (!!playerName && playerName !== '') {
           this.store.dispatch(new profileActions.SearchByName(playerName));
         }
       });
   }
 
-  goToProfile(event: MatAutocompleteSelectedEvent): void {
-    this.router.navigate(['/profile', event.option.value]);
+  goToProfile(event: MatOptionSelectionChange, player: Player): void {
+    this.router.navigate(['/profile', player.id]);
   }
 
 }
