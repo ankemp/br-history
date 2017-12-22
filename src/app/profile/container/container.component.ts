@@ -49,7 +49,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   viewProfile(player: Player): void {
-    this.store.dispatch(new playersActions.SetCurrentPlayer(player.id));
     this.router.navigate(['/profile', player.id]);
   }
 
