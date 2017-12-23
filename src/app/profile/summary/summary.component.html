@@ -11,11 +11,17 @@
         <dd>
           <brh-winlose [wins]="player.stats.unranked3V3Wins" [losses]="player.stats.unranked3V3Losses"></brh-winlose>
         </dd>
+        <dt *ngIf="hasBrawl">Brawl</dt>
+        <dd *ngIf="hasBrawl">
+          <brh-winlose [wins]="player.stats.brawlWins" [losses]="player.stats.brawlLosses"></brh-winlose>
+        </dd>
+        <dt *ngIf="hasBg">Battlegrounds</dt>
+        <dd *ngIf="hasBg">
+          <brh-winlose [wins]="player.stats.battlegroundsWins" [losses]="player.stats.battlegroundsLosses"></brh-winlose>
+        </dd>
       </dl>
     </mat-card-content>
   </mat-card>
-</div>
-<div class="summary-item">
   <mat-card>
     <mat-card-title>League</mat-card-title>
     <mat-card-content>

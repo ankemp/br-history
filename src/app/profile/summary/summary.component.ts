@@ -13,4 +13,12 @@ export class SummaryComponent {
 
   constructor() { }
 
+  get hasBrawl(): boolean {
+    return (typeof this.player.stats.brawlLosses !== 'undefined' || typeof this.player.stats.brawlWins !== 'undefined');
+  }
+
+  get hasBg(): boolean {
+    return (typeof this.player.stats.battlegroundsWins !== 'undefined' || typeof this.player.stats.battlegroundsWins !== 'undefined');
+  }
+
 }
