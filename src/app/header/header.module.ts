@@ -10,7 +10,7 @@ import { ContentfulService } from '@app/services';
 
 import { MatToolbarModule, MatButtonModule } from '@angular/material';
 
-import { SearchModule } from '../search/search.module';
+import { SearchModule } from '@app/search/search.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 

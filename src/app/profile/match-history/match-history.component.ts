@@ -5,7 +5,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { Match, Player } from '../../models';
+import { Match, Player } from '@app/models';
 
 @Component({
   selector: 'brh-match-history',

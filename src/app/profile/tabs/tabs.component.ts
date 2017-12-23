@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material';
 
-import { Match, Player } from '../../models';
+import { Match, Player } from '@app/models';
 
 @Component({
   selector: 'brh-tabs',

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Player } from '../../models';
+import { Player } from '@app/models';
 
 @Component({
   selector: 'brh-header',

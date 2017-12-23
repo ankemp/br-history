@@ -12,7 +12,7 @@ import {
 
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { MatchListComponent } from './match-list/match-list.component';
 import { TeamRosterComponent } from './team-roster/team-roster.component';
