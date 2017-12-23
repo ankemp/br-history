@@ -14,6 +14,7 @@ import { PageResolver } from './page.resolver';
 
 import { ContentComponent } from './content/content.component';
 import { ContentfulContainerComponent } from './contentful-container/contentful-container.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { ContentfulContainerComponent } from './contentful-container/contentful-
     ShowdownModule,
     PageRoutingModule,
   ],
-  declarations: [ContentComponent, ContentfulContainerComponent],
+  declarations: [ContentComponent, ContentfulContainerComponent, HomepageComponent],
   providers: [
     ContentfulService,
     PageResolver

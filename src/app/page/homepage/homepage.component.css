@@ -1,0 +1,27 @@
+:host() {
+  display: block;
+}
+
+.feature {
+  height: 400px;
+  margin-top: -10px;
+  width: 100%;
+}
+
+.feature img {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+.pillar-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.pillar {
+  box-sizing: border-box;
+  padding: 16px;
+  width: 33.33%;
+}
