@@ -16,7 +16,7 @@ export class WinloseComponent {
   get winRate(): string {
     const totalPlayed = (this.wins || 0) + (this.losses || 0);
     const winRate = (this.wins / totalPlayed * 100);
-    return !isNaN(winRate) ? `${winRate.toFixed(2)}%` : 'N/A';
+    return !isNaN(winRate) ? `${winRate.toFixed(1)}%` : '0.0%';
   }
 
 }
