@@ -19,6 +19,7 @@ export class MatchHistoryComponent {
   @Output() matchSelected = new EventEmitter<Match>();
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
+  @Output() reloadMatches = new EventEmitter<string>();
 
   constructor() { }
 
@@ -61,6 +62,12 @@ export class MatchHistoryComponent {
 
   get hasStats(): boolean {
     return !!this.matches.findIndex(match => typeof match.rosters === 'undefined');
+  }
+
+  get refreshTime(): string {
+    const newest = new Date(this.player.newestMatch);
+    const mins = newest.setMinutes(newest.getMinutes() + 20);
+    return new Date(mins).toJSON();
   }
 
 }

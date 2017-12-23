@@ -3708,6 +3708,10 @@ ng2-google-charts@^3.3.0:
   dependencies:
     moment "2.17.1"
 
+ngx-countdown-timer@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/ngx-countdown-timer/-/ngx-countdown-timer-0.1.9.tgz#f7de864b3e30e333ae2a2c093c8d0667f2e604dc"
+
 ngx-pipes@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.0.5.tgz#743b827e350b1e66f5bdae49e90a02fa631d4c54"

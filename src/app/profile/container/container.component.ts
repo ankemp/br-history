@@ -20,6 +20,7 @@ import { Match, Player } from '@app/models';
     (matchSelected)="selectMatch($event)"
     (viewProfile)="viewProfile($event)"
     (openMatch)="openMatch($event)"
+    (reloadMatches)="reloadMatches($event)"
     (tabChange)="tabChange($event)"
     [player]="player$ | async"
     [matches]="history$ | async"
@@ -55,6 +56,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
   openMatch(match: Match): void {
     this.store.dispatch(new matchesActions.SetCurrentMatch(match.id));
     this.router.navigate(['/match', match.id]);
+  }
+
+  reloadMatches(playerId: string): void {
+    this.store.dispatch(new playersActions.LoadPlayer(playerId));
   }
 
   tabChange($event: MatTabChangeEvent): void {

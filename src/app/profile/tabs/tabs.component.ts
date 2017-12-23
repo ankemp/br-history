@@ -21,6 +21,7 @@ export class TabsComponent {
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
   @Output() tabChange = new EventEmitter<MatTabChangeEvent>();
+  @Output() reloadMatches = new EventEmitter<string>();
 
   constructor() { }
 

@@ -23,6 +23,7 @@ import {
 } from '@angular/material';
 
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { MatchesModule } from '@app/matches/matches.module';
@@ -54,6 +55,7 @@ import { SummaryComponent } from './summary/summary.component';
     MatToolbarModule,
     MatTooltipModule,
     NgArrayPipesModule,
+    CountdownTimerModule.forRoot(),
     SharedModule,
     MatchesModule,
     ProfileRoutingModule
