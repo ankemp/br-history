@@ -25,7 +25,7 @@
     <img mat-card-image src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
     <mat-card-title-group>
       <mat-card-title>{{ champion.champion.name }}
-        <mat-chip color="accent" [selected]="true">{{ champion.level || 0 }}</mat-chip>
+        <mat-chip color="accent" [selected]="true">lvl {{ champion.level || 0 }}</mat-chip>
       </mat-card-title>
     </mat-card-title-group>
     <mat-card-content>

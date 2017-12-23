@@ -1,7 +1,7 @@
 <div class="info">
   <h1>{{ player.name }}</h1>
   <div>
-    <mat-chip *ngIf="player.stats" color="primary" selected="true">{{ player.stats.accountLevel }}</mat-chip>
+    <mat-chip *ngIf="player.stats" color="primary" selected="true">lvl {{ player.stats.accountLevel }}</mat-chip>
   </div>
 </div>
 <div *ngIf="player.stats" class="summary">
