@@ -4,12 +4,12 @@
     <mat-card-content>
       <dl>
         <dt>2v2</dt>
-        <dd>{{player.stats.unranked2V2Wins || 0}} - {{player.stats.unranked2V2Losses || 0}} {{winRate(player.stats.unranked2V2Wins,
-          player.stats.unranked2V2Losses)}}
+        <dd>
+          <brh-winlose [wins]="player.stats.unranked2V2Wins" [losses]="player.stats.unranked2V2Losses"></brh-winlose>
         </dd>
         <dt>3v3</dt>
-        <dd>{{player.stats.unranked3V3Wins || 0}} - {{player.stats.unranked3V3Losses || 0}} {{winRate(player.stats.unranked3V3Wins,
-          player.stats.unranked3V3Losses)}}
+        <dd>
+          <brh-winlose [wins]="player.stats.unranked3V3Wins" [losses]="player.stats.unranked3V3Losses"></brh-winlose>
         </dd>
       </dl>
     </mat-card-content>
@@ -21,12 +21,12 @@
     <mat-card-content>
       <dl>
         <dt>2v2</dt>
-        <dd>{{player.stats.ranked2V2Wins || 0}} - {{player.stats.ranked2V2Losses || 0}} {{winRate(player.stats.ranked2V2Wins,
-          player.stats.ranked2V2Losses)}}
+        <dd>
+          <brh-winlose [wins]="player.stats.ranked2V2Wins" [losses]="player.stats.ranked2V2Losses"></brh-winlose>
         </dd>
         <dt>3v3</dt>
-        <dd>{{player.stats.ranked3V3Wins || 0}} - {{player.stats.ranked3V3Losses || 0}} {{winRate(player.stats.ranked3V3Wins,
-          player.stats.ranked3V3Losses)}}
+        <dd>
+          <brh-winlose [wins]="player.stats.ranked3V3Wins" [losses]="player.stats.ranked3V3Losses"></brh-winlose>
         </dd>
       </dl>
     </mat-card-content>
