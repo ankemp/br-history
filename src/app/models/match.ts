@@ -1,7 +1,4 @@
-import { Map } from './map';
-import { Asset } from './asset';
-import { Roster } from './roster';
-import { Round } from './round';
+import { Map, Asset, Roster, Round } from '@app/models';
 
 export interface Match {
   id: string;
