@@ -1,11 +1,13 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRoot from '@app/reducers';
 import * as fromPlayers from './reducers/players';
+import * as fromTeams from './reducers/teams';
 import * as fromSearch from './reducers/players-search';
 import * as fromMatches from './reducers/matches';
 
 export interface ProfileState {
   player: fromPlayers.State;
+  teams: fromTeams.State;
   search: fromSearch.State;
   matches: fromMatches.State;
 }
@@ -16,6 +18,7 @@ export interface State extends fromRoot.State {
 
 export const reducers = {
   player: fromPlayers.reducer,
+  teams: fromTeams.reducer,
   search: fromSearch.reducer,
   matches: fromMatches.reducer,
 };
@@ -34,6 +37,16 @@ export const getSelectedProfile = createSelector(
   getSelectedProfileId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );
+
+/**
+ * Teams Selectors
+ */
+export const getTeamsEntityState = createSelector(getProfileState, state => state.teams);
+export const {
+  selectEntities: getTeamsEntities,
+  selectAll: getAllTeams,
+  selectIds: getTeamIds
+} = fromTeams.teamsAdapter.getSelectors(getTeamsEntityState);
 
 /**
  * Search Selectors
