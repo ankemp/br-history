@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <div class="team-filter">
+    <mat-button-toggle-group #teamFilter="matButtonToggleGroup">
+      <mat-button-toggle value="" checked="true">All</mat-button-toggle>
+      <mat-button-toggle value="2v2">2v2</mat-button-toggle>
+      <mat-button-toggle value="3v3">3v3</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="team-search">
+    <mat-form-field floatPlaceholder="never">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" placeholder="Find Team" #teamSearch>
+      <button mat-button *ngIf="teamSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="teamSearch.value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+
+<p>Coming soon!</p>

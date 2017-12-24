@@ -1,0 +1,32 @@
+:host() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mat-toolbar {
+  justify-content: flex-end;
+}
+
+.team-search {
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  min-width: 300px;
+  padding: 16px;
+}
+
+.team-search ::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+.team-search ::ng-deep .mat-form-field-prefix {
+  align-self: center;
+  display: flex;
+}
+
+.team-search ::ng-deep .mat-icon {
+  height: 0.5em;
+}
+
+.team-search ::ng-deep .mat-input-container.mat-focused .mat-icon {
+  color: #3f51b5;
+}

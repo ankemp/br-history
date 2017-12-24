@@ -19,6 +19,10 @@
 }
 
 :host() ::ng-deep .mat-form-field-prefix {
+  width: 100%;
+}
+
+.champion-search ::ng-deep .mat-form-field-prefix {
   align-self: center;
   display: flex;
 }

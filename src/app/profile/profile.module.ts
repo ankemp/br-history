@@ -37,6 +37,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { ChampionsComponent } from './champions/champions.component';
 import { SummaryComponent } from './summary/summary.component';
+import { TeamsComponent } from './teams/teams.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { SummaryComponent } from './summary/summary.component';
     TabsComponent,
     MatchHistoryComponent,
     ChampionsComponent,
-    SummaryComponent
+    SummaryComponent,
+    TeamsComponent
   ],
   providers: [
     PlayerService,
