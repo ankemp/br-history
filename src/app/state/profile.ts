@@ -79,7 +79,6 @@ export const getSearchResults = createSelector(
   }
 );
 
-
 /**
  * Match Selectors
  */
