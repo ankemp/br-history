@@ -2,6 +2,7 @@
   <h1>{{ player.name }}</h1>
   <div>
     <mat-chip *ngIf="player.stats" color="primary" selected="true">lvl {{ player.stats.accountLevel }}</mat-chip>
+    <button mat-raised-button color="primary" (click)="toggleFollow.emit(player)">Follow</button>
   </div>
 </div>
 <div *ngIf="player.stats" class="summary">

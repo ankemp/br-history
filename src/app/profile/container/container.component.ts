@@ -16,7 +16,7 @@ import { Match, Player, Team } from '@app/models';
 @Component({
   selector: 'brh-container',
   template: `
-    <brh-header *ngIf="(player$ | async)" [player]="player$ | async"></brh-header>
+    <brh-header *ngIf="(player$ | async)" (toggleFollow)="toggleFollow($event)" [player]="player$ | async"></brh-header>
     <brh-tabs
     *ngIf="(history$ | async) && (player$ | async)"
     (matchSelected)="selectMatch($event)"
@@ -60,6 +60,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.teams$ = store.select<Team[]>(fromProfile.getAllTeams);
     this.isTeamsLoading$ = store.select<boolean>(fromProfile.getTeamsLoading);
     this.teamsError$ = store.select<string>(fromProfile.getTeamsError);
+  }
+
+  toggleFollow(player: Player): void {
+    console.log('toggleFollow', player);
   }
 
   selectMatch(match: Match): void {
