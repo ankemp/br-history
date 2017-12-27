@@ -1,0 +1,23 @@
+:host() {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+:host() > div:only-of-type {
+  text-align: center;
+  width: 100%;
+}
+
+.wins {
+  color: #66bb6a;
+}
+
+.losses {
+  color: #f44336;
+}
+
+.rate {
+  margin-left: auto;
+}

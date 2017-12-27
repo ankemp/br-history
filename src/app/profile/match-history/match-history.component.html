@@ -17,6 +17,12 @@
       <div>W/L Ratio</div>
       <div>{{ wlRatio }}</div>
     </div>
+    <div class="refresh">
+      <countdown-timer [end]="refreshTime"></countdown-timer>
+      <button mat-icon-button color="primary" (click)="reloadMatches.emit(player.id)">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="!hasStats">
     <div class="title">Session Stats:</div>

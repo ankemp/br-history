@@ -13,6 +13,7 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatChipsModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -22,6 +23,7 @@ import {
 } from '@angular/material';
 
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { MatchesModule } from '@app/matches/matches.module';
@@ -34,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { ChampionsComponent } from './champions/champions.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   imports: [
@@ -44,6 +47,7 @@ import { ChampionsComponent } from './champions/champions.component';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatChipsModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
@@ -51,6 +55,7 @@ import { ChampionsComponent } from './champions/champions.component';
     MatToolbarModule,
     MatTooltipModule,
     NgArrayPipesModule,
+    CountdownTimerModule.forRoot(),
     SharedModule,
     MatchesModule,
     ProfileRoutingModule
@@ -60,7 +65,8 @@ import { ChampionsComponent } from './champions/champions.component';
     HeaderComponent,
     TabsComponent,
     MatchHistoryComponent,
-    ChampionsComponent
+    ChampionsComponent,
+    SummaryComponent
   ],
   providers: [
     PlayerService,

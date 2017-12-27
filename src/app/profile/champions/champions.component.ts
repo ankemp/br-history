@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { Player } from '../../models';
+import { Player } from '@app/models';
 
 @Component({
   selector: 'brh-champions',

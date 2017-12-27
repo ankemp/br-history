@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { Participant } from '../../models';
+import { Participant } from '@app/models';
 
 @Component({
   selector: 'brh-participant-stats',

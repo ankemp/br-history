@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material';
 
-import { Match, Player } from '../../models';
+import { Match, Player } from '@app/models';
 
 @Component({
   selector: 'brh-tabs',
@@ -21,6 +21,7 @@ export class TabsComponent {
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
   @Output() tabChange = new EventEmitter<MatTabChangeEvent>();
+  @Output() reloadMatches = new EventEmitter<string>();
 
   constructor() { }
 

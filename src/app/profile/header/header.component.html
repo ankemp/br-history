@@ -1,16 +1,16 @@
 <div class="info">
   <h1>{{ player.name }}</h1>
-  <div *ngIf="player.stats" class="level">Level {{ player.stats.accountLevel }}</div>
+  <div>
+    <mat-chip *ngIf="player.stats" color="primary" selected="true">lvl {{ player.stats.accountLevel }}</mat-chip>
+  </div>
 </div>
 <div *ngIf="player.stats" class="summary">
   <h3 class="title">Lifetime Stats:</h3>
   <div class="stat">
-    <div>Total Wins</div>
-    <div>{{ player.stats.wins }}</div>
-  </div>
-  <div class="stat">
-    <div>Total Losses</div>
-    <div>{{ player.stats.losses }}</div>
+    <div>Wins / Losses</div>
+    <div>
+      <brh-winlose [wins]="player.stats.wins" [losses]="player.stats.losses" [showRate]="false"></brh-winlose>
+    </div>
   </div>
   <div class="stat">
     <div>Win Rate</div>

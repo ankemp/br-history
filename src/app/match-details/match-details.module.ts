@@ -9,7 +9,7 @@ import { MatchService } from '@app/services';
 
 import { MatchDetailsRoutingModule } from './match-details-routing.module';
 
-import { MatchesModule } from '../matches/matches.module';
+import { MatchesModule } from '@app/matches/matches.module';
 import { ContainerComponent } from './container/container.component';
 
 @NgModule({

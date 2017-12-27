@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { Page } from '../../models';
+import { Page } from '@app/models';
 
 @Component({
   selector: 'brh-content',

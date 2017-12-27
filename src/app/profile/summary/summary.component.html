@@ -1,0 +1,62 @@
+<div class="summary-item">
+  <mat-card>
+    <mat-card-title>Quickmatch</mat-card-title>
+    <mat-card-content>
+      <dl>
+        <dt>2v2</dt>
+        <dd>
+          <brh-winlose [wins]="player.stats.ranked2V2Wins" [losses]="player.stats.ranked2V2Losses"></brh-winlose>
+        </dd>
+        <dt>3v3</dt>
+        <dd>
+          <brh-winlose [wins]="player.stats.ranked3V3Wins" [losses]="player.stats.ranked3V3Losses"></brh-winlose>
+        </dd>
+        <dt *ngIf="hasBrawl">Brawl</dt>
+        <dd *ngIf="hasBrawl">
+          <brh-winlose [wins]="player.stats.brawlWins" [losses]="player.stats.brawlLosses"></brh-winlose>
+        </dd>
+        <dt *ngIf="hasBg">Battlegrounds</dt>
+        <dd *ngIf="hasBg">
+          <brh-winlose [wins]="player.stats.battlegroundsWins" [losses]="player.stats.battlegroundsLosses"></brh-winlose>
+        </dd>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>League</mat-card-title>
+    <mat-card-content>
+      <dl>
+        <dt>2v2</dt>
+        <dd>
+          <brh-winlose [wins]="player.stats.unranked2V2Wins" [losses]="player.stats.unranked2V2Losses"></brh-winlose>
+        </dd>
+        <dt>3v3</dt>
+        <dd>
+          <brh-winlose [wins]="player.stats.unranked3V3Wins" [losses]="player.stats.unranked3V3Losses"></brh-winlose>
+        </dd>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="summary-item">
+  <mat-card>
+    <mat-card-title>Solo Queue</mat-card-title>
+    <mat-card-content>
+      <h3>Coming soon</h3>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="summary-item">
+  <mat-card>
+    <mat-card-title>2v2 Team</mat-card-title>
+    <mat-card-content>
+      <h3>Coming soon</h3>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>3v3 Team</mat-card-title>
+    <mat-card-content>
+      <h3>Coming soon</h3>
+    </mat-card-content>
+  </mat-card>
+</div>

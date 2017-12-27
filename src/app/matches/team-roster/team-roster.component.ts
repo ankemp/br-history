@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { Roster, Player, Participant } from '../../models';
+import { Roster, Player, Participant } from '@app/models';
 
 @Component({
   selector: 'brh-team-roster',

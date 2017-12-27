@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Match } from '../models';
+import { Match } from '@app/models';
 
 @Pipe({
   name: 'reduceStat'

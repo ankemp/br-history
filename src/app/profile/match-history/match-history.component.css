@@ -32,6 +32,17 @@
   text-transform: uppercase;
 }
 
+.summary .refresh {
+  align-items: center;
+  display: flex;
+  flex: 1 1 0;
+  justify-content: flex-end;
+}
+
+.summary .refresh .mat-icon {
+  height: 24px;
+}
+
 .history {
   display: flex;
   flex-direction: row;
