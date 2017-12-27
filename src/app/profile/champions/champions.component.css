@@ -14,41 +14,52 @@
   padding: 16px;
 }
 
-::ng-deep .mat-form-field {
+:host() ::ng-deep .mat-form-field {
   width: 100%;
 }
 
-::ng-deep .mat-form-field-prefix {
+:host() ::ng-deep .mat-form-field-prefix {
   align-self: center;
   display: flex;
 }
 
-::ng-deep .mat-icon {
+:host() ::ng-deep .mat-icon {
   height: 0.5em;
 }
 
-::ng-deep .mat-input-container.mat-focused .mat-icon {
+:host() ::ng-deep .mat-input-container.mat-focused .mat-icon {
   color: #3f51b5;
 }
 
 .champion-container {
   box-sizing: border-box;
   padding: 8px;
-  width: 25%;
+  width: 20%;
 }
 
-::ng-deep .mat-card {
+:host() ::ng-deep .mat-card {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
 }
 
-::ng-deep .mat-card-title-group > div {
+:host() ::ng-deep .mat-card-title-group > div {
   text-align: center;
   width: 100%;
 }
 
-::ng-deep .mat-card-content {
+:host() ::ng-deep .mat-card .mat-card-title {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:host() ::ng-deep .mat-card .mat-card-title span {
+  margin-right: 8px;
+}
+
+:host() ::ng-deep .mat-card-content {
   flex: 1 0 auto;
   font-size: 16px;
 }
