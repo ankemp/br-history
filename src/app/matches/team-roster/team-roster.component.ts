@@ -21,10 +21,6 @@ export class TeamRosterComponent {
 
   constructor() { }
 
-  profile(player: Player): void {
-    this.viewProfile.emit(player);
-  }
-
   viewProfileDisabled(participant: Participant): boolean {
     return (!!participant.player && participant.player.id === this.player.id);
   }

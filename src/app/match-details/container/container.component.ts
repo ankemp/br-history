@@ -21,9 +21,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(
-    private store: Store<State>,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<State>,
   ) {
     this.match$ = store.select<Match>(fromMatches.getSelectedMatch);
   }
