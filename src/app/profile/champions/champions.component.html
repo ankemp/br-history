@@ -1,6 +1,6 @@
 <mat-toolbar>
   <div class="champion-sort">
-    <mat-button-toggle-group #championSort="matButtonToggleGroup">
+    <mat-button-toggle-group (change)="trackSort($event)" #championSort="matButtonToggleGroup">
       <mat-button-toggle value="-xp" checked="true">
         Level
       </mat-button-toggle>
