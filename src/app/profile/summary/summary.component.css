@@ -15,7 +15,14 @@
   margin-top: 16px;
 }
 
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
 .mat-card-content {
+  flex: 1 0 auto;
   font-size: 16px;
 }
 
