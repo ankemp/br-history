@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material';
+import { Angulartics2 } from 'angulartics2';
+
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -36,9 +38,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(
-    private store: Store<State>,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ga: Angulartics2,
+    private store: Store<State>,
   ) {
     this.selectedMatch$ = store.select<Match>(fromProfile.getSelectedMatch);
     this.history$ = store.select<Match[]>(fromProfile.getAllMatches);
@@ -59,6 +62,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   reloadMatches(playerId: string): void {
+    this.ga.eventTrack.next({
+      action: 'history reload',
+      properties: { category: 'player profile' },
+    });
     this.store.dispatch(new playersActions.LoadPlayer(playerId));
   }
 
