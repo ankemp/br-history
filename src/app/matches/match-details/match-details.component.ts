@@ -28,12 +28,4 @@ export class MatchDetailsComponent implements OnInit {
     this.showOpenMatch = this.openMatch.observers.length > 0;
   }
 
-  profile(player: Player): void {
-    this.viewProfile.emit(player);
-  }
-
-  open(): void {
-    this.openMatch.emit(this.match);
-  }
-
 }

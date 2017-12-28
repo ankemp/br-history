@@ -25,16 +25,4 @@ export class TabsComponent {
 
   constructor() { }
 
-  select(match: Match): void {
-    this.matchSelected.emit(match);
-  }
-
-  profile(player: Player): void {
-    this.viewProfile.emit(player);
-  }
-
-  open(match: Match): void {
-    this.openMatch.emit(match);
-  }
-
 }

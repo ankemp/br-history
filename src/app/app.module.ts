@@ -9,6 +9,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { HeaderModule } from './header/header.module';
@@ -22,6 +25,7 @@ import { AppComponent } from './app.component';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument({}) : [],
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     AppRoutingModule,
     HeaderModule
   ],

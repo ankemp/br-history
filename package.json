@@ -28,6 +28,7 @@
     "@ngrx/entity": "^4.1.1",
     "@ngrx/store": "^4.1.1",
     "@ngrx/store-devtools": "^4.1.1",
+    "angulartics2": "^4.5.0",
     "contentful": "^5.0.5",
     "core-js": "^2.4.1",
     "json-stringify-safe": "^5.0.1",

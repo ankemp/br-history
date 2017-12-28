@@ -23,18 +23,6 @@ export class MatchHistoryComponent {
 
   constructor() { }
 
-  select(match: Match): void {
-    this.matchSelected.emit(match);
-  }
-
-  profile(player: Player): void {
-    this.viewProfile.emit(player);
-  }
-
-  open(match: Match): void {
-    this.openMatch.emit(match);
-  }
-
   kdRatio(match: Match): number | boolean {
     const kd = match.rosters.reduce((acc, roster) =>
       roster.participants

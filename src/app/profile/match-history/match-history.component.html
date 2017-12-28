@@ -31,7 +31,7 @@
 </mat-toolbar>
 <div class="history">
   <mat-nav-list>
-    <a mat-list-item *ngFor="let m of matches" (click)="select(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
+    <a mat-list-item *ngFor="let m of matches" (click)="matchSelected.emit(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
       <div class="where">
         <h4 mat-line>{{m.matchType}}</h4>
         <p mat-line *ngIf="m.map">{{m.map.name}}</p>
@@ -48,6 +48,6 @@
   </mat-nav-list>
   <div class="details">
     <div class="nomatch" *ngIf="!match">Select a match</div>
-    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="profile($event)" (openMatch)="open($event)"></brh-match-details>
+    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="viewProfile.emit($event)" (openMatch)="openMatch.emit($event)"></brh-match-details>
   </div>
 </div>
