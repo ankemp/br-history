@@ -11,6 +11,7 @@
 }
 
 .summary .title {
+  font-family: 'Raleway', serif;
   border-right: 1px solid #000000;
   font-size: 20px;
   font-weight: 500;
@@ -97,10 +98,10 @@
   font-size: 24px;
 }
 
-:host() >>> brh-team-roster >>> brh-participant-stats .column.avatar {
+:host() ::ng-deep brh-participant-stats .column.avatar {
   max-width: 200px;
 }
-:host() >>> brh-team-roster >>> brh-participant-stats .column.avatar img {
+:host() ::ng-deep brh-participant-stats .column.avatar img {
   object-fit: cover;
   height: 100%;
   width: auto;

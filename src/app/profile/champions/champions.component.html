@@ -7,6 +7,9 @@
       <mat-button-toggle value="-characterWins">
         Wins
       </mat-button-toggle>
+      <mat-button-toggle value="-winRate">
+        Win Rate
+      </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="champion-search">
@@ -22,18 +25,29 @@
 <div *ngFor="let champion of player.stats.champions | orderBy: championSort.value | filterBy: ['champion.name']: championSearch.value"
   class="champion-container">
   <mat-card *ngIf="champion.champion">
-    <img mat-card-image src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
+    <div class="champion-hero">
+      <img src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
+      <brh-winlose [wins]="champion.characterWins" [losses]="champion.characterLosses" [showRate]="false"></brh-winlose>
+    </div>
     <mat-card-title-group>
       <mat-card-title>
         <span>{{ champion.champion.name }}</span>
-        <mat-chip color="accent" [selected]="true">lvl {{ champion.level || 0 }}</mat-chip>
+        <mat-chip color="accent" selected="true">lvl {{ champion.level || 0 }}</mat-chip>
       </mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
       <dl>
-        <dt>All Games</dt>
+        <dt>Total Played</dt>
         <dd>
-          <brh-winlose [wins]="champion.characterWins" [losses]="champion.characterLosses"></brh-winlose>
+          {{ champion.totalGames }}
+        </dd>
+        <dt>of all games</dt>
+        <dd>
+          {{ champion.ofTotal }}
+        </dd>
+        <dt>Win Rate</dt>
+        <dd>
+          {{ champion.winRate }}
         </dd>
       </dl>
     </mat-card-content>

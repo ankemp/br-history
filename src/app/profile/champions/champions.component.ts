@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
 
@@ -10,18 +10,33 @@ import { Player } from '@app/models';
   styleUrls: ['./champions.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChampionsComponent {
+export class ChampionsComponent implements OnInit {
   @Input() player: Player;
 
   constructor(
     private ga: Angulartics2,
   ) { }
 
-  winRate(champion: any): string {
+  ngOnInit(): void {
+    this.player.stats.champions = this.player.stats.champions.map(champion => {
+      champion.totalGames = (champion.characterWins || 0) + (champion.characterLosses || 0);
+      champion.winRate = this.winRate(champion);
+      champion.ofTotal = this.ofTotal(champion);
+      return champion;
+    });
+  }
+
+  private winRate(champion: any): string {
     const { characterWins, characterLosses } = champion;
     const totalPlayed = (characterWins || 0) + (characterLosses || 0);
-    const winRate = (characterWins / totalPlayed * 100);
-    return !isNaN(winRate) ? `${winRate.toFixed(2)}%` : 'N/A';
+    const winRate = characterWins / totalPlayed * 100;
+    return !isNaN(winRate) ? `${winRate.toFixed(1)}%` : '0';
+  }
+
+  private ofTotal(champion: any): string {
+    const playerTotal = (this.player.stats.wins || 0) + (this.player.stats.losses || 0);
+    const ofTotal = champion.totalGames / playerTotal * 100;
+    return !isNaN(ofTotal) ? `${ofTotal.toFixed(1)}%` : '';
   }
 
   trackSort(event: MatButtonToggleChange): void {
