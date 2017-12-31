@@ -1,17 +1,23 @@
 <mat-card>
   <mat-card-title-group>
     <mat-card-title>
-      <span>{{match.matchType}}</span>
-      <span>
-        <mat-icon>timer</mat-icon> {{match.duration | secToMin}}
-      </span>
-      <span *ngIf="showOpenMatch" class="open-match">
+      <div>
+        <span>{{match.matchType}}</span>
+        <span>
+          <mat-icon>timer</mat-icon> {{match.duration | secToMin}}
+        </span>
+      </div>
+      <div *ngIf="showOpenMatch" class="open-match">
         <button mat-icon-button (click)="openMatch.emit(match)">
           <mat-icon>open_in_new</mat-icon>
         </button>
-      </span>
+      </div>
+      <div *ngIf="!showOpenMatch" class="match-date">{{ match.createdAt | date:'EEE, M/d/yy' }}</div>
     </mat-card-title>
-    <mat-card-subtitle *ngIf="match.map">{{match.map.name}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="match.map">
+      <span>{{ match.map.name }}</span>
+      <div *ngIf="!showOpenMatch" class="match-date">{{ match.createdAt | date:'EEE, M/d/yy' }}</div>
+    </mat-card-subtitle>
     <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'maps':'jpg' }}" alt="">
   </mat-card-title-group>
   <mat-card-content>

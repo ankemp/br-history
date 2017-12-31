@@ -2,17 +2,19 @@ import {
   Component,
   Input,
   Output,
+  OnChanges,
+  SimpleChanges,
   EventEmitter
 } from '@angular/core';
 
-import { Match, Player } from '@app/models';
+import { Match, Player, Participant } from '@app/models';
 
 @Component({
   selector: 'brh-match-history',
   templateUrl: './match-history.component.html',
   styleUrls: ['./match-history.component.css']
 })
-export class MatchHistoryComponent {
+export class MatchHistoryComponent implements OnChanges {
   @Input() matches: Match[];
   @Input() match: Match;
   @Input() player: Player;
@@ -20,8 +22,15 @@ export class MatchHistoryComponent {
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
   @Output() reloadMatches = new EventEmitter<string>();
+  refreshTime: string;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!!changes.player) {
+      this.setRefreshTime(changes.player.currentValue);
+    }
+  }
 
   kdRatio(match: Match): number | boolean {
     const kd = match.rosters.reduce((acc, roster) =>
@@ -40,6 +49,20 @@ export class MatchHistoryComponent {
     return `${w}:${l}`;
   }
 
+  getPlayerParticipant(match: Match): Participant {
+    let participant;
+    if (!!match.rosters) {
+      participant = match.rosters.reduce((pt, r) => {
+        const pta = r.participants.find(p => p.player.id === this.player.id);
+        if (!!pta) {
+          pt = pta;
+        }
+        return pt;
+      }, {});
+    }
+    return participant;
+  }
+
   isWinner(match: Match): boolean {
     let roster;
     if (!!match.rosters) {
@@ -52,10 +75,10 @@ export class MatchHistoryComponent {
     return !!this.matches.findIndex(match => typeof match.rosters === 'undefined');
   }
 
-  get refreshTime(): string {
-    const newest = new Date(this.player.newestMatch);
+  setRefreshTime(player: Player): void {
+    const newest = new Date(player.newestMatch);
     const mins = newest.setMinutes(newest.getMinutes() + 20);
-    return new Date(mins).toJSON();
+    this.refreshTime = new Date(mins).toJSON();
   }
 
 }

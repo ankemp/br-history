@@ -78,6 +78,15 @@
   width: 40%;
 }
 
+.history .where > *,
+.history .when > * {
+  margin: 8px 0;
+}
+
+.history .where h4 {
+  margin-bottom: 16px;
+}
+
 .history .when {
   text-align: center;
   width: 40%;
