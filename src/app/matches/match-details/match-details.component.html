@@ -16,7 +16,7 @@
     </mat-card-title>
     <mat-card-subtitle *ngIf="match.map">
       <span>{{ match.map.name }}</span>
-      <div *ngIf="!showOpenMatch" class="match-date">{{ match.createdAt | date:'EEE, M/d/yy' }}</div>
+      <div *ngIf="!showOpenMatch" class="match-date">{{ match.createdAt | date:'shortTime' }}</div>
     </mat-card-subtitle>
     <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'maps':'jpg' }}" alt="">
   </mat-card-title-group>

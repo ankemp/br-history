@@ -5,7 +5,7 @@
 /**
   Overwrites all .mat-chips on the profile view
 */
-::ng-deep .mat-chip {
+:host() ::ng-deep .mat-chip {
   align-items: center;
   border-radius: 24px;
   cursor: default;
