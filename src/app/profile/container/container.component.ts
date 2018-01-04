@@ -64,7 +64,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   toggleFollow(player: Player): void {
-    this.store.dispatch(new followActions.Add(player.id));
+    this.store.dispatch(new followActions.Add(player));
   }
 
   selectMatch(match: Match): void {
