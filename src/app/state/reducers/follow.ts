@@ -29,14 +29,14 @@ export function reducer(state = initialState, action: followActions.Actions): St
       };
     }
 
-    case followActions.ADD: {
+    case followActions.ADD_SUCCESS: {
       return {
         ...state,
         ids: [...state.ids, action.payload]
       };
     }
 
-    case followActions.REMOVE: {
+    case followActions.REMOVE_SUCCESS: {
       return {
         ...state,
         ids: state.ids.filter(id => id !== action.payload)

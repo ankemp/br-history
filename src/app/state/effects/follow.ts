@@ -3,12 +3,13 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { Database } from '@ngrx/db';
 
-import * as followActions from '@app/state/actions/follow';
-
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { defer } from 'rxjs/observable/defer';
 import { map, switchMap, mergeMap, toArray } from 'rxjs/operators';
+
+import * as followActions from '@state/actions/follow';
+import { Player } from '@app/models';
 
 @Injectable()
 export class CartEffects {
@@ -18,9 +19,9 @@ export class CartEffects {
   ) { }
 
   @Effect({ dispatch: false })
-  openDB$: Observable<any> = defer(() => {
-    return this.db.open('battlelegend_battlerite');
-  });
+  openDB$: Observable<any> = defer(() =>
+    this.db.open('battlelegend_battlerite')
+  );
 
   @Effect()
   load$: Observable<Action> = this.actions$
@@ -28,7 +29,7 @@ export class CartEffects {
     .pipe(
     switchMap(() => this.db.query('follows')),
     toArray(),
-    map(((follows: any[]) => new followActions.LoadSuccess(follows)))
+    map(((follows: Partial<Player>[]) => new followActions.LoadSuccess(follows)))
     );
 
   @Effect()
@@ -36,8 +37,8 @@ export class CartEffects {
     .ofType(followActions.ADD)
     .pipe(
     map((action: followActions.Add) => action.payload),
-    mergeMap(follow => this.db.insert('follows', [follow])),
-    map((follow: any) => new followActions.AddSuccess(follow))
+    mergeMap(({ id, name }) => this.db.insert('follow', [{ id, name }])),
+    map(({ id }) => new followActions.AddSuccess(id))
     );
 
   @Effect()
@@ -45,7 +46,7 @@ export class CartEffects {
     .ofType(followActions.REMOVE)
     .pipe(
     map((action: followActions.Remove) => action.payload),
-    mergeMap(id => this.db.executeWrite('follows', 'delete', [id])),
-    map((id: string) => new followActions.RemoveSuccess(id))
+    mergeMap(({ id, name }) => this.db.executeWrite('follow', 'delete', [{ id, name }])),
+    map(({ id }) => new followActions.RemoveSuccess(id))
     );
 }

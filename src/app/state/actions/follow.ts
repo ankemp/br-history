@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Player } from '@app/models';
 
 export const LOAD = '[Follow] LOAD';
 export const LOAD_SUCCESS = '[Follow] LOAD SUCCESS';
@@ -16,22 +17,22 @@ export class Load implements Action {
 
 export class LoadSuccess implements Action {
   readonly type = LOAD_SUCCESS;
-  constructor(public payload: any[]) { }
+  constructor(public payload: Partial<Player>[]) { }
 }
 
 export class Add implements Action {
   readonly type = ADD;
-  constructor(public payload: string) { }
+  constructor(public payload: Partial<Player>) { }
 }
 
 export class AddSuccess implements Action {
   readonly type = ADD_SUCCESS;
-  constructor(public payload: any[]) { }
+  constructor(public payload: string) { }
 }
 
 export class Remove implements Action {
   readonly type = REMOVE;
-  constructor(public payload: string) { }
+  constructor(public payload: Partial<Player>) { }
 }
 
 export class RemoveSuccess implements Action {
