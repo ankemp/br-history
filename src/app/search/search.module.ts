@@ -8,7 +8,13 @@ import { reducers } from '@state/profile';
 import { PlayersEffects } from '@state/effects/players';
 import { PlayerService } from '@app/services';
 
-import { MatAutocompleteModule, MatIconModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatChipsModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
@@ -20,6 +26,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     StoreModule.forFeature('profile', reducers),
     EffectsModule.forFeature([PlayersEffects]),
     MatAutocompleteModule,
+    MatChipsModule,
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule

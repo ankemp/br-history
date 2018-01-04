@@ -2,49 +2,50 @@
   display: block;
 }
 
-:host() .mat-card {
+.mat-card {
   padding: 0px 8px 24px 8px;
 }
 
-:host() >>> .mat-card-title-group {
+.mat-card .mat-card-title-group {
   position: relative;
   max-height: 400px;
 }
 
-:host() >>> .mat-card-title-group span {
+.mat-card .mat-card-title-group span {
   display: inline-block;
-  height: 40px;
 }
 
-:host() >>> .mat-card-title-group > div {
+.mat-card ::ng-deep .mat-card-title-group > div {
   left: 16px;
   position: absolute;
   top: 16px;
   width: calc(100% - 32px);
 }
 
-:host() >>> .mat-card-title,
-:host() >>> .mat-card-subtitle {
+.mat-card .mat-card-title,
+.mat-card .mat-card-subtitle {
   color: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
 }
 
-:host() >>> .mat-card-subtitle {
+.mat-card .mat-card-subtitle {
   font-size: 18px;
 }
 
-:host() >>> .mat-card-title-group > img {
+.mat-card .mat-card-title-group > img {
   height: auto;
   object-fit: cover;
   width: 100%;
 }
 
-:host() >>> .mat-card-title-group .open-match {
+.mat-card .mat-card-title-group .open-match,
+.mat-card .mat-card-title-group .match-date {
   color: #ffffff;
-  position: absolute;
-  right: 0;
-  top: 0;
+  margin-left: auto;
 }
 
-:host() >>> .mat-card-content {
+.mat-card .mat-card-content {
   padding-top: 16px;
 }
