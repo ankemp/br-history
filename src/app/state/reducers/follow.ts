@@ -1,13 +1,14 @@
 import * as followActions from '@state/actions/follow';
+import { Player } from '@app/models';
 
 export interface State {
-  ids: string[];
+  players: Partial<Player>[];
   loading: boolean;
   error: string;
 }
 
 const initialState: State = {
-  ids: [],
+  players: [],
   loading: false,
   error: '',
 };
@@ -23,7 +24,7 @@ export function reducer(state = initialState, action: followActions.Actions): St
 
     case followActions.LOAD_SUCCESS: {
       return {
-        ids: action.payload.map(player => player.id),
+        players: action.payload,
         loading: false,
         error: '',
       };
@@ -32,14 +33,14 @@ export function reducer(state = initialState, action: followActions.Actions): St
     case followActions.ADD_SUCCESS: {
       return {
         ...state,
-        ids: [...state.ids, action.payload]
+        players: [...state.players, action.payload]
       };
     }
 
     case followActions.REMOVE_SUCCESS: {
       return {
         ...state,
-        ids: state.ids.filter(id => id !== action.payload)
+        players: state.players.filter(player => player.id !== action.payload)
       };
     }
 
@@ -49,6 +50,6 @@ export function reducer(state = initialState, action: followActions.Actions): St
   }
 }
 
-export const getIds = (state: State) => state.ids;
+export const getIds = (state: State) => state.players.map(player => player.id);
 export const getLoading = (state: State) => state.loading;
 export const getError = (state: State) => state.error;

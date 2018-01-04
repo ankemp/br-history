@@ -31,7 +31,7 @@ export class CartEffects {
     switchMap(() =>
       this.db.query('follow')
         .toArray()
-        .map((follows: any[]) => new followActions.LoadSuccess(follows))
+        .map((follows: Partial<Player>[]) => new followActions.LoadSuccess(follows))
     ));
 
   @Effect()
@@ -40,7 +40,7 @@ export class CartEffects {
     .pipe(
     map((action: followActions.Add) => action.payload),
     mergeMap(({ id, name }) => this.db.insert('follow', [{ id, name }])),
-    map(({ id }) => new followActions.AddSuccess(id))
+    map((player: Partial<Player>) => new followActions.AddSuccess(player))
     );
 
   @Effect()

@@ -27,7 +27,7 @@ export class Add implements Action {
 
 export class AddSuccess implements Action {
   readonly type = ADD_SUCCESS;
-  constructor(public payload: string) { }
+  constructor(public payload: Partial<Player>) { }
 }
 
 export class Remove implements Action {
