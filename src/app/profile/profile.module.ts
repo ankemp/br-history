@@ -9,9 +9,9 @@ import { reducers } from '@state/profile';
 import { PlayersEffects } from '@state/effects/players';
 import { MatchesEffects } from '@state/effects/matches';
 import { FollowEffects } from '@state/effects/follow';
-import { TeamsEffects } from '@app/state/effects/teams';
+import { TeamsEffects } from '@state/effects/teams';
 import { PlayerService, MatchService, TeamService } from '@app/services';
-import { SCHEMA } from './db';
+import { SCHEMA } from '@app/follow/db';
 
 import {
   MatButtonModule,

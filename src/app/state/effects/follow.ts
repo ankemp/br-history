@@ -3,10 +3,11 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { Database } from '@ngrx/db';
 
+import 'rxjs/add/operator/toArray';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { defer } from 'rxjs/observable/defer';
-import { map, switchMap, mergeMap, toArray } from 'rxjs/operators';
+import { map, switchMap, mergeMap } from 'rxjs/operators';
 
 import * as followActions from '@state/actions/follow';
 import { Player } from '@app/models';
@@ -27,10 +28,11 @@ export class CartEffects {
   load$: Observable<Action> = this.actions$
     .ofType(followActions.LOAD)
     .pipe(
-    switchMap(() => this.db.query('follows')),
-    toArray(),
-    map(((follows: Partial<Player>[]) => new followActions.LoadSuccess(follows)))
-    );
+    switchMap(() =>
+      this.db.query('follow')
+        .toArray()
+        .map((follows: any[]) => new followActions.LoadSuccess(follows))
+    ));
 
   @Effect()
   add$: Observable<Action> = this.actions$
