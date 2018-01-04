@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { State } from '@app/reducers';
 import * as fromProfile from '@state/profile';
 import * as playersActions from '@state/actions/players';
+import * as followActions from '@state/actions/follow';
 import * as matchesActions from '@state/actions/matches';
 import { Match, Player, Team } from '@app/models';
 
@@ -63,7 +64,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   toggleFollow(player: Player): void {
-    console.log('toggleFollow', player);
+    this.store.dispatch(new followActions.Add(player.id));
   }
 
   selectMatch(match: Match): void {
