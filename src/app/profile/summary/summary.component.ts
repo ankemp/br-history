@@ -24,7 +24,7 @@ export class SummaryComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!!changes.teams) {
+    if (!!changes.teams && changes.teams.currentValue.length) {
       this.rSolo = changes.teams.currentValue.find(team => team.teamType === 'solo');
       const r2v2Max = changes.teams.currentValue
         .filter(team => team.teamType === '2v2')
