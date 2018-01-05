@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatProgressSpinnerModule, MatTooltipModule } from '@angular/material';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 import { SecToMinPipe } from './sec-to-min.pipe';
 import { ReduceStatPipe } from './reduce-stat.pipe';
@@ -14,7 +15,8 @@ import { RankComponent } from './rank/rank.component';
   imports: [
     CommonModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxGaugeModule
   ],
   declarations: [
     SecToMinPipe,

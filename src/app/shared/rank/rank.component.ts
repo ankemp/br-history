@@ -8,6 +8,7 @@ import { Team } from '@app/models';
 })
 export class RankComponent {
   @Input() team: Team;
+  @Input() size = 200;
 
   constructor() { }
 

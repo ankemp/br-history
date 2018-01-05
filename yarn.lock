@@ -4164,6 +4164,10 @@ ngx-countdown-timer@^0.1.9:
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/ngx-countdown-timer/-/ngx-countdown-timer-0.1.9.tgz#f7de864b3e30e333ae2a2c093c8d0667f2e604dc"
 
+ngx-gauge@^1.0.0-beta.1:
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/ngx-gauge/-/ngx-gauge-1.0.0-beta.1.tgz#0f09e9df34efc0d61e6960782224efc0b346945c"
+
 ngx-pipes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.1.0.tgz#969cbc78f1c7512b12cc050f441c2528fb3a05a0"

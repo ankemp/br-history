@@ -1,2 +1,7 @@
-<img src="{{ team.league+1 | assetRoute:'league':'png' }}" />
+<div class="rank" [ngStyle]="{'width.px': size, 'height.px': size}">
+  <ngx-gauge type="arch" [thick]="size/15" cap="round" [value]="(60-team.divisionRating)" max="60" [size]="size"></ngx-gauge>
+  <div class="img-container">
+    <img src="{{ team.league+1 | assetRoute:'league':'png' }}">
+  </div>
+</div>
 <brh-winlose [wins]="team.wins" [losses]="team.losses" [showRate]="false"></brh-winlose>
