@@ -25,7 +25,9 @@
       </mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-      {{ team | json }}
+      <img src="{{ team.league+1 | assetRoute:'league':'png' }}" />
+      <brh-winlose [wins]="team.wins" [losses]="team.losses" [showRate]="false"></brh-winlose>
+      <p>{{ team | json }}</p>
     </mat-card-content>
   </mat-card>
 </div>
