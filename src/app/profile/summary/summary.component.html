@@ -38,15 +38,16 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div class="summary-item">
+<div class="summary-item ranking">
   <mat-card>
     <mat-card-title>Solo Queue</mat-card-title>
-    <mat-card-content>
-      <h3>Coming soon</h3>
+    <mat-card-content *ngIf="!!rSolo">
+      <img src="{{ rSolo.league+1 | assetRoute:'league':'png' }}" />
+      <brh-winlose [wins]="rSolo.wins" [losses]="rSolo.losses" [showRate]="false"></brh-winlose>
     </mat-card-content>
   </mat-card>
 </div>
-<div class="summary-item">
+<div class="summary-item ranking">
   <mat-card>
     <mat-card-title>2v2 Team</mat-card-title>
     <mat-card-content>

@@ -1,6 +1,12 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  ChangeDetectionStrategy,
+  SimpleChanges
+} from '@angular/core';
 
-import { Player } from '@app/models';
+import { Player, Team } from '@app/models';
 
 @Component({
   selector: 'brh-summary',
@@ -8,10 +14,20 @@ import { Player } from '@app/models';
   styleUrls: ['./summary.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SummaryComponent {
+export class SummaryComponent implements OnChanges {
   @Input() player: Player;
+  @Input() teams: Team[];
+  rSolo: Team;
+  r2v2: Team;
+  r3v3: Team;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!!changes.teams) {
+      this.rSolo = changes.teams.currentValue.find(team => team.teamType === 'solo');
+    }
+  }
 
   get hasBrawl(): boolean {
     return (typeof this.player.stats.brawlLosses !== 'undefined' || typeof this.player.stats.brawlWins !== 'undefined');
