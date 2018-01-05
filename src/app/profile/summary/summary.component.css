@@ -39,12 +39,14 @@
 
 .summary-item.ranking.teams brh-rank {
   flex-direction: row;
-  font-size: 36px;
+  font-size: 32px;
+  justify-content: flex-start;
   width: auto;
 }
 
-.summary-item.ranking.teams ::ng-deep brh-winlose > div {
-  text-align: left;
+.summary-item.ranking.teams ::ng-deep brh-winlose {
+  margin-left: 16px;
+  width: auto;
 }
 
 dl {
