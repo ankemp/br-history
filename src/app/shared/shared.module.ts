@@ -8,6 +8,7 @@ import { ReduceStatPipe } from './reduce-stat.pipe';
 import { AssetRoutePipe } from './asset-route.pipe';
 import { LoaderComponent } from './loader/loader.component';
 import { WinloseComponent } from './winlose/winlose.component';
+import { RankComponent } from './rank/rank.component';
 
 @NgModule({
   imports: [
@@ -20,14 +21,16 @@ import { WinloseComponent } from './winlose/winlose.component';
     ReduceStatPipe,
     AssetRoutePipe,
     LoaderComponent,
-    WinloseComponent
+    WinloseComponent,
+    RankComponent
   ],
   exports: [
     SecToMinPipe,
     ReduceStatPipe,
     AssetRoutePipe,
     LoaderComponent,
-    WinloseComponent
+    WinloseComponent,
+    RankComponent
   ]
 })
 export class SharedModule { }

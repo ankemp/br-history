@@ -42,8 +42,7 @@
   <mat-card>
     <mat-card-title>Solo Queue</mat-card-title>
     <mat-card-content *ngIf="!!rSolo">
-      <img src="{{ rSolo.league+1 | assetRoute:'league':'png' }}" />
-      <brh-winlose [wins]="rSolo.wins" [losses]="rSolo.losses" [showRate]="false"></brh-winlose>
+      <brh-rank [team]="rSolo"></brh-rank>
     </mat-card-content>
   </mat-card>
 </div>
@@ -52,20 +51,14 @@
     <mat-card-title>2v2 Team</mat-card-title>
     <mat-card-content *ngIf="!!r2v2">
       <h3>{{ r2v2.name }}</h3>
-      <div class="stats">
-        <img src="{{ r2v2.league+1 | assetRoute:'league':'png' }}" />
-        <brh-winlose [wins]="r2v2.wins" [losses]="r2v2.losses" [showRate]="false"></brh-winlose>
-      </div>
+      <brh-rank [team]="r2v2"></brh-rank>
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-title>3v3 Team</mat-card-title>
     <mat-card-content *ngIf="!!r3v3">
       <h3>{{ r3v3.name }}</h3>
-      <div class="stats">
-        <img src="{{ r3v3.league+1 | assetRoute:'league':'png' }}" />
-        <brh-winlose [wins]="r3v3.wins" [losses]="r3v3.losses" [showRate]="false"></brh-winlose>
-      </div>
+      <brh-rank [team]="r3v3"></brh-rank>
     </mat-card-content>
   </mat-card>
 </div>
