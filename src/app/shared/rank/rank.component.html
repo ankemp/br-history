@@ -1,5 +1,6 @@
 <div *ngIf="!inPlacement" class="rank" [ngStyle]="{'width.px': size, 'height.px': size}">
-  <ngx-gauge type="arch" [thick]="size/15" cap="round" [value]="(7-team.division)" max="6" [size]="size"></ngx-gauge>
+  <ngx-gauge *ngIf="!(team.league === 6 && team.division === 1)" type="arch" [thick]="size/15" cap="round" [value]="(7-team.division)"
+    max="6" [size]="size"></ngx-gauge>
   <div class="img-container">
     <img src="{{ team.league+1 | assetRoute:'league':'png' }}">
     <div class="rating size-{{size}}">

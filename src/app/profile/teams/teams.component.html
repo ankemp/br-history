@@ -1,4 +1,7 @@
 <mat-toolbar>
+  <div class="team-noname">
+    <mat-slide-toggle #noName="matSlideToggle" checked="true">Hide No Names</mat-slide-toggle>
+  </div>
   <div class="team-filter">
     <mat-button-toggle-group #teamFilter="matButtonToggleGroup">
       <mat-button-toggle value="" checked="true">All</mat-button-toggle>
@@ -17,16 +20,14 @@
   </div>
 </mat-toolbar>
 
-<div class="team-container" *ngFor="let team of rankedTeams">
+<div class="team-container" *ngFor="let team of rankedTeams | filterBy: ['name']: teamSearch.value | filterBy: ['teamType']: teamFilter.value | without: noName.checked ? noNameTeams : []">
   <mat-card>
     <mat-card-title-group>
-      <mat-card-title>
-        <span>{{ team.name }}</span>
-      </mat-card-title>
+      <mat-card-title>{{ team.name || team.teamType }}</mat-card-title>
+      <mat-card-subtitle *ngIf="!!team.name">{{ team.teamType }}</mat-card-subtitle>
     </mat-card-title-group>
     <mat-card-content>
       <brh-rank [team]="team"></brh-rank>
-      <p>{{ team | json }}</p>
     </mat-card-content>
   </mat-card>
 </div>

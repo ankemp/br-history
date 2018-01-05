@@ -18,12 +18,14 @@ export class TeamsComponent implements OnChanges {
   @Input() player: Player;
   @Input() teams: Team[];
   rankedTeams: Team[];
+  noNameTeams: Team[];
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!!changes.teams) {
       this.rankedTeams = changes.teams.currentValue.filter(team => team.teamType !== 'solo');
+      this.noNameTeams = changes.teams.currentValue.filter(team => team.name === '');
     }
   }
 }

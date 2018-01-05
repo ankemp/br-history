@@ -7,11 +7,14 @@
   justify-content: flex-end;
 }
 
+.mat-toolbar > div {
+  padding: 8px;
+}
+
 .team-search {
   box-sizing: border-box;
   margin-bottom: 8px;
   min-width: 300px;
-  padding: 16px;
 }
 
 .team-search ::ng-deep .mat-form-field {
@@ -49,8 +52,4 @@
   flex: 1 0 auto;
   font-size: 16px;
   justify-content: center;
-}
-
-.mat-card-content img {
-  align-self: center;
 }

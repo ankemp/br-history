@@ -18,6 +18,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatSlideToggleModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
@@ -53,6 +54,7 @@ import { TeamsComponent } from './teams/teams.component';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
