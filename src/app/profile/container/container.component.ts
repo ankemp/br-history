@@ -11,7 +11,7 @@ import { State } from '@app/reducers';
 import * as fromProfile from '@state/profile';
 import * as playersActions from '@state/actions/players';
 import * as matchesActions from '@state/actions/matches';
-import { Match, Player } from '@app/models';
+import { Match, Player, Team } from '@app/models';
 
 @Component({
   selector: 'brh-container',
@@ -25,6 +25,7 @@ import { Match, Player } from '@app/models';
     (reloadMatches)="reloadMatches($event)"
     (tabChange)="tabChange($event)"
     [player]="player$ | async"
+    [teams]="teams$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async">
     </brh-tabs>
@@ -35,6 +36,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   public history$: Observable<Match[]>;
   public selectedMatch$: Observable<Match>;
   public player$: Observable<Player>;
+  public teams$: Observable<Team[]>;
   private routeSub: Subscription;
 
   constructor(
@@ -46,6 +48,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.selectedMatch$ = store.select<Match>(fromProfile.getSelectedMatch);
     this.history$ = store.select<Match[]>(fromProfile.getAllMatches);
     this.player$ = store.select<Player>(fromProfile.getSelectedProfile);
+    this.teams$ = store.select<Team[]>(fromProfile.getAllTeams);
   }
 
   selectMatch(match: Match): void {

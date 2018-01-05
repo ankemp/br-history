@@ -9,6 +9,7 @@ import { of } from 'rxjs/observable/of';
 import { debounceTime, switchMap, map, skip, takeUntil, catchError } from 'rxjs/operators';
 
 import * as teamsActions from '@state/actions/teams';
+import * as playerActions from '@state/actions/players';
 import { TeamService } from '@app/services';
 import { Team } from '@app/models';
 
@@ -29,6 +30,15 @@ export class TeamsEffects {
     map((action: teamsActions.LoadTeam) => action.payload),
     switchMap((teamId: string) => this.api.get(teamId)),
     map((t: Team) => new teamsActions.LoadTeamSuccess(t))
+    );
+
+  @Effect()
+  loadPlayerTeams$: Observable<Action> = this.actions$
+    .ofType(playerActions.LOAD_TEAMS)
+    .pipe(
+    map((action: playerActions.LoadTeams) => action.payload),
+    switchMap((playerId) => this.api.byPlayer(playerId)),
+    map((t: Team[]) => new playerActions.LoadTeamsSuccess(t))
     );
 
   @Effect({ dispatch: false })

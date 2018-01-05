@@ -7,7 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '@state/profile';
 import { PlayersEffects } from '@state/effects/players';
 import { MatchesEffects } from '@state/effects/matches';
-import { PlayerService, MatchService } from '@app/services';
+import { TeamsEffects } from '@app/state/effects/teams';
+import { PlayerService, MatchService, TeamService } from '@app/services';
 
 import {
   MatButtonModule,
@@ -44,7 +45,7 @@ import { TeamsComponent } from './teams/teams.component';
     CommonModule,
     FormsModule,
     StoreModule.forFeature('profile', reducers),
-    EffectsModule.forFeature([PlayersEffects, MatchesEffects]),
+    EffectsModule.forFeature([PlayersEffects, MatchesEffects, TeamsEffects]),
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -73,6 +74,7 @@ import { TeamsComponent } from './teams/teams.component';
   providers: [
     PlayerService,
     MatchService,
+    TeamService,
     ProfileResolver
   ]
 })

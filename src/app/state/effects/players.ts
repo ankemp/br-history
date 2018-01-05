@@ -6,7 +6,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
-import { debounceTime, switchMap, map, skip, takeUntil, catchError } from 'rxjs/operators';
+import { debounceTime, switchMap, map, skip, takeUntil, catchError, mergeMap } from 'rxjs/operators';
 
 import * as playersActions from '@state/actions/players';
 import { PlayerService } from '@app/services';
@@ -32,11 +32,14 @@ export class PlayersEffects {
     );
 
   @Effect()
-  loadPlayerMatches: Observable<Action> = this.actions$
+  loadExtraPlayerData: Observable<Action> = this.actions$
     .ofType(playersActions.LOAD_PLAYER_SUCCESS)
     .pipe(
     map((action: playersActions.LoadPlayerSuccess) => action.payload),
-    map((player: Player) => new playersActions.LoadMatches(player.id))
+    mergeMap((player: Player) => [
+      new playersActions.LoadTeams(player.id),
+      new playersActions.LoadMatches(player.id)
+    ])
     );
 
   @Effect({ dispatch: false })
