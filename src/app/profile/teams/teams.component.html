@@ -17,4 +17,15 @@
   </div>
 </mat-toolbar>
 
-<p>Coming soon!</p>
+<div class="team-container" *ngFor="let team of teams">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <span>{{ team.name }}</span>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ team | json }}
+    </mat-card-content>
+  </mat-card>
+</div>

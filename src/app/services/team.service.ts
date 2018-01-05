@@ -21,7 +21,6 @@ export class TeamService {
   }
 
   byPlayer(playerId: string, season = 6): Observable<Team[]> {
-    console.log('byPlayer', playerId);
     return this.http.get<Team[]>(`${this.TEAMS_API}/?playerIds=${playerId}&season=${season}`)
       .map((response: any) => response.data);
   }
