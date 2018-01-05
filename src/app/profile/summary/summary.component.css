@@ -29,28 +29,22 @@
   justify-content: center;
 }
 
-.mat-card-content img {
-  align-self: center;
-}
-
-.summary-item.ranking brh-winlose {
+.summary-item.ranking brh-rank {
   font-size: 48px;
 }
 
-.summary-item.ranking.teams .stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.summary-item.ranking.teams .stats img {
+.summary-item.ranking.teams ::ng-deep img {
   max-width: 60px;
 }
 
-.summary-item.ranking.teams .stats brh-winlose {
+.summary-item.ranking.teams brh-rank {
+  flex-direction: row;
   font-size: 36px;
   width: auto;
+}
+
+.summary-item.ranking.teams ::ng-deep brh-winlose > div {
+  text-align: left;
 }
 
 dl {
