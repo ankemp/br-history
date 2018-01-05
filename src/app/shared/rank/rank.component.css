@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.rank.placement .title {
+  margin: 16px 0;
+}
+
 .rank ngx-gague {
   position: absolute;
 }

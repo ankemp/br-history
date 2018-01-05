@@ -41,7 +41,7 @@
 <div class="summary-item ranking">
   <mat-card>
     <mat-card-title>Solo Queue</mat-card-title>
-    <mat-card-content *ngIf="!!rSolo">
+    <mat-card-content *ngIf="hasSolo">
       <brh-rank [team]="rSolo"></brh-rank>
     </mat-card-content>
   </mat-card>
@@ -49,16 +49,22 @@
 <div class="summary-item ranking teams">
   <mat-card>
     <mat-card-title>2v2 Team</mat-card-title>
-    <mat-card-content *ngIf="!!r2v2">
+    <mat-card-content *ngIf="has2v2">
       <h3>{{ r2v2.name }}</h3>
       <brh-rank [team]="r2v2" [size]="120"></brh-rank>
+    </mat-card-content>
+    <mat-card-content *ngIf="!has2v2">
+      <h3>No 2v2 Teams</h3>
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-title>3v3 Team</mat-card-title>
-    <mat-card-content *ngIf="!!r3v3">
+    <mat-card-content *ngIf="has3v3">
       <h3>{{ r3v3.name }}</h3>
       <brh-rank [team]="r3v3" [size]="120"></brh-rank>
+    </mat-card-content>
+    <mat-card-content *ngIf="!has3v3">
+      <h3>No 3v3 Teams</h3>
     </mat-card-content>
   </mat-card>
 </div>

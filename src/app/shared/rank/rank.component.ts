@@ -12,4 +12,11 @@ export class RankComponent {
 
   constructor() { }
 
+  get inPlacement(): boolean {
+    if (this.team.placementGamesLeft > 0) {
+      return true;
+    }
+    return false;
+  }
+
 }
