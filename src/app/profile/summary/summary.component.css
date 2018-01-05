@@ -37,6 +37,22 @@
   font-size: 48px;
 }
 
+.summary-item.ranking.teams .stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.summary-item.ranking.teams .stats img {
+  max-width: 60px;
+}
+
+.summary-item.ranking.teams .stats brh-winlose {
+  font-size: 36px;
+  width: auto;
+}
+
 dl {
   display: flex;
   flex-wrap: wrap;

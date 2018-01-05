@@ -47,17 +47,25 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div class="summary-item ranking">
+<div class="summary-item ranking teams">
   <mat-card>
     <mat-card-title>2v2 Team</mat-card-title>
-    <mat-card-content>
-      <h3>Coming soon</h3>
+    <mat-card-content *ngIf="!!r2v2">
+      <h3>{{ r2v2.name }}</h3>
+      <div class="stats">
+        <img src="{{ r2v2.league+1 | assetRoute:'league':'png' }}" />
+        <brh-winlose [wins]="r2v2.wins" [losses]="r2v2.losses" [showRate]="false"></brh-winlose>
+      </div>
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-title>3v3 Team</mat-card-title>
-    <mat-card-content>
-      <h3>Coming soon</h3>
+    <mat-card-content *ngIf="!!r3v3">
+      <h3>{{ r3v3.name }}</h3>
+      <div class="stats">
+        <img src="{{ r3v3.league+1 | assetRoute:'league':'png' }}" />
+        <brh-winlose [wins]="r3v3.wins" [losses]="r3v3.losses" [showRate]="false"></brh-winlose>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
