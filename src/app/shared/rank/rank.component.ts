@@ -19,4 +19,22 @@ export class RankComponent {
     return false;
   }
 
+  get leagueName(): string {
+    switch (this.team.league) {
+      case 6:
+        return 'Grand Champion';
+      case 5:
+      case 4:
+        return 'Champion';
+      case 3:
+        return 'Platinum';
+      case 2:
+        return 'Gold';
+      case 1:
+        return 'Silver';
+      case 0:
+        return 'Bronze';
+    }
+  }
+
 }

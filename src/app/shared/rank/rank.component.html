@@ -1,8 +1,11 @@
 <div *ngIf="!inPlacement" class="rank" [ngStyle]="{'width.px': size, 'height.px': size}">
-  <ngx-gauge type="arch" [thick]="size/15" cap="round" [value]="(60-team.divisionRating)" max="60" [size]="size"></ngx-gauge>
+  <ngx-gauge type="arch" [thick]="size/15" cap="round" [value]="(7-team.division)" max="6" [size]="size"></ngx-gauge>
   <div class="img-container">
     <img src="{{ team.league+1 | assetRoute:'league':'png' }}">
-    <span class="division size-{{size}}">Division {{ team.division }}</span>
+    <div class="rating size-{{size}}">
+      <div class="league">{{ leagueName }}</div>
+      <div class="division">Division {{ team.division }}</div>
+    </div>
   </div>
 </div>
 <div *ngIf="inPlacement" class="rank placement">
