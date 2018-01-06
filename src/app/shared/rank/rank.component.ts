@@ -24,8 +24,9 @@ export class RankComponent {
       case 6:
         return 'Grand Champion';
       case 5:
-      case 4:
         return 'Champion';
+      case 4:
+        return 'Diamond';
       case 3:
         return 'Platinum';
       case 2:
