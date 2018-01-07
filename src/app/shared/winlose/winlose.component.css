@@ -17,6 +17,9 @@
 .losses {
   color: #f44336;
 }
+.divider {
+  color: grey;
+}
 
 .rate {
   margin-left: auto;
