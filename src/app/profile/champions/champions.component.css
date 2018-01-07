@@ -62,11 +62,11 @@
   /* 50% - 1/2 font-size */
   top: calc(50% - 24px);
 }
-.champion-hero brh-winlose .wins {
+.champion-hero brh-winlose ::ng-deep .wins {
   transform: translateY(-20px);
   display: inline-block;
 }
-.champion-hero brh-winlose .losses {
+.champion-hero brh-winlose ::ng-deep .losses {
   transform: translateY(20px);
   display: inline-block;
 }
