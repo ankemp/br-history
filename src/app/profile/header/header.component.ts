@@ -10,7 +10,7 @@ import { Player } from '@app/models';
 export class HeaderComponent {
   @Input() player: Player;
 
-  constructor() { }
+  constructor() {}
 
   get winRate(): string {
     const { wins, losses } = this.player.stats;

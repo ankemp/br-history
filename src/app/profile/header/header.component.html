@@ -3,21 +3,22 @@
   <div>
     <mat-chip *ngIf="player.stats" color="primary" selected="true">lvl {{ player.stats.accountLevel }}</mat-chip>
   </div>
-</div>
-<div *ngIf="player.stats" class="summary">
-  <h3 class="title">Lifetime Stats:</h3>
-  <div class="stat">
-    <div>Wins / Losses</div>
-    <div>
-      <brh-winlose [wins]="player.stats.wins" [losses]="player.stats.losses" [showRate]="false"></brh-winlose>
+  <div *ngIf="player.stats" class="summary">
+    <!--<h3 class="title">Lifetime Stats:</h3>-->
+    <div class="stat">
+      <div class="stat__title">Wins / Losses</div>
+      <div class="stat__data">
+        <brh-winlose [wins]="player.stats.wins" [losses]="player.stats.losses" [showRate]="false"></brh-winlose>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat__title">Win Rate</div>
+      <div class="stat__data">{{ winRate }}</div>
+    </div>
+    <div class="stat">
+      <div class="stat__title">Time Played</div>
+      <div class="stat__data">{{ player.stats.timePlayed | secToMin }}</div>
     </div>
   </div>
-  <div class="stat">
-    <div>Win Rate</div>
-    <div>{{ winRate }}</div>
-  </div>
-  <div class="stat">
-    <div>Time Played</div>
-    <div>{{ player.stats.timePlayed | secToMin }}</div>
-  </div>
+
 </div>
