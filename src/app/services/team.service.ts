@@ -10,6 +10,7 @@ import { Team } from '@app/models';
 export class TeamService {
 
   private TEAMS_API = `${environment.apiRoot}/teams`;
+  private TEAM_MEMBERS_API = `${environment.apiRoot}/teamMembers`;
 
   constructor(
     private http: HttpClient,
@@ -21,8 +22,8 @@ export class TeamService {
   }
 
   byPlayer(playerId: string, season = 6): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.TEAMS_API}/?playerIds=${playerId}&season=${season}`)
-      .map((response: any) => response.data);
+    return this.http.get<Team[]>(`${this.TEAM_MEMBERS_API}/?playerId=${playerId}`)
+      .map((response: any) => response);
   }
 
 }
