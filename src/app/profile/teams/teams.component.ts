@@ -7,6 +7,8 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { MatButtonToggleChange, MatSlideToggleChange } from '@angular/material';
+import { Angulartics2 } from 'angulartics2';
 
 import { Player, Team } from '@app/models';
 
@@ -23,7 +25,9 @@ export class TeamsComponent implements OnChanges {
   rankedTeams: Team[];
   noNameTeams: Team[];
 
-  constructor() { }
+  constructor(
+    private ga: Angulartics2,
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!!changes.teams) {
@@ -31,4 +35,20 @@ export class TeamsComponent implements OnChanges {
       this.noNameTeams = changes.teams.currentValue.filter(team => team.name === '');
     }
   }
+
+  trackSort(event: MatButtonToggleChange): void {
+    const action = event.value.substr(1);
+    this.ga.eventTrack.next({
+      action,
+      properties: { category: 'team sort' },
+    });
+  }
+
+  trackNoNameToggle(event: MatSlideToggleChange): void {
+    this.ga.eventTrack.next({
+      action: event.checked ? 'hide' : 'show',
+      properties: { category: 'team no name' },
+    });
+  }
+
 }

@@ -1,9 +1,9 @@
 <mat-toolbar>
   <div class="team-noname">
-    <mat-slide-toggle #noName="matSlideToggle" checked="true">Hide No Names</mat-slide-toggle>
+    <mat-slide-toggle #noName="matSlideToggle" (change)="trackNoNameToggle($event)" checked="true">Hide No Names</mat-slide-toggle>
   </div>
   <div class="team-filter">
-    <mat-button-toggle-group #teamFilter="matButtonToggleGroup">
+    <mat-button-toggle-group (change)="trackSort($event)" #teamFilter="matButtonToggleGroup">
       <mat-button-toggle value="" checked="true">All</mat-button-toggle>
       <mat-button-toggle value="2v2">2v2</mat-button-toggle>
       <mat-button-toggle value="3v3">3v3</mat-button-toggle>
