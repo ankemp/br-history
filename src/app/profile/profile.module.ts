@@ -7,7 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '@state/profile';
 import { PlayersEffects } from '@state/effects/players';
 import { MatchesEffects } from '@state/effects/matches';
-import { PlayerService, MatchService } from '@app/services';
+import { TeamsEffects } from '@app/state/effects/teams';
+import { PlayerService, MatchService, TeamService } from '@app/services';
 
 import {
   MatButtonModule,
@@ -17,6 +18,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatSlideToggleModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
@@ -37,13 +39,15 @@ import { TabsComponent } from './tabs/tabs.component';
 import { MatchHistoryComponent } from './match-history/match-history.component';
 import { ChampionsComponent } from './champions/champions.component';
 import { SummaryComponent } from './summary/summary.component';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamMembersComponent } from './team-members/team-members.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     StoreModule.forFeature('profile', reducers),
-    EffectsModule.forFeature([PlayersEffects, MatchesEffects]),
+    EffectsModule.forFeature([PlayersEffects, MatchesEffects, TeamsEffects]),
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -51,6 +55,7 @@ import { SummaryComponent } from './summary/summary.component';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -66,11 +71,14 @@ import { SummaryComponent } from './summary/summary.component';
     TabsComponent,
     MatchHistoryComponent,
     ChampionsComponent,
-    SummaryComponent
+    SummaryComponent,
+    TeamsComponent,
+    TeamMembersComponent
   ],
   providers: [
     PlayerService,
     MatchService,
+    TeamService,
     ProfileResolver
   ]
 })

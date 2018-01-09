@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <div class="team-noname">
+    <mat-slide-toggle #noName="matSlideToggle" (change)="trackNoNameToggle($event)" checked="true">Hide No Names</mat-slide-toggle>
+  </div>
+  <div class="team-filter">
+    <mat-button-toggle-group (change)="trackSort($event)" #teamFilter="matButtonToggleGroup">
+      <mat-button-toggle value="" checked="true">All</mat-button-toggle>
+      <mat-button-toggle value="2v2">2v2</mat-button-toggle>
+      <mat-button-toggle value="3v3">3v3</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="team-search">
+    <mat-form-field floatPlaceholder="never">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" placeholder="Find Team" #teamSearch>
+      <button mat-button *ngIf="teamSearch.value" matSuffix mat-icon-button aria-label="Clear" (click)="teamSearch.value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</mat-toolbar>
+
+<div class="team-container" *ngFor="let team of rankedTeams | filterBy: ['name']: teamSearch.value | filterBy: ['teamType']: teamFilter.value | without: noName.checked ? noNameTeams : []">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{ team.name || team.teamType }}</mat-card-title>
+      <mat-card-subtitle *ngIf="!!team.name">{{ team.teamType }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <brh-rank [team]="team"></brh-rank>
+      <brh-team-members (viewProfile)="viewProfile.emit($event)" [players]="team.players"></brh-team-members>
+    </mat-card-content>
+  </mat-card>
+</div>

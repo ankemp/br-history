@@ -15,6 +15,10 @@
   margin-top: 16px;
 }
 
+.mat-card-title {
+  margin-bottom: 8px;
+}
+
 .mat-card {
   display: flex;
   flex-direction: column;
@@ -22,8 +26,44 @@
 }
 
 .mat-card-content {
+  display: flex;
+  flex-direction: column;
   flex: 1 0 auto;
   font-size: 16px;
+  justify-content: center;
+}
+
+.summary-item.ranking brh-rank {
+  font-size: 48px;
+}
+
+.summary-item.ranking.teams h3 {
+  margin-bottom: 8px;
+}
+
+.summary-item.ranking.teams ::ng-deep img {
+  max-width: 60px;
+}
+
+.summary-item.ranking.teams brh-rank {
+  flex-direction: row;
+  font-size: 32px;
+  justify-content: flex-start;
+}
+
+.summary-item.ranking.teams ::ng-deep brh-winlose {
+  margin-left: 16px;
+  width: auto;
+}
+
+.team-details {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.team-details brh-team-members {
+  width: 50%;
 }
 
 dl {
@@ -33,6 +73,6 @@ dl {
 
 dt, dd {
   display: flex;
-  width: 50%;
   margin: 0 0 8px;
+  width: 50%;
 }

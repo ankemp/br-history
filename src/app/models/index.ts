@@ -8,3 +8,4 @@ export * from './participant';
 export * from './player';
 export * from './roster';
 export * from './round';
+export * from './team';

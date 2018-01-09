@@ -1,7 +1,10 @@
 <mat-tab-group (selectedTabChange)="tabChange.emit($event)">
   <mat-tab label="Overview">
-    <brh-summary [player]="player"></brh-summary>
+    <brh-summary (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-summary>
     <brh-champions [player]="player"></brh-champions>
+  </mat-tab>
+  <mat-tab label="Teams">
+    <brh-teams (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-teams>
   </mat-tab>
   <mat-tab label="Match History">
     <brh-match-history (openMatch)="openMatch.emit($event)" (matchSelected)="matchSelected.emit($event)" (viewProfile)="viewProfile.emit($event)"

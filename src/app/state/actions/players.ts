@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Player, Match } from '@app/models';
+import { Player, Match, Team } from '@app/models';
 
 export const SET_CURRENT_PLAYER = '[Players] SET CURRENT PLAYER';
 export const SEARCH_BY_NAME = '[Players] SEARCH BY NAME';
@@ -9,6 +9,8 @@ export const LOAD_PLAYER = '[Players] LOAD PLAYER';
 export const LOAD_PLAYER_SUCCESS = '[Players] LOAD PLAYER SUCCESS';
 export const LOAD_MATCHES = '[Players] LOAD MATCHES';
 export const LOAD_MATCHES_SUCCESS = '[Players] LOAD MATCHES SUCCESS';
+export const LOAD_TEAMS = '[Players] LOAD TEAMS';
+export const LOAD_TEAMS_SUCCESS = '[Players] LOAD TEAMS SUCCESS';
 
 export class SetCurrentPlayer implements Action {
   readonly type = SET_CURRENT_PLAYER;
@@ -50,6 +52,16 @@ export class LoadMatchesSuccess implements Action {
   constructor(public payload: Match[]) { }
 }
 
+export class LoadTeams implements Action {
+  readonly type = LOAD_TEAMS;
+  constructor(public payload: string) { }
+}
+
+export class LoadTeamsSuccess implements Action {
+  readonly type = LOAD_TEAMS_SUCCESS;
+  constructor(public payload: Team[]) { }
+}
+
 export type Actions =
   | SetCurrentPlayer
   | SearchByName
@@ -59,4 +71,6 @@ export type Actions =
   | LoadPlayerSuccess
   | LoadMatches
   | LoadMatchesSuccess
+  | LoadTeams
+  | LoadTeamsSuccess
   ;

@@ -1,15 +1,9 @@
 <mat-toolbar>
   <div class="champion-sort">
     <mat-button-toggle-group (change)="trackSort($event)" #championSort="matButtonToggleGroup">
-      <mat-button-toggle value="-xp" checked="true">
-        Level
-      </mat-button-toggle>
-      <mat-button-toggle value="-characterWins">
-        Wins
-      </mat-button-toggle>
-      <mat-button-toggle value="-winRate">
-        Win Rate
-      </mat-button-toggle>
+      <mat-button-toggle value="-xp" checked="true">Level</mat-button-toggle>
+      <mat-button-toggle value="-characterWins">Wins</mat-button-toggle>
+      <mat-button-toggle value="-winRate">Win Rate</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="champion-search">

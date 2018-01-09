@@ -1,4 +1,4 @@
-import { Participant } from './participant';
+import { Participant } from '@app/models';
 
 export interface Roster {
   id: string;

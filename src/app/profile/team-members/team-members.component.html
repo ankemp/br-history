@@ -1,0 +1,4 @@
+<div class="title">Members</div>
+<div class="player" *ngFor="let player of players" (click)="viewProfile.emit(player)">
+  {{ player.name }}
+</div>

@@ -42,7 +42,7 @@
         <p mat-line>{{ m.createdAt | date:'shortTime' }}</p>
       </div>
       <div class="stats">
-        <p mat-line *ngIf="hasStats">Score: {{ m | reduceStat:'score':player.id }}</p>
+        <p *ngIf="hasStats">Score: {{ m | reduceStat:'score':player.id }}</p>
       </div>
     </a>
   </mat-nav-list>

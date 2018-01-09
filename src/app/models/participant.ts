@@ -1,5 +1,4 @@
-import { Champion } from './champion';
-import { Player } from './player';
+import { Champion, Player } from '@app/models';
 
 export interface Participant {
   id: string;
