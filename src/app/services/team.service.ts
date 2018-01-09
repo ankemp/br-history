@@ -22,7 +22,7 @@ export class TeamService {
   }
 
   byPlayer(playerId: string, season = 6): Observable<Team[]> {
-    return this.http.get<Team[]>(`${this.TEAM_MEMBERS_API}/?playerId=${playerId}`)
+    return this.http.get<Team[]>(`${this.TEAM_MEMBERS_API}?playerId=${playerId}`)
       .map((response: any) => response);
   }
 
