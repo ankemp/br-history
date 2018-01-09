@@ -10,11 +10,11 @@ div:only-of-type {
 }
 
 .wins {
-  color: #66bb6a;
+  color: var(--win-green);
 }
 
 .losses {
-  color: #f44336;
+  color: var(--lose-red);
 }
 
 .rate {

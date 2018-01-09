@@ -66,8 +66,12 @@
   width: 100%;
 }
 
+.mat-list-item {
+  border-left-color: var(--lose-red);
+}
+
 .mat-list-item.won {
-  border-left-color: gold;
+  border-left-color: var(--win-green);
 }
 
 .mat-list-item.selected {
