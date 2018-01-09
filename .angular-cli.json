@@ -19,6 +19,7 @@
       "prefix": "brh",
       "styles": [
         "../node_modules/normalize.css/normalize.css",
+        "variables.css",
         "styles.scss"
       ],
       "scripts": [],
