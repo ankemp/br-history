@@ -19,7 +19,7 @@ export class TabsComponent {
   @Input() player: Player;
   @Input() teams: Team[];
   @Output() matchSelected = new EventEmitter<Match>();
-  @Output() viewProfile = new EventEmitter<Player>();
+  @Output() viewProfile = new EventEmitter<Partial<Player>>();
   @Output() openMatch = new EventEmitter<Match>();
   @Output() tabChange = new EventEmitter<MatTabChangeEvent>();
   @Output() reloadMatches = new EventEmitter<string>();

@@ -40,6 +40,7 @@ import { MatchHistoryComponent } from './match-history/match-history.component';
 import { ChampionsComponent } from './champions/champions.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TeamsComponent } from './teams/teams.component';
+import { TeamMembersComponent } from './team-members/team-members.component';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { TeamsComponent } from './teams/teams.component';
     MatchHistoryComponent,
     ChampionsComponent,
     SummaryComponent,
-    TeamsComponent
+    TeamsComponent,
+    TeamMembersComponent
   ],
   providers: [
     PlayerService,

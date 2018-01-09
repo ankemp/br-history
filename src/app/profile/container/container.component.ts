@@ -55,7 +55,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.store.dispatch(new matchesActions.LoadMatch(match.id));
   }
 
-  viewProfile(player: Player): void {
+  viewProfile(player: Partial<Player>): void {
     this.router.navigate(['/profile', player.id]);
   }
 

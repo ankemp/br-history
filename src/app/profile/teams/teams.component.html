@@ -28,6 +28,7 @@
     </mat-card-title-group>
     <mat-card-content>
       <brh-rank [team]="team"></brh-rank>
+      <brh-team-members (viewProfile)="viewProfile.emit($event)" [players]="team.players"></brh-team-members>
     </mat-card-content>
   </mat-card>
 </div>

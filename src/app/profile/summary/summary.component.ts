@@ -1,9 +1,11 @@
 import {
   Component,
-  Input,
-  OnChanges,
   ChangeDetectionStrategy,
-  SimpleChanges
+  Input,
+  Output,
+  OnChanges,
+  SimpleChanges,
+  EventEmitter
 } from '@angular/core';
 
 import { Player, Team } from '@app/models';
@@ -17,6 +19,7 @@ import { Player, Team } from '@app/models';
 export class SummaryComponent implements OnChanges {
   @Input() player: Player;
   @Input() teams: Team[];
+  @Output() viewProfile = new EventEmitter<Partial<Player>>();
   rSolo: Team;
   r2v2: Team;
   r3v3: Team;

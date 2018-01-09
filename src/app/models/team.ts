@@ -16,5 +16,5 @@ export interface Team {
   topDivisionRating: number;
   topLeague: number;
   wins: number;
-  players: Player[];
+  players: Partial<Player>[];
 }

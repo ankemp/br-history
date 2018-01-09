@@ -49,12 +49,21 @@
   flex-direction: row;
   font-size: 32px;
   justify-content: flex-start;
-  width: auto;
 }
 
 .summary-item.ranking.teams ::ng-deep brh-winlose {
   margin-left: 16px;
   width: auto;
+}
+
+.team-details {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.team-details brh-team-members {
+  width: 50%;
 }
 
 dl {
@@ -64,6 +73,6 @@ dl {
 
 dt, dd {
   display: flex;
-  width: 50%;
   margin: 0 0 8px;
+  width: 50%;
 }
