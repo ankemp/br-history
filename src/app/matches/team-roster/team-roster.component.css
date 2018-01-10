@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+.mat-expansion-panel-header-title {
+  align-items: center;
+}
+
+.mat-expansion-panel-header-title .mat-icon {
+  color: #ffd700;
+}
+
 .mat-expansion-panel-header-description span:first-of-type {
   padding-right: 4px;
 }
