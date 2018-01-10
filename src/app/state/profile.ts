@@ -74,9 +74,7 @@ export const getSearchError = createSelector(
 export const getSearchResults = createSelector(
   getPlayerEntities,
   getSearchPlayerIds,
-  (players, searchIds) => {
-    return searchIds.map(id => players[id]);
-  }
+  (players, searchIds) => searchIds.map(id => players[id])
 );
 
 /**
