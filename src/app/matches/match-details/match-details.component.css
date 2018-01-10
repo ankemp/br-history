@@ -40,6 +40,15 @@
   width: 100%;
 }
 
+.mat-card .mat-card-title-group .score {
+  color: #fff;
+  font-size: 72px;
+  left: 0;
+  text-align: center;
+  top: calc(50% - 36px);
+  width: 100%;
+}
+
 .mat-card .mat-card-title-group .open-match,
 .mat-card .mat-card-title-group .match-date {
   color: #ffffff;
