@@ -13,4 +13,10 @@ export class ParticipantStatsComponent {
 
   constructor() { }
 
+  get energyEfficiency(): string {
+    const effFactor = this.participant.stats.energyUsed / this.participant.stats.energyGained;
+    const efficiency = effFactor * 100;
+    return !isNaN(efficiency) ? `${efficiency.toFixed(1)}%` : 'N/A';
+  }
+
 }
