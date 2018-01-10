@@ -1,4 +1,4 @@
-<mat-tab-group (selectedTabChange)="tabChange.emit($event)">
+<mat-tab-group (selectedTabChange)="tabChange.emit($event)" selectedIndex="2">
   <mat-tab label="Overview">
     <brh-summary (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-summary>
     <brh-champions [player]="player"></brh-champions>

@@ -30,24 +30,28 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="history">
-  <mat-nav-list>
-    <a mat-list-item *ngFor="let m of matches" (click)="matchSelected.emit(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
-      <div class="where">
-        <h4 mat-line>{{ m.matchType }}</h4>
-        <p mat-line *ngIf="m.map">{{ m.map.name }}</p>
-        <p mat-line>{{ getPlayerParticipant(m)?.champion.name }}</p>
-      </div>
-      <div class="when">
-        <p mat-line>{{ m.createdAt | date:'EEE, M/d/yy' }}</p>
-        <p mat-line>{{ m.createdAt | date:'shortTime' }}</p>
-      </div>
-      <div class="stats">
-        <p *ngIf="hasStats">Score: {{ m | reduceStat:'score':player.id }}</p>
-      </div>
-    </a>
-  </mat-nav-list>
-  <div class="details">
-    <div class="nomatch" *ngIf="!match">Select a match</div>
-    <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="viewProfile.emit($event)" (openMatch)="openMatch.emit($event)"></brh-match-details>
-  </div>
+  <split direction="horizontal">
+    <split-area size="40">
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let m of matches" (click)="matchSelected.emit(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
+          <div class="where">
+            <h4 mat-line>{{ m.matchType }}</h4>
+            <p mat-line *ngIf="m.map">{{ m.map.name }}</p>
+            <p mat-line>{{ getPlayerParticipant(m)?.champion.name }}</p>
+          </div>
+          <div class="when">
+            <p mat-line>{{ m.createdAt | date:'EEE, M/d/yy' }}</p>
+            <p mat-line>{{ m.createdAt | date:'shortTime' }}</p>
+          </div>
+          <div class="stats">
+            <p *ngIf="hasStats">Score: {{ m | reduceStat:'score':player.id }}</p>
+          </div>
+        </a>
+      </mat-nav-list>
+    </split-area>
+    <split-area size="60">
+      <div class="nomatch" *ngIf="!match">Select a match</div>
+      <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="viewProfile.emit($event)" (openMatch)="openMatch.emit($event)"></brh-match-details>
+    </split-area>
+  </split>
 </div>

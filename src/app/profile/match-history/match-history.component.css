@@ -1,6 +1,7 @@
 :host() {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .mat-toolbar {
@@ -52,13 +53,12 @@
 .history {
   display: flex;
   flex-direction: row;
+  height: 100%;
   padding: 0.67em;
 }
 
 .mat-nav-list {
   padding-top: 0;
-  margin-right: 16px;
-  width: 40%;
 }
 
 .mat-list-item {
@@ -104,11 +104,6 @@
 .history .stats {
   text-align: right;
   width: 20%;
-}
-
-.history .details {
-  box-sizing: border-box;
-  width: 60%;
 }
 
 .history .nomatch {
