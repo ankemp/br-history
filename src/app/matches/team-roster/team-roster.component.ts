@@ -18,6 +18,7 @@ import { Roster, Player, Participant } from '@app/models';
 export class TeamRosterComponent implements OnInit {
   @Input() player?: Player;
   @Input() roster: Roster;
+  @Input() singleMatch: boolean;
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
 

@@ -25,7 +25,7 @@ export class MatchDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.singleMatch = this.openMatch.observers.length > 0;
+    this.singleMatch = !(this.openMatch.observers.length > 0);
   }
 
 }
