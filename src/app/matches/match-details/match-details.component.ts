@@ -20,12 +20,12 @@ export class MatchDetailsComponent implements OnInit {
   @Input() player?: Player = { id: '', name: '' };
   @Output() viewProfile = new EventEmitter<Player>();
   @Output() openMatch = new EventEmitter<Match>();
-  showOpenMatch = false;
+  singleMatch = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.showOpenMatch = this.openMatch.observers.length > 0;
+    this.singleMatch = this.openMatch.observers.length > 0;
   }
 
 }

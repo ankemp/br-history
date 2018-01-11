@@ -16,8 +16,8 @@ import { Roster, Player, Participant } from '@app/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamRosterComponent implements OnInit {
-  @Input() roster: Roster;
   @Input() player?: Player;
+  @Input() roster: Roster;
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
 
@@ -25,14 +25,6 @@ export class TeamRosterComponent implements OnInit {
 
   ngOnInit(): void {
     this.topParticipant = this.roster.participants.sort((a, b) => b.stats.score - a.stats.score)[0];
-  }
-
-  viewProfileDisabled(participant: Participant): boolean {
-    return (!!participant.player && participant.player.id === this.player.id);
-  }
-
-  isMvp(participant: Participant): boolean {
-    return this.topParticipant.id === participant.id && this.roster.won;
   }
 
 }

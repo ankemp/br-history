@@ -1,0 +1,21 @@
+<mat-expansion-panel *ngFor="let participant of roster.participants">
+  <mat-expansion-panel-header>
+    <mat-panel-title *ngIf="participant.player.name">
+      <mat-icon *ngIf="isMvp(participant)" matTooltip="Match MVP">star</mat-icon>
+      <span>{{ participant.player.name }} as {{ participant.champion.name }}</span>
+    </mat-panel-title>
+    <mat-panel-title *ngIf="!!!participant.player.name">
+      <mat-icon *ngIf="isMvp(participant)" matTooltip="Match MVP">star</mat-icon>
+      <span>{{ participant.champion.name }}</span>
+    </mat-panel-title>
+    <mat-panel-description>
+      <span matTooltip="Score">{{ participant.stats.score }}</span>
+      <span matTooltip="Damange Done">{{ participant.stats.damageDone }}</span>
+      <span matTooltip="Healing Done">{{ participant.stats.healingDone }}</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <brh-participant-stats [participant]="participant"></brh-participant-stats>
+  <mat-action-row>
+    <button mat-button color="primary" (click)="viewProfile.emit(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
+  </mat-action-row>
+</mat-expansion-panel>

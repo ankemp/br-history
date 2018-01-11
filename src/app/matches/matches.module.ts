@@ -19,6 +19,7 @@ import { TeamRosterComponent } from './team-roster/team-roster.component';
 import { MatchDetailsComponent } from './match-details/match-details.component';
 import { ParticipantStatsComponent } from './participant-stats/participant-stats.component';
 import { MatchStatsComponent } from './match-stats/match-stats.component';
+import { TeamRosterListComponent } from './team-roster-list/team-roster-list.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { MatchStatsComponent } from './match-stats/match-stats.component';
     TeamRosterComponent,
     MatchDetailsComponent,
     ParticipantStatsComponent,
-    MatchStatsComponent
+    MatchStatsComponent,
+    TeamRosterListComponent
   ],
   exports: [
     MatchDetailsComponent
