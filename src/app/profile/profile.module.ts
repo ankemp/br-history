@@ -24,6 +24,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
+import { AngularSplitModule } from 'angular-split';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { CountdownTimerModule } from 'ngx-countdown-timer';
 
@@ -59,6 +60,7 @@ import { TeamMembersComponent } from './team-members/team-members.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    AngularSplitModule,
     NgArrayPipesModule,
     CountdownTimerModule.forRoot(),
     SharedModule,

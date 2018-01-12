@@ -2,9 +2,10 @@ import {
   Component,
   Input,
   Output,
+  AfterViewInit,
   OnChanges,
   SimpleChanges,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 
 import { Match, Player, Participant } from '@app/models';
@@ -14,7 +15,7 @@ import { Match, Player, Participant } from '@app/models';
   templateUrl: './match-history.component.html',
   styleUrls: ['./match-history.component.css']
 })
-export class MatchHistoryComponent implements OnChanges {
+export class MatchHistoryComponent implements AfterViewInit, OnChanges {
   @Input() matches: Match[];
   @Input() match: Match;
   @Input() player: Player;
@@ -23,8 +24,13 @@ export class MatchHistoryComponent implements OnChanges {
   @Output() openMatch = new EventEmitter<Match>();
   @Output() reloadMatches = new EventEmitter<string>();
   refreshTime: string;
+  historyWidth: number;
 
   constructor() { }
+
+  ngAfterViewInit(): void {
+    this.historyWidth = 40;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!!changes.player) {

@@ -2,7 +2,7 @@ import {
   Component,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material';
 
@@ -23,6 +23,7 @@ export class TabsComponent {
   @Output() openMatch = new EventEmitter<Match>();
   @Output() tabChange = new EventEmitter<MatTabChangeEvent>();
   @Output() reloadMatches = new EventEmitter<string>();
+  currentTab = 0;
 
   constructor() { }
 
