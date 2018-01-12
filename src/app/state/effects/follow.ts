@@ -13,7 +13,7 @@ import * as followActions from '@state/actions/follow';
 import { Player } from '@app/models';
 
 @Injectable()
-export class CartEffects {
+export class FollowEffects {
   constructor(
     private actions$: Actions,
     private db: Database
