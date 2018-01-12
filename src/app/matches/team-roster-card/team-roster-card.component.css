@@ -1,0 +1,15 @@
+:host() {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-container {
+  padding: 0 8px;
+  flex: 1 1 0;
+  width: 100%;
+}
+
+brh-participant-stats ::ng-deep .avatar {
+  display: none;
+}
+

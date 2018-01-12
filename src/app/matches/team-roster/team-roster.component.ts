@@ -1,9 +1,10 @@
 import {
   Component,
+  ChangeDetectionStrategy,
   Input,
   Output,
+  OnInit,
   EventEmitter,
-  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { Roster, Player, Participant } from '@app/models';
@@ -14,15 +15,17 @@ import { Roster, Player, Participant } from '@app/models';
   styleUrls: ['./team-roster.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamRosterComponent {
-  @Input() roster: Roster;
+export class TeamRosterComponent implements OnInit {
   @Input() player?: Player;
+  @Input() roster: Roster;
+  @Input() singleMatch: boolean;
   @Output() viewProfile = new EventEmitter<Player>();
+  topParticipant: Participant;
 
   constructor() { }
 
-  viewProfileDisabled(participant: Participant): boolean {
-    return (!!participant.player && participant.player.id === this.player.id);
+  ngOnInit(): void {
+    this.topParticipant = this.roster.participants.sort((a, b) => b.stats.score - a.stats.score)[0];
   }
 
 }

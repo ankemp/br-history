@@ -56,13 +56,21 @@ export class MatchStatsComponent {
     }, {});
   }
 
+  private unCamelCase(strings: string[]): string[] {
+    return strings.map(s => {
+      return s.replace(/([A-Z])/g, ' $1')
+        .replace(/^./, (str) => str.toUpperCase());
+    });
+  }
+
   private buildDataTable(cols: string[]): any[] {
-    const data = [['Username', ...cols]];
+    const data = [['Username', ...this.unCamelCase(cols)]];
     const { participants } = this.roster;
     data.push(
-      ...participants.map(participant =>
-        [participant.player.name, ...cols.map(col => participant.stats[col])]
-      )
+      ...participants.map(participant => {
+        const name = !!participant.player.name ? `${participant.champion.name}\n${participant.player.name}` : participant.champion.name;
+        return [name, ...cols.map(col => participant.stats[col])];
+      })
     );
     return data;
   }

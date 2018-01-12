@@ -1,19 +1,6 @@
 <div class="details">
-  <h2>Score: {{roster.score}}</h2>
+  <h2>Team score: {{ roster.score }}</h2>
   <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats>
 </div>
-<mat-expansion-panel *ngFor="let participant of roster.participants">
-  <mat-expansion-panel-header>
-    <mat-panel-title *ngIf="participant.player.name">{{participant.player.name}} as {{participant.champion.name}}</mat-panel-title>
-    <mat-panel-title *ngIf="!!!participant.player.name">{{participant.champion.name}}</mat-panel-title>
-    <mat-panel-description>
-      <span matTooltip="Score">{{ participant.stats.score }}</span>
-      <span matTooltip="Damange Done">{{ participant.stats.damageDone }}</span>
-      <span matTooltip="Healing Done">{{ participant.stats.healingDone }}</span>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <brh-participant-stats [participant]="participant"></brh-participant-stats>
-  <mat-action-row>
-    <button mat-button color="primary" (click)="viewProfile.emit(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
-  </mat-action-row>
-</mat-expansion-panel>
+<!-- <brh-team-roster-card *ngIf="singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-card> -->
+<brh-team-roster-list (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-list>
