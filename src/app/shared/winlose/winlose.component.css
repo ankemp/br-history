@@ -19,6 +19,9 @@ div:only-of-type {
 .divider {
   color: grey;
 }
+.divider {
+  color: grey;
+}
 
 .rate {
   margin-left: auto;
