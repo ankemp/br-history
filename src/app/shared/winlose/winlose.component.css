@@ -17,10 +17,7 @@ div:only-of-type {
   color: var(--lose-red);
 }
 .divider {
-  color: grey;
-}
-.divider {
-  color: grey;
+  color: #ddd;
 }
 
 .rate {
