@@ -41,36 +41,43 @@
 <div class="summary-item ranking">
   <mat-card>
     <mat-card-title>Solo Queue</mat-card-title>
-    <mat-card-content *ngIf="hasSolo">
-      <brh-rank [team]="rSolo"></brh-rank>
+    <mat-card-content>
+      <brh-loader *ngIf="isTeamsLoading" [diameter]="60"></brh-loader>
+      <brh-rank *ngIf="hasSolo" [team]="rSolo"></brh-rank>
     </mat-card-content>
   </mat-card>
 </div>
 <div class="summary-item ranking teams">
   <mat-card>
     <mat-card-title>Best 2v2 Team</mat-card-title>
-    <mat-card-content *ngIf="has2v2">
+    <mat-card-content *ngIf="has2v2 && !isTeamsLoading">
       <h3>{{ r2v2.name }}</h3>
       <div class="team-details">
         <brh-rank [team]="r2v2" [size]="120"></brh-rank>
         <brh-team-members (viewProfile)="viewProfile.emit($event)" [players]="r2v2.players"></brh-team-members>
       </div>
     </mat-card-content>
-    <mat-card-content *ngIf="!has2v2">
+    <mat-card-content *ngIf="!has2v2 && !isTeamsLoading">
       <h3>No 2v2 Teams</h3>
+    </mat-card-content>
+    <mat-card-content *ngIf="isTeamsLoading">
+      <brh-loader [diameter]="40"></brh-loader>
     </mat-card-content>
   </mat-card>
   <mat-card>
     <mat-card-title>Best 3v3 Team</mat-card-title>
-    <mat-card-content *ngIf="has3v3">
+    <mat-card-content *ngIf="has3v3 && !isTeamsLoading">
       <h3>{{ r3v3.name }}</h3>
       <div class="team-details">
         <brh-rank [team]="r3v3" [size]="120"></brh-rank>
         <brh-team-members (viewProfile)="viewProfile.emit($event)" [players]="r3v3.players"></brh-team-members>
       </div>
     </mat-card-content>
-    <mat-card-content *ngIf="!has3v3">
+    <mat-card-content *ngIf="!has3v3 && !isTeamsLoading">
       <h3>No 3v3 Teams</h3>
+    </mat-card-content>
+    <mat-card-content *ngIf="isTeamsLoading">
+      <brh-loader [diameter]="40"></brh-loader>
     </mat-card-content>
   </mat-card>
 </div>
