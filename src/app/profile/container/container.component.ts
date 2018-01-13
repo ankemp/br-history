@@ -75,7 +75,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
       action: 'history reload',
       properties: { category: 'player profile' },
     });
-    this.store.dispatch(new playersActions.LoadPlayer(playerId));
+    this.store.dispatch(new playersActions.LoadMatches(playerId));
   }
 
   tabChange($event: MatTabChangeEvent): void {
