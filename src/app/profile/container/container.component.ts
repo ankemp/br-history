@@ -26,6 +26,7 @@ import { Match, Player, Team } from '@app/models';
     (tabChange)="tabChange($event)"
     [player]="player$ | async"
     [teams]="teams$ | async"
+    [isTeamsLoading]="isTeamsLoading$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async">
     </brh-tabs>
@@ -37,6 +38,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   public selectedMatch$: Observable<Match>;
   public player$: Observable<Player>;
   public teams$: Observable<Team[]>;
+  public isTeamsLoading$: Observable<boolean>;
   private routeSub: Subscription;
 
   constructor(
@@ -49,6 +51,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.history$ = store.select<Match[]>(fromProfile.getAllMatches);
     this.player$ = store.select<Player>(fromProfile.getSelectedProfile);
     this.teams$ = store.select<Team[]>(fromProfile.getAllTeams);
+    this.isTeamsLoading$ = store.select<boolean>(fromProfile.getTeamsLoading);
   }
 
   selectMatch(match: Match): void {
