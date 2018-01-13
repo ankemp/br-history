@@ -42,6 +42,7 @@ export const getSelectedProfile = createSelector(
  * Teams Selectors
  */
 export const getTeamsEntityState = createSelector(getProfileState, state => state.teams);
+export const getTeamsLoading = createSelector(getTeamsEntityState, fromTeams.getTeamsLoading);
 export const {
   selectEntities: getTeamsEntities,
   selectAll: getAllTeams,
