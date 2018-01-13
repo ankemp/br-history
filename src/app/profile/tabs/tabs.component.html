@@ -3,14 +3,14 @@
     <brh-summary *ngIf="currentTab === 0" (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams" [isTeamsLoading]="isTeamsLoading"></brh-summary>
     <brh-champions *ngIf="currentTab === 0" [player]="player"></brh-champions>
   </mat-tab>
-  <mat-tab [disabled]="isTeamsLoading">
+  <mat-tab [disabled]="currentTab !== 1 && isTeamsLoading">
     <ng-template mat-tab-label>
       Teams
       <brh-loader *ngIf="isTeamsLoading"></brh-loader>
     </ng-template>
     <brh-teams *ngIf="currentTab === 1" (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-teams>
   </mat-tab>
-  <mat-tab [disabled]="isMatchesLoading">
+  <mat-tab [disabled]="currentTab !== 2 && isMatchesLoading">
     <ng-template mat-tab-label>
       Match History
       <brh-loader *ngIf="isMatchesLoading"></brh-loader>
