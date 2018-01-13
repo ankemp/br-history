@@ -11,10 +11,12 @@ export const matchesAdapter = createEntityAdapter<Match>({
 
 export interface State extends EntityState<Match> {
   currentMatchId?: string;
+  loading: boolean;
 }
 
 export const INIT_STATE: State = matchesAdapter.getInitialState({
   currentMatchId: undefined,
+  loading: false
 });
 
 export function reducer(state = INIT_STATE, action: matchesActions.Actions | playerActions.Actions) {
@@ -31,8 +33,12 @@ export function reducer(state = INIT_STATE, action: matchesActions.Actions | pla
       return { ...matchesAdapter.addOne(action.payload as Match, state), currentMatchId: action.payload.id };
     }
 
+    case playerActions.LOAD_MATCHES: {
+      return { ...state, loading: true };
+    }
+
     case playerActions.LOAD_MATCHES_SUCCESS: {
-      return { ...matchesAdapter.addAll(action.payload as Match[], state) };
+      return { ...matchesAdapter.addAll(action.payload as Match[], state), loading: false };
     }
 
     default:
@@ -41,3 +47,4 @@ export function reducer(state = INIT_STATE, action: matchesActions.Actions | pla
 }
 
 export const getCurrentMatchId = (state: State) => state.currentMatchId;
+export const getMatchesLoading = (state: State) => state.loading;

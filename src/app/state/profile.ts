@@ -83,6 +83,7 @@ export const getSearchResults = createSelector(
  */
 export const getMatchesEntityState = createSelector(getProfileState, state => state.matches);
 export const getSelectedMatchId = createSelector(getMatchesEntityState, fromMatches.getCurrentMatchId);
+export const getMatchesLoading = createSelector(getMatchesEntityState, fromMatches.getMatchesLoading);
 export const {
   selectEntities: getMatchesEntities,
   selectAll: getAllMatches
