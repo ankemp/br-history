@@ -43,6 +43,7 @@ export const getSelectedProfile = createSelector(
  */
 export const getTeamsEntityState = createSelector(getProfileState, state => state.teams);
 export const getTeamsLoading = createSelector(getTeamsEntityState, fromTeams.getTeamsLoading);
+export const getTeamsError = createSelector(getTeamsEntityState, fromTeams.getTeamsError);
 export const {
   selectEntities: getTeamsEntities,
   selectAll: getAllTeams,
@@ -84,6 +85,7 @@ export const getSearchResults = createSelector(
 export const getMatchesEntityState = createSelector(getProfileState, state => state.matches);
 export const getSelectedMatchId = createSelector(getMatchesEntityState, fromMatches.getCurrentMatchId);
 export const getMatchesLoading = createSelector(getMatchesEntityState, fromMatches.getMatchesLoading);
+export const getMatchesError = createSelector(getMatchesEntityState, fromMatches.getMatchesError);
 export const {
   selectEntities: getMatchesEntities,
   selectAll: getAllMatches

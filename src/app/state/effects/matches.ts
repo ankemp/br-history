@@ -4,7 +4,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
-import { switchMap, map } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
+import { switchMap, map, catchError } from 'rxjs/operators';
 
 import * as matchesActions from '@state/actions/matches';
 import * as playerActions from '@state/actions/players';
@@ -34,7 +35,8 @@ export class MatchesEffects {
     .pipe(
     map((action: playerActions.LoadMatches) => action.payload),
     switchMap((playerId) => this.api.byPlayer(playerId)),
-    map((m: Match[]) => new playerActions.LoadMatchesSuccess(m))
+    map((m: Match[]) => new playerActions.LoadMatchesSuccess(m)),
+    catchError((error) => of(new playerActions.LoadMatchesError(error)))
     );
 
 }

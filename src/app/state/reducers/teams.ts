@@ -12,11 +12,13 @@ export const teamsAdapter = createEntityAdapter<Team>({
 export interface State extends EntityState<Team> {
   currentTeamId?: string;
   loading: boolean;
+  error?: string;
 }
 
 export const INIT_STATE: State = teamsAdapter.getInitialState({
   currentTeamId: undefined,
-  loading: false
+  loading: false,
+  error: undefined
 });
 
 export function reducer(state = INIT_STATE, action: teamsActions.Actions | playersActions.Actions) {
@@ -41,6 +43,10 @@ export function reducer(state = INIT_STATE, action: teamsActions.Actions | playe
       return { ...teamsAdapter.addMany(action.payload as Team[], state), loading: false };
     }
 
+    case playersActions.LOAD_TEAMS_ERROR: {
+      return { ...state, loading: false, error: action.payload };
+    }
+
     default:
       return state;
   }
@@ -48,3 +54,4 @@ export function reducer(state = INIT_STATE, action: teamsActions.Actions | playe
 
 export const getCurrentTeamId = (state: State) => state.currentTeamId;
 export const getTeamsLoading = (state: State) => state.loading;
+export const getTeamsError = (state: State) => state.error;

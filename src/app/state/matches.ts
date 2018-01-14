@@ -14,6 +14,7 @@ export const getMatchesState = createFeatureSelector<State>('matches');
 export const getMatchesEntityState = createSelector(getMatchesState, state => state.matches);
 export const getSelectedMatchId = createSelector(getMatchesEntityState, fromMatches.getCurrentMatchId);
 export const getMatchesLoading = createSelector(getMatchesEntityState, fromMatches.getMatchesLoading);
+export const getMatchesError = createSelector(getMatchesEntityState, fromMatches.getMatchesError);
 export const {
   selectEntities: getMatchesEntities,
   selectAll: getAllMatches
