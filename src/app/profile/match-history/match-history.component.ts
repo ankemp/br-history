@@ -33,8 +33,8 @@ export class MatchHistoryComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!!changes.player) {
-      this.setRefreshTime(changes.player.currentValue);
+    if (!!changes.matches) {
+      this.setRefreshTime();
     }
   }
 
@@ -81,10 +81,17 @@ export class MatchHistoryComponent implements AfterViewInit, OnChanges {
     return !!this.matches.findIndex(match => typeof match.rosters === 'undefined');
   }
 
-  setRefreshTime(player: Player): void {
-    const newest = new Date(player.newestMatch);
+  setRefreshTime(): void {
+    const newest = new Date(this.matches[0].createdAt);
     const mins = newest.setMinutes(newest.getMinutes() + 20);
     this.refreshTime = new Date(mins).toJSON();
+  }
+
+  get canRefresh(): boolean {
+    let minsAgo = new Date();
+    minsAgo = new Date(minsAgo.setMinutes(minsAgo.getMinutes() + 20));
+    const refreshTime = new Date(this.refreshTime);
+    return minsAgo.getTime() > refreshTime.getTime();
   }
 
 }

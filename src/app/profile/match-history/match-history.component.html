@@ -3,11 +3,11 @@
     <h3 class="title">Session Stats:</h3>
     <div class="stat">
       <div>Kills</div>
-      <div>{{matches | reduceStat:'kills':player.id}}</div>
+      <div>{{ matches | reduceStat:'kills':player.id }}</div>
     </div>
     <div class="stat">
       <div>Deaths</div>
-      <div>{{matches | reduceStat:'deaths':player.id}}</div>
+      <div>{{ matches | reduceStat:'deaths':player.id }}</div>
     </div>
     <div class="stat">
       <div>Avg Score</div>
@@ -18,8 +18,8 @@
       <div>{{ wlRatio }}</div>
     </div>
     <div class="refresh">
-      <countdown-timer [end]="refreshTime"></countdown-timer>
-      <button mat-icon-button color="primary" (click)="reloadMatches.emit(player.id)">
+      <countdown-timer *ngIf="!canRefresh" [end]="refreshTime"></countdown-timer>
+      <button mat-icon-button color="primary" (click)="reloadMatches.emit(player.id)" [disabled]="!canRefresh">
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
