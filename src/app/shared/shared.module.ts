@@ -10,6 +10,7 @@ import { AssetRoutePipe } from './asset-route.pipe';
 import { LoaderComponent } from './loader/loader.component';
 import { WinloseComponent } from './winlose/winlose.component';
 import { RankComponent } from './rank/rank.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { RankComponent } from './rank/rank.component';
     AssetRoutePipe,
     LoaderComponent,
     WinloseComponent,
-    RankComponent
+    RankComponent,
+    ErrorComponent
   ],
   exports: [
     SecToMinPipe,
@@ -32,7 +34,8 @@ import { RankComponent } from './rank/rank.component';
     AssetRoutePipe,
     LoaderComponent,
     WinloseComponent,
-    RankComponent
+    RankComponent,
+    ErrorComponent
   ]
 })
 export class SharedModule { }
