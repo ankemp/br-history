@@ -36,7 +36,7 @@ export class MatchesEffects {
     map((action: playerActions.LoadMatches) => action.payload),
     switchMap((playerId) => this.api.byPlayer(playerId)),
     map((m: Match[]) => new playerActions.LoadMatchesSuccess(m)),
-    retry(2),
+    // retry(2),
     catchError((error) => of(new playerActions.LoadMatchesError(error)))
     );
 

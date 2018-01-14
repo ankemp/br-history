@@ -39,7 +39,7 @@ export class TeamsEffects {
     map((action: playerActions.LoadTeams) => action.payload),
     switchMap((playerId) => this.api.byPlayer(playerId)),
     map((t: Team[]) => new playerActions.LoadTeamsSuccess(t)),
-    retry(2),
+    // retry(2),
     catchError((error) => of(new playerActions.LoadTeamsError(error)))
     );
 
