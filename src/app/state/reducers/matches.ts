@@ -27,6 +27,10 @@ export function reducer(state = INIT_STATE, action: matchesActions.Actions | pla
       return { ...state, currentMatchId: action.payload };
     }
 
+    case matchesActions.UNSET_CURRENT_MATCH: {
+      return { ...state, currentMatchId: undefined };
+    }
+
     case playerActions.SET_CURRENT_PLAYER: {
       return { ...matchesAdapter.removeAll(state), currentMatchId: undefined };
     }

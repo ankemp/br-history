@@ -84,6 +84,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   tabChange($event: MatTabChangeEvent): void {
+    this.store.dispatch(new matchesActions.UnSetCurrentMatch);
     // this.router.navigate([`${$event.index}-${$event.tab.textLabel}`], { relativeTo: this.activatedRoute });
   }
 
