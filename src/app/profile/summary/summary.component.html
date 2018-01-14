@@ -42,6 +42,7 @@
   <mat-card>
     <mat-card-title>Solo Queue</mat-card-title>
     <mat-card-content>
+      <h3 *ngIf="!!teamsError">No Solo Ranking</h3>
       <brh-loader *ngIf="isTeamsLoading" [diameter]="60"></brh-loader>
       <brh-rank *ngIf="hasSolo" [team]="rSolo"></brh-rank>
     </mat-card-content>

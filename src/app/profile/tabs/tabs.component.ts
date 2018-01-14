@@ -16,10 +16,11 @@ import { Match, Player, Team } from '@app/models';
 export class TabsComponent {
   @Input() matches: Match[];
   @Input() match: Match;
+  @Input() isMatchesLoading: boolean;
   @Input() player: Player;
   @Input() teams: Team[];
   @Input() isTeamsLoading: boolean;
-  @Input() isMatchesLoading: boolean;
+  @Input() teamsError: string;
   @Output() matchSelected = new EventEmitter<Match>();
   @Output() viewProfile = new EventEmitter<Partial<Player>>();
   @Output() openMatch = new EventEmitter<Match>();
@@ -28,5 +29,9 @@ export class TabsComponent {
   currentTab = 0;
 
   constructor() { }
+
+  get isTeamsActive(): boolean {
+    return (this.currentTab === 1 || !this.isTeamsLoading && !!!this.teamsError);
+  }
 
 }

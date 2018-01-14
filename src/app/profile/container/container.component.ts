@@ -29,7 +29,8 @@ import { Match, Player, Team } from '@app/models';
     [isTeamsLoading]="isTeamsLoading$ | async"
     [matches]="history$ | async"
     [match]="selectedMatch$ | async"
-    [isMatchesLoading]="isMatchesLoading$ | async">
+    [isMatchesLoading]="isMatchesLoading$ | async"
+    [teamsError]="teamsError$ | async">
     </brh-tabs>
   `,
   styleUrls: ['./container.component.css']
@@ -37,10 +38,12 @@ import { Match, Player, Team } from '@app/models';
 export class ContainerComponent implements OnInit, OnDestroy {
   public history$: Observable<Match[]>;
   public selectedMatch$: Observable<Match>;
+  public matchesError$: Observable<string>;
+  public isMatchesLoading$: Observable<boolean>;
   public player$: Observable<Player>;
   public teams$: Observable<Team[]>;
   public isTeamsLoading$: Observable<boolean>;
-  public isMatchesLoading$: Observable<boolean>;
+  public teamsError$: Observable<string>;
   private routeSub: Subscription;
 
   constructor(
@@ -51,10 +54,12 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ) {
     this.selectedMatch$ = store.select<Match>(fromProfile.getSelectedMatch);
     this.history$ = store.select<Match[]>(fromProfile.getAllMatches);
+    this.isMatchesLoading$ = store.select<boolean>(fromProfile.getMatchesLoading);
+    this.matchesError$ = store.select<string>(fromProfile.getMatchesError);
     this.player$ = store.select<Player>(fromProfile.getSelectedProfile);
     this.teams$ = store.select<Team[]>(fromProfile.getAllTeams);
     this.isTeamsLoading$ = store.select<boolean>(fromProfile.getTeamsLoading);
-    this.isMatchesLoading$ = store.select<boolean>(fromProfile.getMatchesLoading);
+    this.teamsError$ = store.select<string>(fromProfile.getTeamsError);
   }
 
   selectMatch(match: Match): void {
