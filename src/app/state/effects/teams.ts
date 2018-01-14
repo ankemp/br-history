@@ -6,7 +6,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, retry } from 'rxjs/operators';
 
 import * as teamsActions from '@state/actions/teams';
 import * as playerActions from '@state/actions/players';
@@ -39,6 +39,7 @@ export class TeamsEffects {
     map((action: playerActions.LoadTeams) => action.payload),
     switchMap((playerId) => this.api.byPlayer(playerId)),
     map((t: Team[]) => new playerActions.LoadTeamsSuccess(t)),
+    retry(2),
     catchError((error) => of(new playerActions.LoadTeamsError(error)))
     );
 
