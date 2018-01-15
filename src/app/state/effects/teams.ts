@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { MatSnackBar } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
@@ -19,6 +20,7 @@ import { environment } from 'environments/environment';
 export class TeamsEffects {
   constructor(
     private title: Title,
+    private snackBar: MatSnackBar,
     private actions$: Actions,
     private api: TeamService,
   ) { }
@@ -41,6 +43,17 @@ export class TeamsEffects {
     map((t: Team[]) => new playerActions.LoadTeamsSuccess(t)),
     // retry(2),
     catchError((error) => of(new playerActions.LoadTeamsError(error)))
+    );
+
+  @Effect({ dispatch: false })
+  loadPlayerTeamsError$: Observable<Action> = this.actions$
+    .ofType(playerActions.LOAD_TEAMS_ERROR)
+    .pipe(
+    map((action: playerActions.LoadTeamsError) => action.payload),
+    switchMap((error) => {
+      this.snackBar.open('Unable to load teams', '', { horizontalPosition: 'center', duration: 2000 });
+      return empty();
+    })
     );
 
   @Effect({ dispatch: false })
