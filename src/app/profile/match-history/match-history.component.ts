@@ -77,6 +77,19 @@ export class MatchHistoryComponent implements AfterViewInit, OnChanges {
     return roster ? roster.won : false;
   }
 
+  get winStreak(): string {
+    let cont = true;
+    const streak = this.matches.reduce((wins, match) => {
+      if (cont && this.isWinner(match)) {
+        wins++;
+      } else {
+        cont = false;
+      }
+      return wins;
+    }, 0);
+    return streak <= 10 ? streak.toString() : '10+';
+  }
+
   get hasStats(): boolean {
     return !!this.matches.findIndex(match => typeof match.rosters === 'undefined');
   }

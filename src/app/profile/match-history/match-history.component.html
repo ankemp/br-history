@@ -17,6 +17,10 @@
       <div>W/L Ratio</div>
       <div>{{ wlRatio }}</div>
     </div>
+    <div class="stat">
+      <div>Win Streak</div>
+      <div>{{ winStreak }}</div>
+    </div>
     <div class="refresh">
       <countdown-timer *ngIf="!canRefresh" [end]="refreshTime"></countdown-timer>
       <button mat-icon-button color="primary" (click)="reloadMatches.emit(player.id)" [disabled]="!canRefresh">
