@@ -8,7 +8,7 @@
     <ng-template mat-tab-label>
       Teams
       <brh-loader *ngIf="isTeamsLoading"></brh-loader>
-      <mat-icon *ngIf="!!teamsError">error_outline</mat-icon>
+      <mat-icon *ngIf="!!teamsError" matTooltip="Could not load">error_outline</mat-icon>
     </ng-template>
     <brh-teams *ngIf="currentTab === 1" (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-teams>
   </mat-tab>
