@@ -13,6 +13,8 @@ export const reducers = {
 export const getTeamsState = createFeatureSelector<State>('teams');
 export const getTeamsEntityState = createSelector(getTeamsState, state => state.teams);
 export const getSelectedTeamId = createSelector(getTeamsEntityState, fromTeams.getCurrentTeamId);
+export const getTeamsLoading = createSelector(getTeamsEntityState, fromTeams.getTeamsLoading);
+export const getTeamsError = createSelector(getTeamsEntityState, fromTeams.getTeamsError);
 export const {
   selectEntities: getTeamsEntities,
   selectAll: getAllTeams

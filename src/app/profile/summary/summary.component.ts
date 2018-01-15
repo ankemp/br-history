@@ -19,6 +19,8 @@ import { Player, Team } from '@app/models';
 export class SummaryComponent implements OnChanges {
   @Input() player: Player;
   @Input() teams: Team[];
+  @Input() isTeamsLoading: boolean;
+  @Input() teamsError: string;
   @Output() viewProfile = new EventEmitter<Partial<Player>>();
   rSolo: Team;
   r2v2: Team;

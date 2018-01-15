@@ -9,8 +9,10 @@ export const LOAD_PLAYER = '[Players] LOAD PLAYER';
 export const LOAD_PLAYER_SUCCESS = '[Players] LOAD PLAYER SUCCESS';
 export const LOAD_MATCHES = '[Players] LOAD MATCHES';
 export const LOAD_MATCHES_SUCCESS = '[Players] LOAD MATCHES SUCCESS';
+export const LOAD_MATCHES_ERROR = '[Players] LOAD MATCHES ERROR';
 export const LOAD_TEAMS = '[Players] LOAD TEAMS';
 export const LOAD_TEAMS_SUCCESS = '[Players] LOAD TEAMS SUCCESS';
+export const LOAD_TEAMS_ERROR = '[Players] LOAD TEAMS ERROR';
 
 export class SetCurrentPlayer implements Action {
   readonly type = SET_CURRENT_PLAYER;
@@ -52,6 +54,11 @@ export class LoadMatchesSuccess implements Action {
   constructor(public payload: Match[]) { }
 }
 
+export class LoadMatchesError implements Action {
+  readonly type = LOAD_MATCHES_ERROR;
+  constructor(public payload: string) { }
+}
+
 export class LoadTeams implements Action {
   readonly type = LOAD_TEAMS;
   constructor(public payload: string) { }
@@ -60,6 +67,11 @@ export class LoadTeams implements Action {
 export class LoadTeamsSuccess implements Action {
   readonly type = LOAD_TEAMS_SUCCESS;
   constructor(public payload: Team[]) { }
+}
+
+export class LoadTeamsError implements Action {
+  readonly type = LOAD_TEAMS_ERROR;
+  constructor(public payload: string) { }
 }
 
 export type Actions =
@@ -71,6 +83,8 @@ export type Actions =
   | LoadPlayerSuccess
   | LoadMatches
   | LoadMatchesSuccess
+  | LoadMatchesError
   | LoadTeams
   | LoadTeamsSuccess
+  | LoadTeamsError
   ;
