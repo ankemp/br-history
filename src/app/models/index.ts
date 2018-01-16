@@ -9,3 +9,4 @@ export * from './player';
 export * from './roster';
 export * from './round';
 export * from './team';
+export * from './telemetry';
