@@ -22,6 +22,10 @@ export class MatchService {
       .map((response: any) => response as Match);
   }
 
+  getTelemetry(telemetryUrl: string): Observable<any> {
+    return this.http.get(telemetryUrl);
+  }
+
   byPlayer(playerId: string, options?: any): Observable<Match[]> {
     return this.http
       .get<Match[]>(`${this.PARTICIPANTS_API}?playerId=${playerId}`)
