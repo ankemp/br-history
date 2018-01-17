@@ -19,6 +19,7 @@ export class TeamRosterCardComponent {
   @Input() roster: Roster;
   @Input() topParticipant: Participant;
   @Output() viewProfile = new EventEmitter<Player>();
+  @Output() viewBattlerites = new EventEmitter<Player>();
 
   constructor() { }
 

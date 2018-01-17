@@ -6,8 +6,10 @@ import {
   OnInit,
   EventEmitter,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { Roster, Player, Participant } from '@app/models';
+import * as telemetryActions from '@state/actions/telemetry';
+import { Roster, Player, Participant, Match } from '@app/models';
 
 @Component({
   selector: 'brh-team-roster',
@@ -22,10 +24,14 @@ export class TeamRosterComponent implements OnInit {
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
 
-  constructor() { }
+  constructor(private store: Store<Match>) { }
 
   ngOnInit(): void {
     this.topParticipant = this.roster.participants.sort((a, b) => b.stats.score - a.stats.score)[0];
+  }
+
+  viewBattlerites(player: Player): void {
+    this.store.dispatch(new telemetryActions.GetPlayerBattlerites(player.id));
   }
 
 }
