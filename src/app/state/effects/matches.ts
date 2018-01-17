@@ -10,7 +10,7 @@ import { switchMap, map, catchError, retry } from 'rxjs/operators';
 import * as matchesActions from '@state/actions/matches';
 import * as playerActions from '@state/actions/players';
 import { MatchService } from '@app/services';
-import { Match } from '@app/models';
+import { Match, Telemetry } from '@app/models';
 
 @Injectable()
 export class MatchesEffects {
@@ -28,6 +28,15 @@ export class MatchesEffects {
     switchMap(matchId => this.api.get(matchId)),
     map((m: Match) => new matchesActions.LoadMatchSuccess(m))
     );
+
+  @Effect()
+  loadMatchTelemetry$: Observable<Action> = this.actions$
+    .ofType(matchesActions.LOAD_TELEMETRY)
+    .pipe(
+    map((action: matchesActions.LoadTelemetry) => action.payload),
+    switchMap((matchId) => this.api.getTelemetry(matchId)),
+    map((t: Telemetry[]) => new matchesActions.LoadTelemetrySuccess(t)),
+  );
 
   @Effect()
   loadPlayerMatches$: Observable<Action> = this.actions$
