@@ -5,11 +5,11 @@
       <dl>
         <dt>2v2</dt>
         <dd>
-          <brh-winlose [wins]="player.stats.ranked2V2Wins" [losses]="player.stats.ranked2V2Losses"></brh-winlose>
+          <brh-winlose [wins]="player.stats.unranked2V2Wins" [losses]="player.stats.unranked2V2Losses"></brh-winlose>
         </dd>
         <dt>3v3</dt>
         <dd>
-          <brh-winlose [wins]="player.stats.ranked3V3Wins" [losses]="player.stats.ranked3V3Losses"></brh-winlose>
+          <brh-winlose [wins]="player.stats.unranked3V3Wins" [losses]="player.stats.unranked3V3Losses"></brh-winlose>
         </dd>
         <dt *ngIf="hasBrawl">Brawl</dt>
         <dd *ngIf="hasBrawl">
@@ -28,11 +28,11 @@
       <dl>
         <dt>2v2</dt>
         <dd>
-          <brh-winlose [wins]="player.stats.unranked2V2Wins" [losses]="player.stats.unranked2V2Losses"></brh-winlose>
+          <brh-winlose [wins]="player.stats.ranked2V2Wins" [losses]="player.stats.ranked2V2Losses"></brh-winlose>
         </dd>
         <dt>3v3</dt>
         <dd>
-          <brh-winlose [wins]="player.stats.unranked3V3Wins" [losses]="player.stats.unranked3V3Losses"></brh-winlose>
+          <brh-winlose [wins]="player.stats.ranked3V3Wins" [losses]="player.stats.ranked3V3Losses"></brh-winlose>
         </dd>
       </dl>
     </mat-card-content>
