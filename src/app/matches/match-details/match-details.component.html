@@ -18,7 +18,10 @@
       <span>{{ match.map.name }}</span>
       <div *ngIf="singleMatch" class="match-date">{{ match.createdAt | date:'shortTime' }}</div>
     </mat-card-subtitle>
-    <div class="score">{{ match.rosters[0].score }} / {{ match.rosters[1].score }}</div>
+    <div class="score">
+      <span class="team1">{{ match.rosters[0].score }}</span> /
+      <span class="team2">{{ match.rosters[1].score }}</span>
+    </div>
     <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'maps':'jpg' }}" alt="">
   </mat-card-title-group>
   <mat-card-content>

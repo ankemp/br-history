@@ -53,6 +53,19 @@
   width: 100%;
 }
 
+.score .team1,
+.score .team2 {
+  text-shadow: 1px 1px 2px rgba(255,255,255,.55);
+}
+
+.score .team1 {
+  color: var(--accent);
+}
+
+.score .team2 {
+  color: var(--accent2);
+}
+
 .mat-card .mat-card-title-group .open-match,
 .mat-card .mat-card-title-group .match-date {
   color: #ffffff;
