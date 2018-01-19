@@ -36,5 +36,11 @@
 }
 
 .stat-container .title {
+  font-size: 12px;
   text-transform: uppercase;
+}
+
+.stat-container .stat {
+  font-size: 14px;
+  font-weight: 500;
 }

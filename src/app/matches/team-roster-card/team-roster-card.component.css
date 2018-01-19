@@ -9,6 +9,17 @@
   width: 100%;
 }
 
+.mat-card .mat-card-avatar.mat-icon {
+  color: var(--mvp-gold);
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.mat-card .mat-card-image {
+  max-height: 150px;
+  object-fit: cover;
+}
+
 brh-participant-stats ::ng-deep .avatar {
   display: none;
 }

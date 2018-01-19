@@ -1,10 +1,12 @@
 <div class="card-container" *ngFor="let participant of roster.participants">
   <mat-card>
+    <mat-card-header>
+      <mat-icon mat-card-avatar *ngIf="isMvp(participant)" matTooltip="Match MVP">star</mat-icon>
+      <mat-card-title>{{ participant.player.name || participant.champion.name }}</mat-card-title>
+      <mat-card-subtitle>{{ !!participant.player.name ? participant.champion.name : '&nbsp;' }}</mat-card-subtitle>
+    </mat-card-header>
     <img mat-card-image src="{{ participant.champion.id | assetRoute:'champions':'png' }}" alt="{{ participant.champion.name }}"
     />
-    <mat-card-title-group>
-      <mat-card-title>{{ participant.champion.name }}</mat-card-title>
-    </mat-card-title-group>
     <mat-card-content>
       <brh-participant-stats [participant]="participant"></brh-participant-stats>
     </mat-card-content>
