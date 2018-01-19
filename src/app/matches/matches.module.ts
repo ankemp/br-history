@@ -7,6 +7,7 @@ import {
   MatExpansionModule,
   MatIconModule,
   MatListModule,
+  MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
 
@@ -33,6 +34,7 @@ import { TeamRosterCardComponent } from './team-roster-card/team-roster-card.com
     MatExpansionModule,
     MatIconModule,
     MatListModule,
+    MatToolbarModule,
     MatTooltipModule,
   ],
   declarations: [

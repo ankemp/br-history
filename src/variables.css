@@ -1,4 +1,7 @@
 :root {
+  --primary: #455a64;
+  --accent: #29b6f6;
+  --accent2: #ec407a;
   --win-green: #66bb6a;
   --lose-red: #f44336;
   --mvp-gold: #ffd700;

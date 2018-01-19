@@ -1,3 +1,9 @@
 :host() {
   display: block;
+  margin: 0 -8px;
+  padding-bottom: 24px;
+}
+
+.mat-toolbar {
+  margin-bottom: 8px;
 }

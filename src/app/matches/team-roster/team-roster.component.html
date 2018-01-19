@@ -1,6 +1,6 @@
-<div class="details">
-  <h2>Team score: {{ roster.score }}</h2>
-  <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats>
-</div>
-<!-- <brh-team-roster-card *ngIf="singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-card> -->
-<brh-team-roster-list (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-list>
+<mat-toolbar color="accent">
+  <span>Rounds Won: {{ roster.score }}</span>
+</mat-toolbar>
+<!-- <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats> -->
+<brh-team-roster-card *ngIf="singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-card>
+<brh-team-roster-list *ngIf="!singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-list>
