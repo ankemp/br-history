@@ -12,7 +12,6 @@
 }
 
 .team-search {
-  box-sizing: border-box;
   margin-bottom: 8px;
   min-width: 300px;
 }
@@ -35,7 +34,6 @@
 }
 
 .team-container {
-  box-sizing: border-box;
   padding: 8px;
   width: 20%;
 }
