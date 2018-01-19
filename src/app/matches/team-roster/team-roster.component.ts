@@ -9,7 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 
 import * as telemetryActions from '@state/actions/telemetry';
-import { Roster, Player, Participant, Match } from '@app/models';
+import { Roster, Player, Participant, Match, Team } from '@app/models';
 
 @Component({
   selector: 'brh-team-roster',
@@ -20,6 +20,8 @@ import { Roster, Player, Participant, Match } from '@app/models';
 export class TeamRosterComponent implements OnInit {
   @Input() player?: Player;
   @Input() roster: Roster;
+  @Input() team?: Team;
+  @Input() teamNum: number;
   @Input() singleMatch: boolean;
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
