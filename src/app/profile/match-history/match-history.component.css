@@ -110,12 +110,3 @@
   text-align: center;
   font-size: 24px;
 }
-
-:host() ::ng-deep brh-participant-stats .column.avatar {
-  max-width: 200px;
-}
-:host() ::ng-deep brh-participant-stats .column.avatar img {
-  object-fit: cover;
-  height: 100%;
-  width: auto;
-}

@@ -9,12 +9,21 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0 8px;
   padding: 0 8px;
 }
 
 .column:not(.avatar) + .column {
   border-left-color: #000000;
+}
+
+.column.avatar {
+  max-width: 160px;
+}
+
+.column.avatar img {
+  object-fit: none;
+  height: 100%;
+  width: auto;
 }
 
 .stat-container {

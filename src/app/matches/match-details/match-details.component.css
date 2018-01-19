@@ -11,6 +11,10 @@
   max-height: 400px;
 }
 
+.mat-card .mat-card-title-group.single-match {
+  max-height: 200px;
+}
+
 .mat-card .mat-card-title-group span {
   display: inline-block;
 }

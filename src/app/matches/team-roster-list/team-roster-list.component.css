@@ -13,7 +13,7 @@
 }
 
 .mat-expansion-panel-header-title .mat-icon {
-  color: #ffd700;
+  color: var(--mvp-gold);
 }
 
 .mat-expansion-panel-header-description span:first-of-type {
