@@ -13,8 +13,8 @@ h1, h2, h3, h4, h5, h6 {
 @import '~@angular/material/theming';
 @include mat-core();
 
-$battlelegend-primary: mat-palette($mat-indigo);
-$battlelegend-accent:  mat-palette($mat-pink, A200, A100, A400);
+$battlelegend-primary:  mat-palette($mat-blue-grey, 700, 500, 900);
+$battlelegend-accent: mat-palette($mat-light-blue, 400, 200, 600);
 
 $battlelegend-theme: mat-light-theme($battlelegend-primary, $battlelegend-accent);
 
