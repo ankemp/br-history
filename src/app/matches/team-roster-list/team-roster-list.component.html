@@ -16,6 +16,6 @@
   </mat-expansion-panel-header>
   <brh-participant-stats [participant]="participant"></brh-participant-stats>
   <mat-action-row>
-    <button mat-button color="primary" (click)="viewProfile.emit(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
+    <button mat-button color="accent" (click)="viewProfile.emit(participant.player)" [disabled]="viewProfileDisabled(participant)">View Profile</button>
   </mat-action-row>
 </mat-expansion-panel>

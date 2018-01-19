@@ -1,6 +1,19 @@
 <mat-toolbar color="accent">
-  <span>Rounds Won: {{ roster.score }}</span>
+  <span>Team: {{ teamNum+1 }}</span>
+  <span *ngIf="roster.won" class="match-winner">Match Winner</span>
+  <div class="actions">
+    <button *ngIf="!singleMatch" mat-icon-button matTooltip="Expand all">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <button *ngIf="singleMatch" mat-icon-button matTooltip="Show stats">
+      <mat-icon>donut_small</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
-<!-- <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats> -->
-<brh-team-roster-card *ngIf="singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-card>
-<brh-team-roster-list *ngIf="!singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-list>
+<!-- <div class="stats">
+  <brh-match-stats *ngIf="!player.id" [roster]="roster"></brh-match-stats>
+</div> -->
+<div class="roster">
+  <brh-team-roster-card *ngIf="singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-card>
+  <brh-team-roster-list *ngIf="!singleMatch" (viewProfile)="viewProfile.emit($event)" [roster]="roster" [player]="player" [topParticipant]="topParticipant"></brh-team-roster-list>
+</div>
