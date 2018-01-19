@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.mat-expansion-panel-header.mvp {
+  padding-left: 0;
+}
+
 .mat-expansion-panel-header-title {
   align-items: center;
 }

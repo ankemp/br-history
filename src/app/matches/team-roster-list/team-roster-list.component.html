@@ -1,5 +1,5 @@
 <mat-expansion-panel *ngFor="let participant of roster.participants">
-  <mat-expansion-panel-header>
+  <mat-expansion-panel-header [ngClass]="{'mvp': isMvp(participant) }">
     <mat-panel-title *ngIf="participant.player.name">
       <mat-icon *ngIf="isMvp(participant)" matTooltip="Match MVP">star</mat-icon>
       <span>{{ participant.player.name }} as {{ participant.champion.name }}</span>
