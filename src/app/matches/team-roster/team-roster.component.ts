@@ -25,6 +25,7 @@ export class TeamRosterComponent implements OnInit {
   @Input() singleMatch: boolean;
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
+  showMatchCharts = false;
 
   constructor(private store: Store<Match>) { }
 
@@ -34,6 +35,11 @@ export class TeamRosterComponent implements OnInit {
 
   viewBattlerites(player: Player): void {
     this.store.dispatch(new telemetryActions.GetPlayerBattlerites(player.id));
+  }
+
+  toggleMatchCharts(): void {
+    this.showMatchCharts = !this.showMatchCharts;
+    // ga event
   }
 
 }
