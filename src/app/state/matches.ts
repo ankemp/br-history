@@ -27,3 +27,6 @@ export const getSelectedMatch = createSelector(
   getSelectedMatchId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );
+
+export const getMatchTelemetry = createSelector(getMatchesState, state => state.telemetry);
+export const getMatchBattlerites = createSelector(getMatchTelemetry, fromTelemetry.getBattlerites);

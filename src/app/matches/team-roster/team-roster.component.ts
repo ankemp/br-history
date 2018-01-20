@@ -9,7 +9,6 @@ import {
 import { Store } from '@ngrx/store';
 import { Angulartics2 } from 'angulartics2';
 
-import * as telemetryActions from '@state/actions/telemetry';
 import { Roster, Player, Participant, Match, Team } from '@app/models';
 
 @Component({
@@ -38,7 +37,7 @@ export class TeamRosterComponent implements OnInit {
   }
 
   viewBattlerites(player: Player): void {
-    this.store.dispatch(new telemetryActions.GetPlayerBattlerites(player.id));
+    // ga event
   }
 
   toggleMatchCharts(): void {

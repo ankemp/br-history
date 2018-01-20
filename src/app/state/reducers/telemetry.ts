@@ -2,23 +2,23 @@ import * as matchesActions from '@state/actions/matches';
 import { Telemetry } from '@app/models';
 
 export interface State {
-  telemetry: Telemetry[];
+  telemetry: Telemetry;
   loading: boolean;
   error?: string;
 }
 
 const initialState: State = {
-  telemetry: [],
+  telemetry: undefined,
   loading: false,
   error: undefined
 };
 
-export function reducer(state = initialState, action: matchesActions.Actions): State {
+export function reducer(state = initialState, action: matchesActions.Actions) {
   switch (action.type) {
     case matchesActions.LOAD_TELEMETRY: {
       return {
         ...state,
-        telemetry: [],
+        telemetry: undefined,
         loading: true,
         error: undefined
       };
@@ -37,3 +37,6 @@ export function reducer(state = initialState, action: matchesActions.Actions): S
     }
   }
 }
+
+export const getBattlerites = (state: State) => state.telemetry.battlerites;
+export const getRoundStats = (state: State) => state.telemetry.roundStats;
