@@ -2,9 +2,10 @@
   <span>Team: {{ teamNum+1 }}</span>
   <span *ngIf="roster.won" class="match-winner">Match Winner</span>
   <div class="actions">
-    <button *ngIf="!singleMatch" mat-icon-button matTooltip="Expand all">
-      <mat-icon>expand_more</mat-icon>
-    </button>
+    <!-- <button *ngIf="!singleMatch" mat-icon-button matTooltip="Expand/Collapse all" (click)="toggleParticipantExpandAll()">
+      <mat-icon *ngIf="">expand_more</mat-icon>
+      <mat-icon *ngIf="">expand_less</mat-icon>
+    </button> -->
     <button *ngIf="singleMatch" mat-icon-button matTooltip="Show stats" (click)="toggleMatchCharts()">
       <mat-icon>donut_small</mat-icon>
     </button>
