@@ -1,9 +1,9 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRoot from '@app/reducers';
-import * as fromPlayers from './reducers/players';
-import * as fromTeams from './reducers/teams';
-import * as fromSearch from './reducers/players-search';
-import * as fromMatches from './reducers/matches';
+import * as fromPlayers from '@state/reducers/players';
+import * as fromTeams from '@state/reducers/teams';
+import * as fromSearch from '@state/reducers/players-search';
+import * as fromMatches from '@state/reducers/matches';
 
 export interface ProfileState {
   player: fromPlayers.State;

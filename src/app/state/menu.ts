@@ -3,7 +3,7 @@ import * as fromRoot from '@app/reducers';
 import * as fromMenu from './reducers/menu';
 
 export interface State extends fromRoot.State {
-  'menu': fromMenu.State;
+  menu: fromMenu.State;
 }
 
 export const reducers = {

@@ -1,7 +1,7 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRoot from '@app/reducers';
-import * as fromMatches from './reducers/matches';
-import * as fromTelemetry from './reducers/telemetry';
+import * as fromMatches from '@state/reducers/matches';
+import * as fromTelemetry from '@state/reducers/telemetry';
 
 export interface State extends fromRoot.State {
   matches: fromMatches.State;
