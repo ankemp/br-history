@@ -20,20 +20,22 @@ export interface RoundStat {
   round: number;
   roundLength: number;
   winningTeam: number;
-  playerStats: {
-    userID: string;
-    kills: number;
-    deaths: number;
-    score: number;
-    damageDone: number;
-    damageReceived: number;
-    healingDone: number;
-    healingReceived: number;
-    disablesDone: number;
-    disablesReceived: number;
-    energyGained: number;
-    energyUsed: number;
-    timeAlive: number;
-    abilityUses: number;
-  };
+  playerStats: PlayerStat | PlayerStat[];
+}
+
+export interface PlayerStat {
+  userID: string;
+  kills: number;
+  deaths: number;
+  score: number;
+  damageDone: number;
+  damageReceived: number;
+  healingDone: number;
+  healingReceived: number;
+  disablesDone: number;
+  disablesReceived: number;
+  energyGained: number;
+  energyUsed: number;
+  timeAlive: number;
+  abilityUses: number;
 }

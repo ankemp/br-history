@@ -9,6 +9,7 @@ import { switchMap, map, catchError, retry } from 'rxjs/operators';
 
 import * as matchesActions from '@state/actions/matches';
 import * as playerActions from '@state/actions/players';
+import * as telemetryActions from '@state/actions/telemetry';
 import { MatchService } from '@app/services';
 import { Match, Telemetry } from '@app/models';
 
@@ -37,6 +38,14 @@ export class MatchesEffects {
     switchMap((matchId) => this.api.getTelemetry(matchId)),
     map((t: Telemetry[]) => new matchesActions.LoadTelemetrySuccess(t)),
   );
+
+  @Effect()
+  loadRoundStats$: Observable<Action> = this.actions$
+    .ofType(matchesActions.LOAD_TELEMETRY_SUCCESS)
+    .pipe(
+    map((action: telemetryActions.LoadRoundStats) => action),
+    map(() => new telemetryActions.LoadRoundStats)
+    );
 
   @Effect()
   loadPlayerMatches$: Observable<Action> = this.actions$

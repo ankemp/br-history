@@ -30,3 +30,4 @@ export const getSelectedMatch = createSelector(
 
 export const getMatchTelemetry = createSelector(getMatchesState, state => state.telemetry);
 export const getMatchBattlerites = createSelector(getMatchTelemetry, fromTelemetry.getBattlerites);
+export const getMatchRoundStats = createSelector(getMatchTelemetry, fromTelemetry.getRoundStats);
