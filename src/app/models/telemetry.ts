@@ -1,4 +1,4 @@
-import { Champion } from '@app/models';
+import { Champion, PlayerStat, Round } from '@app/models';
 
 export interface Telemetry {
   battlerites: { [playerId: string]: Battlerite[] };
@@ -14,28 +14,8 @@ export interface Battlerite {
   character: Champion;
 }
 
-export interface RoundStat {
+export interface RoundStat extends Round {
   cursor: number;
   time: number;
-  round: number;
-  roundLength: number;
-  winningTeam: number;
-  playerStats: PlayerStat | PlayerStat[];
-}
-
-export interface PlayerStat {
-  userID: string;
-  kills: number;
-  deaths: number;
-  score: number;
-  damageDone: number;
-  damageReceived: number;
-  healingDone: number;
-  healingReceived: number;
-  disablesDone: number;
-  disablesReceived: number;
-  energyGained: number;
-  energyUsed: number;
-  timeAlive: number;
-  abilityUses: number;
+  stats: PlayerStat | PlayerStat[];
 }

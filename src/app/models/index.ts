@@ -6,6 +6,7 @@ export * from './menu';
 export * from './page';
 export * from './participant';
 export * from './player';
+export * from './playerstat';
 export * from './roster';
 export * from './round';
 export * from './team';
