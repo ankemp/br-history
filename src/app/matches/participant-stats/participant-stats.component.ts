@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy,
   SimpleChanges
 } from '@angular/core';
+import { Angulartics2 } from 'angulartics2';
 
 import { Participant, RoundStat, PlayerStat } from '@app/models';
 
@@ -21,7 +22,9 @@ export class ParticipantStatsComponent implements OnChanges {
   selectedStat: PlayerStat;
   selected: any;
 
-  constructor() { }
+  constructor(
+    private ga: Angulartics2,
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!!changes.roundStats) {
@@ -46,9 +49,13 @@ export class ParticipantStatsComponent implements OnChanges {
   }
 
   selectStat(stats: any): void {
-    console.log('selectStat', stats);
     this.selectedStat = stats.stats;
     this.selected = stats.id || stats.ordinal;
+    const round = !!stats.id ? 'match totals' : `round ${stats.ordinal}`;
+    this.ga.eventTrack.next({
+      action: `show ${round}`,
+      properties: { category: 'participant stats' },
+    });
   }
 
 }
