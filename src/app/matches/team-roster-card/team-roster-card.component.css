@@ -18,6 +18,7 @@
 }
 
 .mat-card .mat-card-image {
+  margin-bottom: 8px;
   max-height: 150px;
   object-fit: cover;
 }

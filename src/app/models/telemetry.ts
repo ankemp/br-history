@@ -17,5 +17,5 @@ export interface Battlerite {
 export interface RoundStat extends Round {
   cursor: number;
   time: number;
-  stats: PlayerStat | PlayerStat[];
+  stats: PlayerStat[];
 }
