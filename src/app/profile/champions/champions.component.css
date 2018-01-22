@@ -58,11 +58,22 @@
   font-size: 48px;
   font-weight: 500;
   position: absolute;
-  text-shadow: 1px 1px 2px rgba(255,255,255,.55);
+  font-family: 'Montserrat';
+  /*text-shadow: 1px 1px 2px rgba(255,255,255,.55);*/
+  /*text-shadow: 2px 2px 0px #fff, -2px -2px 0px white, 2px -2px 0px white, -2px 2px 0px white;*/
+  -webkit-text-stroke: 2px white;
+
   /* 50% - 1/2 font-size */
   top: calc(50% - 24px);
 }
-
+.champion-hero brh-winlose ::ng-deep .wins {
+  transform: translateY(-20px);
+  display: inline-block;
+}
+.champion-hero brh-winlose ::ng-deep .losses {
+  transform: translateY(20px);
+  display: inline-block;
+}
 .mat-card {
   display: flex;
   flex-direction: column;

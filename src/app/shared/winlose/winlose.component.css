@@ -16,6 +16,9 @@ div:only-of-type {
 .losses {
   color: var(--lose-red);
 }
+.divider {
+  color: #ddd;
+}
 
 .rate {
   margin-left: auto;
