@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material';
 
@@ -27,8 +27,8 @@ export class TeamsEffects {
 
   @Effect()
   loadTeam$: Observable<Action> = this.actions$
-    .ofType(teamsActions.LOAD_TEAM)
     .pipe(
+    ofType(teamsActions.LOAD_TEAM),
     map((action: teamsActions.LoadTeam) => action.payload),
     switchMap((teamId: string) => this.api.get(teamId)),
     map((t: Team) => new teamsActions.LoadTeamSuccess(t))
@@ -36,8 +36,8 @@ export class TeamsEffects {
 
   @Effect()
   loadPlayerTeams$: Observable<Action> = this.actions$
-    .ofType(playerActions.LOAD_TEAMS)
     .pipe(
+    ofType(playerActions.LOAD_TEAMS),
     map((action: playerActions.LoadTeams) => action.payload),
     switchMap((playerId) => this.api.byPlayer(playerId)),
     map((t: Team[]) => new playerActions.LoadTeamsSuccess(t)),
@@ -47,8 +47,8 @@ export class TeamsEffects {
 
   @Effect({ dispatch: false })
   loadPlayerTeamsError$: Observable<Action> = this.actions$
-    .ofType(playerActions.LOAD_TEAMS_ERROR)
     .pipe(
+    ofType(playerActions.LOAD_TEAMS_ERROR),
     map((action: playerActions.LoadTeamsError) => action.payload),
     switchMap((error) => {
       this.snackBar.open('Unable to load teams', '', { horizontalPosition: 'center', duration: 2000 });
@@ -58,14 +58,13 @@ export class TeamsEffects {
 
   @Effect({ dispatch: false })
   setTitle$: Observable<Action> = this.actions$
-    .ofType(teamsActions.LOAD_TEAM_SUCCESS)
     .pipe(
+    ofType(teamsActions.LOAD_TEAM_SUCCESS),
     map((action: teamsActions.LoadTeamSuccess) => action.payload),
     switchMap((team: Team) => {
       this.title.setTitle(`${team.name} - ${environment.appTitle}`);
       return empty();
     })
     );
-
 
 }

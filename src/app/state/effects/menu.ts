@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
@@ -24,8 +24,8 @@ export class MenuEffects {
 
   @Effect()
   loadMenu$: Observable<Action> = this.actions$
-    .ofType(menuActions.LOAD)
     .pipe(
+    ofType(menuActions.LOAD),
     map((action: menuActions.Load) => action.payload),
     switchMap(() => this.api.getMenuItems()),
     map((m: Menu[]) => new menuActions.LoadSuccess(m))
