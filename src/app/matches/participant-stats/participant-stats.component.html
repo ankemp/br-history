@@ -1,8 +1,8 @@
-<div class="round-select">
+<div *ngIf="!!roundStats" class="round-select">
   <mat-chip-list>
-    <mat-chip *ngFor="let round of pRoundStats;" matTooltip="Round {{ round.ordinal+1 }}" [selected]="selected === round.ordinal"
+    <mat-chip *ngFor="let round of pRoundStats;" color="accent" matTooltip="Round {{ round.ordinal+1 }}" [selected]="selected === round.ordinal"
       (click)="selectStat(round)">{{ round.ordinal+1 }}</mat-chip>
-    <mat-chip matTooltip="Totals" [selected]="selected === participant.id" (click)="selectStat(participant)">T</mat-chip>
+    <mat-chip color="accent" matTooltip="Totals" [selected]="selected === participant.id" (click)="selectStat(participant)">T</mat-chip>
   </mat-chip-list>
 </div>
 <div class="stats">

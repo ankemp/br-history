@@ -16,6 +16,10 @@
   margin-bottom: 8px;
 }
 
+.round-select .mat-chip {
+  cursor: pointer;
+}
+
 .column {
   border-left: 1px solid transparent;
   display: flex;
