@@ -8,3 +8,13 @@
   justify-content: space-between;
   margin-bottom: 8px;
 }
+
+.actions {
+  display: none;
+}
+
+@media all and (min-width: 46.8em) {
+  .actions {
+    display: block;
+  }
+}
