@@ -1,7 +1,10 @@
 :host() {
   display: block;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 8px 16px;
+}
+
+.mat-expansion-panel-header.mvp {
+  padding-left: 0;
 }
 
 .mat-expansion-panel-header-title {
@@ -9,7 +12,7 @@
 }
 
 .mat-expansion-panel-header-title .mat-icon {
-  color: #ffd700;
+  color: var(--mvp-gold);
 }
 
 .mat-expansion-panel-header-description span:first-of-type {
@@ -20,5 +23,4 @@
   border-left: 1px solid rgba(0, 0, 0, 0.34);
   margin-right: 4px;
   padding-left: 4px;
-  box-sizing: border-box;
 }

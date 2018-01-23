@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRoot from '@app/reducers';
-import * as fromTeams from './reducers/teams';
+import * as fromTeams from '@state/reducers/teams';
 
 export interface State extends fromRoot.State {
   teams: fromTeams.State;

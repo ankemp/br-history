@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
@@ -26,8 +26,8 @@ export class PagesEffects {
 
   @Effect()
   loadPage$: Observable<Action> = this.actions$
-    .ofType(pagesActions.LOAD_PAGE)
     .pipe(
+    ofType(pagesActions.LOAD_PAGE),
     map((action: pagesActions.LoadPage) => action.payload),
     switchMap((pageSlug: string) => this.api.getBySlug(pageSlug)),
     map((p: Entry<Page>) => new pagesActions.LoadPageSuccess(p.fields))
@@ -35,8 +35,8 @@ export class PagesEffects {
 
   @Effect({ dispatch: false })
   setTitle: Observable<Action> = this.actions$
-    .ofType(pagesActions.LOAD_PAGE_SUCCESS)
     .pipe(
+    ofType(pagesActions.LOAD_PAGE_SUCCESS),
     map((action: pagesActions.LoadPageSuccess) => action.payload),
     switchMap((page: Page) => {
       this.title.setTitle(`${page.title} - ${environment.appTitle}`);

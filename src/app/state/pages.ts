@@ -1,9 +1,9 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import * as fromPages from './reducers/pages';
 import * as fromRoot from '@app/reducers';
+import * as fromPages from '@state/reducers/pages';
 
 export interface State extends fromRoot.State {
-  'pages': fromPages.State;
+  pages: fromPages.State;
 }
 
 export const reducers = {

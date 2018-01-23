@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule,
+  MatChipsModule,
   MatExpansionModule,
   MatIconModule,
   MatListModule,
+  MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
 
@@ -30,9 +32,11 @@ import { TeamRosterCardComponent } from './team-roster-card/team-roster-card.com
     SharedModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatExpansionModule,
     MatIconModule,
     MatListModule,
+    MatToolbarModule,
     MatTooltipModule,
   ],
   declarations: [

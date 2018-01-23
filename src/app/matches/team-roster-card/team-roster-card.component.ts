@@ -3,10 +3,15 @@ import {
   ChangeDetectionStrategy,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
-import { Player, Roster, Participant } from '@app/models';
+import * as matchSelectors from '@state/matches';
+import * as telemetryActions from '@state/actions/telemetry';
+import { Player, Roster, Participant, RoundStat } from '@app/models';
 
 @Component({
   selector: 'brh-team-roster-card',
@@ -19,8 +24,14 @@ export class TeamRosterCardComponent {
   @Input() roster: Roster;
   @Input() topParticipant: Participant;
   @Output() viewProfile = new EventEmitter<Player>();
+  @Output() viewBattlerites = new EventEmitter<Player>();
+  roundStats$: Observable<RoundStat[]>;
 
-  constructor() { }
+  constructor(
+    private store: Store<RoundStat>
+  ) {
+    this.roundStats$ = store.select(matchSelectors.getMatchRoundStats);
+  }
 
   isMvp(participant: Participant): boolean {
     return this.topParticipant.id === participant.id && this.roster.won;

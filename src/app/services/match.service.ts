@@ -11,6 +11,7 @@ export class MatchService {
 
   private MATCHES_API = `${environment.apiRoot}/matches`;
   private PARTICIPANTS_API = `${environment.apiRoot}/participants`;
+  private TELEMETRY_API = `${environment.apiRoot}/telemetry`;
 
   constructor(
     private http: HttpClient,
@@ -20,6 +21,10 @@ export class MatchService {
     return this.http
       .get<Match>(`${this.MATCHES_API}/${matchId}`)
       .map((response: any) => response as Match);
+  }
+
+  getTelemetry(matchId: string): Observable<any> {
+    return this.http.get(`${this.TELEMETRY_API}/${matchId}`);
   }
 
   byPlayer(playerId: string, options?: any): Observable<Match[]> {

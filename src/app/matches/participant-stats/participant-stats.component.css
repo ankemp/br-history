@@ -1,20 +1,44 @@
 :host() {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 14px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+}
+
+.round-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.round-select .mat-chip {
+  cursor: pointer;
 }
 
 .column {
   border-left: 1px solid transparent;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0 8px;
   padding: 0 8px;
 }
 
 .column:not(.avatar) + .column {
   border-left-color: #000000;
+}
+
+.column.avatar {
+  max-width: 160px;
+}
+
+.column.avatar img {
+  object-fit: none;
+  height: 100%;
+  width: auto;
 }
 
 .stat-container {
@@ -27,5 +51,11 @@
 }
 
 .stat-container .title {
+  font-size: 12px;
   text-transform: uppercase;
+}
+
+.stat-container .stat {
+  font-size: 14px;
+  font-weight: 500;
 }

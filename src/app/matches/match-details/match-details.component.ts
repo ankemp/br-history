@@ -6,7 +6,9 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 
+import * as matchesActions from '@state/actions/matches';
 import { Match, Player } from '@app/models';
 
 @Component({
@@ -22,10 +24,13 @@ export class MatchDetailsComponent implements OnInit {
   @Output() openMatch = new EventEmitter<Match>();
   singleMatch = false;
 
-  constructor() { }
+  constructor(private store: Store<Match>) { }
 
   ngOnInit() {
     this.singleMatch = !(this.openMatch.observers.length > 0);
+    if (this.singleMatch) {
+      this.store.dispatch(new matchesActions.LoadTelemetry(this.match.id));
+    }
   }
 
 }

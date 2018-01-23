@@ -17,6 +17,7 @@ export class MatchStatsComponent {
   @Input() roster: Roster;
 
   private chartOptions = {
+    fontName: 'Roboto',
     height: 300,
     legend: { position: 'top', maxLines: 3 },
     bar: { groupWidth: '75%' },
@@ -68,7 +69,7 @@ export class MatchStatsComponent {
     const { participants } = this.roster;
     data.push(
       ...participants.map(participant => {
-        const name = !!participant.player.name ? `${participant.champion.name}\n${participant.player.name}` : participant.champion.name;
+        const name = !!participant.player.name ? `${participant.player.name} \n${participant.champion.name}` : participant.champion.name;
         return [name, ...cols.map(col => participant.stats[col])];
       })
     );

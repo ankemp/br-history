@@ -6,8 +6,10 @@ import {
   OnInit,
   EventEmitter,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Angulartics2 } from 'angulartics2';
 
-import { Roster, Player, Participant } from '@app/models';
+import { Roster, Player, Participant, Match, Team } from '@app/models';
 
 @Component({
   selector: 'brh-team-roster',
@@ -18,14 +20,36 @@ import { Roster, Player, Participant } from '@app/models';
 export class TeamRosterComponent implements OnInit {
   @Input() player?: Player;
   @Input() roster: Roster;
+  @Input() team?: Team;
+  @Input() teamNum: number;
   @Input() singleMatch: boolean;
   @Output() viewProfile = new EventEmitter<Player>();
   topParticipant: Participant;
+  showMatchCharts = false;
 
-  constructor() { }
+  constructor(
+    private store: Store<Match>,
+    private ga: Angulartics2,
+  ) { }
 
   ngOnInit(): void {
     this.topParticipant = this.roster.participants.sort((a, b) => b.stats.score - a.stats.score)[0];
+  }
+
+  viewBattlerites(player: Player): void {
+    // ga event
+  }
+
+  toggleMatchCharts(): void {
+    this.showMatchCharts = !this.showMatchCharts;
+    this.ga.eventTrack.next({
+      action: this.showMatchCharts ? 'show' : 'hide',
+      properties: { category: 'match charts' },
+    });
+  }
+
+  toggleParticipantExpandAll(): void {
+    // Awaiting: https://github.com/angular/material2/issues/6929
   }
 
 }
