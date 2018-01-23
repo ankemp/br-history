@@ -9,10 +9,7 @@
 
 .mat-card .mat-card-title-group {
   position: relative;
-  max-height: 400px;
-}
-
-.mat-card .mat-card-title-group {
+  margin: 0 -8px !important;
   max-height: 200px;
 }
 
@@ -20,7 +17,7 @@
   display: inline-block;
 }
 
-.mat-card ::ng-deep .mat-card-title-group > div {
+.mat-card ::ng-deep .mat-card-title-group > div:not(.score) {
   left: 16px;
   position: absolute;
   top: 16px;
@@ -46,11 +43,12 @@
 }
 
 .mat-card .mat-card-title-group .score {
+  bottom: 0;
   color: #fff;
   font-size: 72px;
   left: 0;
+  position: absolute;
   text-align: center;
-  top: calc(50% - 36px);
   width: 100%;
 }
 
@@ -71,4 +69,12 @@
 .mat-card .mat-card-title-group .match-date {
   color: #ffffff;
   margin-left: auto;
+  text-align: right;
+}
+
+@media all and (min-width: 46.8em) {
+  .mat-card .mat-card-title-group .score {
+    bottom: initial;
+    top: calc(50% - 36px);
+  }
 }
