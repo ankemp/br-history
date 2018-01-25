@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="logo" [routerLink]="['/']">BattleLegend</div>
+    <brh-menu [menu]="menu$ | async"></brh-menu>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <div class="copyright">Game content and materials are trademarks and copyrights of their respective publisher and its licensors. All rights
+      reserved.
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

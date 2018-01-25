@@ -16,6 +16,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AppComponent } from './app.component';
     MatSnackBarModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     AppRoutingModule,
-    HeaderModule
+    HeaderModule,
+    FooterModule
   ],
   declarations: [
     AppComponent

@@ -1,8 +1,15 @@
-.app-container {
+:host() {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  max-width: 1400px;
+}
+
+.app-container {
+  flex-grow: 1;
   margin: 0 auto;
+  max-width: 1400px;
   padding: 8px 16px;
+  width: 100%;
 }
 
 ::ng-deep .mat-chip {
