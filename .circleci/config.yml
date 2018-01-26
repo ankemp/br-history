@@ -10,11 +10,12 @@ jobs:
           keys:
             - 'v1-dependencies-{{ checksum "yarn.lock" }}'
             - v1-dependencies-
-      - run: yarn install
+      - run: yarn install --pure-lockfile --silent --non-interactive
       - save_cache:
           paths:
             - node_modules
           key: 'v1-dependencies-{{ checksum "yarn.lock" }}'
+      - run: yarn prebuild
       - run: yarn build
       - persist_to_workspace:
           root: ~/repo
