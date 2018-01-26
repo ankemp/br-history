@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "./scripts/set-version.js $CIRCLE_BRANCH",
     "build": "ng build --prod --aot --progress=false  --named-chunks",
     "deploy:ci": "",
     "test": "ng test",
@@ -52,6 +53,8 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~8.5.2",
     "codelyzer": "~4.0.1",
+    "commander": "^2.13.0",
+    "git-rev": "^0.2.1",
     "jasmine-core": "~2.9.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -61,6 +64,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.2.1",
+    "replace-in-file": "^3.1.0",
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
     "typescript": "~2.5.0"

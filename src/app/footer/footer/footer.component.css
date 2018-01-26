@@ -2,11 +2,6 @@
   display: block;
 }
 
-.mat-toolbar {
-  display: flex;
-  justify-content: space-between;
-}
-
 .logo {
   cursor: pointer;
 }
@@ -14,4 +9,9 @@
 brh-menu {
   flex: 1 1 0;
   padding: 0 16px;
+}
+
+.copyright,
+.version {
+  font-size: 12px;
 }
