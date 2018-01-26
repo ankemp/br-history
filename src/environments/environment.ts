@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   apiRoot: 'http://localhost:3030',
   assetsRoute: 'https://storage.googleapis.com/br-assets/assets',
-  appTitle: 'BattleLegend - DEV'
+  appTitle: 'BattleLegend - DEV',
+  version: 'DEV'
 };
