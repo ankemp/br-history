@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { environment } from 'environments/environment';
+
 import * as menuActions from '@state/actions/menu';
 import * as fromMenu from '@state/menu';
 import { Menu } from '@app/models';
@@ -13,6 +15,7 @@ import { Menu } from '@app/models';
 })
 export class FooterComponent implements OnInit {
   menu$: Observable<Menu[]>;
+  version = environment.version;
 
   constructor(
     private store: Store<Menu[]>

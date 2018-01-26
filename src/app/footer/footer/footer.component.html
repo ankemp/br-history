@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <div class="logo" [routerLink]="['/']">BattleLegend</div>
     <brh-menu [menu]="menu$ | async"></brh-menu>
+    <span class="version">{{ version }}</span>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <div class="copyright">Game content and materials are trademarks and copyrights of their respective publisher and its licensors. All rights

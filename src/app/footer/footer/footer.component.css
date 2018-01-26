@@ -11,7 +11,7 @@ brh-menu {
   padding: 0 16px;
 }
 
-
-.copyright {
+.copyright,
+.version {
   font-size: 12px;
 }
