@@ -8,7 +8,7 @@ export interface Telemetry {
 export interface Battlerite {
   cursor: number;
   time: number;
-  battlerite: object;
+  battlerite: any;
   loadoutType: string;
   userID: string;
   character: Champion;

@@ -15,6 +15,7 @@ import {
 
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { BattleritesModule } from '@app/battlerites/battlerites.module';
 import { SharedModule } from '@app/shared/shared.module';
 
 import { BattleritesComponent } from './battlerites/battlerites.component';
@@ -31,6 +32,7 @@ import { TeamRosterListComponent } from './team-roster-list/team-roster-list.com
     CommonModule,
     NgArrayPipesModule,
     Ng2GoogleChartsModule,
+    BattleritesModule,
     SharedModule,
     MatButtonModule,
     MatCardModule,
