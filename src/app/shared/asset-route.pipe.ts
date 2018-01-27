@@ -8,7 +8,12 @@ import { environment } from 'environments/environment';
 export class AssetRoutePipe implements PipeTransform {
 
   transform(assetPath: string, folders: string, ext: string): string {
-    return `${environment.assetsRoute}/${folders}/${assetPath}.${ext}`;
+    let path = `${environment.assetsRoute}`;
+    if (folders) {
+      path += `/${folders}`;
+    }
+    path += `/${assetPath}.${ext}`;
+    return path;
   }
 
 }

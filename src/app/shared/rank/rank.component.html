@@ -2,7 +2,7 @@
   <ngx-gauge *ngIf="!(team.league === 6 && team.division === 1)" type="arch" [thick]="size/15" cap="round" [value]="(7-team.division)"
     max="6" [size]="size"></ngx-gauge>
   <div class="img-container">
-    <img src="{{ team.league+1 | assetRoute:'league':'png' }}">
+    <img src="{{ team.league+1 | assetRoute:'assets/league':'png' }}">
     <div class="rating size-{{size}}">
       <div class="league">{{ leagueName }}</div>
       <div class="division">Division {{ team.division }}</div>
