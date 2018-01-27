@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const program = require('commander');
 const git = require('git-rev');
 const replace = require('replace-in-file');
