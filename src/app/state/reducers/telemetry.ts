@@ -48,7 +48,7 @@ export function reducer(state = initialState, action: matchesActions.Actions | t
       return {
         ...state,
         battlerites: [...state.telemetry.battlerites[action.payload]]
-      }
+      };
     }
 
     default: {

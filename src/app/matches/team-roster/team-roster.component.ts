@@ -36,10 +36,6 @@ export class TeamRosterComponent implements OnInit {
     this.topParticipant = this.roster.participants.sort((a, b) => b.stats.score - a.stats.score)[0];
   }
 
-  viewBattlerites(player: Player): void {
-    // ga event
-  }
-
   toggleMatchCharts(): void {
     this.showMatchCharts = !this.showMatchCharts;
     this.ga.eventTrack.next({
@@ -50,6 +46,7 @@ export class TeamRosterComponent implements OnInit {
 
   toggleParticipantExpandAll(): void {
     // Awaiting: https://github.com/angular/material2/issues/6929
+    // PR: https://github.com/angular/material2/pull/7461
   }
 
 }
