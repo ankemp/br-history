@@ -28,6 +28,7 @@ export class TeamRosterCardComponent {
   @Input() topParticipant: Participant;
   @Output() viewProfile = new EventEmitter<Player>();
   roundStats$: Observable<RoundStat[]>;
+  telemetryLoading$: Observable<boolean>;
 
   constructor(
     private store: Store<RoundStat>,
@@ -35,6 +36,7 @@ export class TeamRosterCardComponent {
     private ga: Angulartics2,
   ) {
     this.roundStats$ = store.select(matchSelectors.getMatchRoundStats);
+    this.telemetryLoading$ = store.select(matchSelectors.getTelemetryLoading);
   }
 
   isMvp(participant: Participant): boolean {

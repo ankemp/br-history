@@ -1,9 +1,10 @@
 <div *ngIf="!!roundStats" class="round-select">
-  <mat-chip-list>
+  <mat-chip-list *ngIf="!telemetryLoading">
     <mat-chip *ngFor="let round of pRoundStats;" color="accent" matTooltip="Round {{ round.ordinal+1 }}" [selected]="selected === round.ordinal"
       (click)="selectStat(round)">{{ round.ordinal+1 }}</mat-chip>
     <mat-chip color="accent" matTooltip="Totals" [selected]="selected === participant.id" (click)="selectStat(participant)">T</mat-chip>
   </mat-chip-list>
+  <brh-loader *ngIf="telemetryLoading"></brh-loader>
 </div>
 <div class="stats">
   <div class="column avatar">

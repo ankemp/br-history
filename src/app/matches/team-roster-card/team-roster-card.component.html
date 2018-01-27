@@ -8,11 +8,11 @@
     <img mat-card-image src="{{ participant.champion.id | assetRoute:'assets/champions':'png' }}" alt="{{ participant.champion.name }}"
     />
     <mat-card-content>
-      <brh-participant-stats [participant]="participant" [roundStats]="roundStats$ | async"></brh-participant-stats>
+      <brh-participant-stats [participant]="participant" [roundStats]="roundStats$ | async" [telemetryLoading]="telemetryLoading$ | async"></brh-participant-stats>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button color="accent" (click)="viewProfile.emit(participant.player)">Profile</button>
-      <button mat-button color="accent" (click)="viewBattlerites(participant)">Battlerites</button>
+      <button mat-button color="accent" (click)="viewBattlerites(participant)" [disabled]="telemetryLoading$ | async">Battlerites</button>
     </mat-card-actions>
   </mat-card>
 </div>

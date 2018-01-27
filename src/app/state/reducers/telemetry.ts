@@ -57,5 +57,6 @@ export function reducer(state = initialState, action: matchesActions.Actions | t
   }
 }
 
+export const getLoading = (state: State) => state.loading;
 export const getBattlerites = (state: State) => state.battlerites;
 export const getRoundStats = (state: State) => state.roundStats;
