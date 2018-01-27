@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { SharedModule } from '@app/shared/shared.module';
+
 import { BattleriteCardComponent } from './card/card.component';
 
 @NgModule({
@@ -19,7 +21,8 @@ import { BattleriteCardComponent } from './card/card.component';
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    SharedModule
   ],
   providers: [TranslatePipe],
   declarations: [
