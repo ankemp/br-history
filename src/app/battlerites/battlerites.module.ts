@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { SharedModule } from '@app/shared/shared.module';
 
+import { TtParsePipe } from './tt-parse.pipe';
 import { BattleriteCardComponent } from './card/card.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { BattleriteCardComponent } from './card/card.component';
   ],
   providers: [TranslatePipe],
   declarations: [
+    TtParsePipe,
     BattleriteCardComponent
   ],
   exports: [

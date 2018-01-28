@@ -2,6 +2,6 @@
   <mat-card-title>{{ data.battlerite.name | translate }}</mat-card-title>
   <img src="{{ data.battlerite.icon | assetRoute:'assets/icons':'png' }}" />
   <mat-card-content>
-    <p>{{ data.battlerite.description | translate }}</p>
+    <p>{{ data.battlerite.description | translate | ttParse: data.battlerite.tooltipData }}</p>
   </mat-card-content>
 </mat-card>
