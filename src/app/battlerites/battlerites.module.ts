@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatChipsModule } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -16,6 +16,7 @@ import { BattleriteCardComponent } from './card/card.component';
     CommonModule,
     HttpClientModule,
     MatCardModule,
+    MatChipsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

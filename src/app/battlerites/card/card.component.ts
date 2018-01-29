@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Battlerite } from '@app/models';
@@ -9,7 +9,7 @@ import { Battlerite } from '@app/models';
   styleUrls: ['./card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BattleriteCardComponent implements OnInit {
+export class BattleriteCardComponent {
   @Input() data: Battlerite;
 
   constructor(
@@ -19,7 +19,24 @@ export class BattleriteCardComponent implements OnInit {
     translate.use('en');
   }
 
-  ngOnInit() {
+  get abilityKey(): string {
+    switch (this.data.battlerite.abilitySlot) {
+      case '0':
+        return 'LMB';
+      case '1':
+        return 'RMB';
+      case '2':
+        return 'Space';
+      case '3':
+        return 'Q';
+      case '4':
+        return 'E';
+      case '5':
+        return 'R';
+      case '5':
+        return 'F';
+    }
+    return '';
   }
 
 }
