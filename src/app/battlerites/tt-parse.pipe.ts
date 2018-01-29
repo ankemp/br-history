@@ -27,8 +27,15 @@ export class TtParsePipe implements PipeTransform {
     return tooltip;
   }
 
+  private formatTooltip(tooltip: string): string {
+    return tooltip.replace(/\{1\}/g, '<b class="color-1">')
+      .replace(/\{2\}/g, '<b class="color-2">')
+      .replace(/\{3\}/g, '<b class="color-3">')
+      .replace(/\{\-\}/g, '</b>');
+  }
+
   transform(tooltip: string, data: TooltipData[]): string {
-    let newTooltip = tooltip;
+    let newTooltip = this.formatTooltip(tooltip);
     const matches = tooltip.match(/\{[a-z]*\}/g);
     if (!!matches) {
       matches.map(s => {
