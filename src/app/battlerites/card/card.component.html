@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>{{ data.battlerite.name | translate }}</mat-card-title>
+  <div class="image">
+    <img src="{{ data.battlerite.icon | assetRoute:'assets/icons':'png' }}" />
+    <mat-chip [selected]="true" color="accent" [selectable]="false">{{ abilityKey }}</mat-chip>
+  </div>
+  <mat-card-content>
+    <p [innerHTML]="data.battlerite.description | translate | ttParse: data.battlerite.tooltipData"></p>
+  </mat-card-content>
+</mat-card>

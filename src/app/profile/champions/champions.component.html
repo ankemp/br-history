@@ -20,7 +20,7 @@
   class="champion-container">
   <mat-card *ngIf="champion.champion">
     <div class="champion-hero">
-      <img src="{{ champion.champion.id | assetRoute:'champions':'png' }}" alt="{{ champion.champion.name }}" />
+      <img src="{{ champion.champion.id | assetRoute:'assets/champions':'png' }}" alt="{{ champion.champion.name }}" />
       <brh-winlose [wins]="champion.characterWins" [losses]="champion.characterLosses" [showRate]="false"></brh-winlose>
     </div>
     <mat-card-title-group>

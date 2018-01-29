@@ -22,7 +22,7 @@
       <span class="team1">{{ match.rosters[0].score }}</span> /
       <span class="team2">{{ match.rosters[1].score }}</span>
     </div>
-    <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'maps':'jpg' }}" alt="">
+    <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'assets/maps':'jpg' }}" alt="">
   </mat-card-title-group>
   <mat-card-content>
     <brh-team-roster *ngFor="let roster of match.rosters; let i = index" [ngClass]="{'theme-accent2': !!i }" [singleMatch]="singleMatch"

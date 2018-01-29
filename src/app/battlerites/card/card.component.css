@@ -1,0 +1,33 @@
+:host() {
+  display: block;
+  max-width: 300px;
+  padding: 8px;
+  width: 100%;
+}
+
+.mat-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image {
+  height: auto;
+  margin: 8px 0 16px;
+  position: relative;
+  width: 128px;
+}
+
+.image .mat-chip {
+  font-size: 16px;
+  font-weight: 500;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.mat-card-content {
+  flex: 1 1 0;
+}

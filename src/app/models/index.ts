@@ -1,4 +1,5 @@
 export * from './asset';
+export * from './battlerite';
 export * from './champion';
 export * from './map';
 export * from './match';

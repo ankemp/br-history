@@ -1,0 +1,4 @@
+<h2 mat-dialog-title>{{ participant.champion.name }}</h2>
+<div class="battlerites">
+  <brh-br-card *ngFor="let br of battlerites$ | async" [data]="br"></brh-br-card>
+</div>

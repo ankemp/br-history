@@ -18,6 +18,7 @@ import { Participant, RoundStat, PlayerStat } from '@app/models';
 export class ParticipantStatsComponent implements OnChanges {
   @Input() participant: Participant;
   @Input() roundStats?: RoundStat[];
+  @Input() telemetryLoading?: boolean;
   pRoundStats: any[];
   selectedStat: PlayerStat;
   selected: any;
