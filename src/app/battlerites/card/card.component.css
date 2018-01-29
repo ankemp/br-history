@@ -1,11 +1,19 @@
 :host() {
   display: block;
-  max-width: 33.33%;
+  max-width: 300px;
   padding: 8px;
+  width: 100%;
 }
 
 .mat-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+}
+
+.mat-card img {
+  margin-bottom: 16px;
 }
 
 .mat-card-content {
