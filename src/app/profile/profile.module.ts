@@ -4,11 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { DBModule } from '@ngrx/db';
 import { reducers } from '@state/profile';
 import { PlayersEffects } from '@state/effects/players';
 import { MatchesEffects } from '@state/effects/matches';
-import { TeamsEffects } from '@app/state/effects/teams';
+import { FollowEffects } from '@state/effects/follow';
+import { TeamsEffects } from '@state/effects/teams';
 import { PlayerService, MatchService, TeamService } from '@app/services';
+import { SCHEMA } from '@app/follow/db';
 
 import {
   MatButtonModule,
@@ -48,7 +51,8 @@ import { TeamMembersComponent } from './team-members/team-members.component';
     CommonModule,
     FormsModule,
     StoreModule.forFeature('profile', reducers),
-    EffectsModule.forFeature([PlayersEffects, MatchesEffects, TeamsEffects]),
+    EffectsModule.forFeature([PlayersEffects, FollowEffects, MatchesEffects, TeamsEffects]),
+    DBModule.provideDB(SCHEMA),
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,

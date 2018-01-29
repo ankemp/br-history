@@ -11,6 +11,7 @@ import { ContentfulService } from '@app/services';
 import { MatToolbarModule, MatButtonModule } from '@angular/material';
 
 import { SearchModule } from '@app/search/search.module';
+import { FollowModule } from '@app/follow/follow.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 
@@ -22,7 +23,8 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
-    SearchModule
+    SearchModule,
+    FollowModule
   ],
   declarations: [HeaderComponent, MenuComponent],
   providers: [

@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 import { Player } from '@app/models';
 
@@ -9,6 +14,7 @@ import { Player } from '@app/models';
 })
 export class HeaderComponent {
   @Input() player: Player;
+  @Output() toggleFollow = new EventEmitter<Player>();
 
   constructor() { }
 

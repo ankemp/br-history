@@ -10,13 +10,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { State } from '@app/reducers';
 import * as fromProfile from '@state/profile';
 import * as playersActions from '@state/actions/players';
+import * as followActions from '@state/actions/follow';
 import * as matchesActions from '@state/actions/matches';
 import { Match, Player, Team } from '@app/models';
 
 @Component({
   selector: 'brh-container',
   template: `
-    <brh-header *ngIf="(player$ | async)" [player]="player$ | async"></brh-header>
+    <brh-header *ngIf="(player$ | async)" (toggleFollow)="toggleFollow($event)" [player]="player$ | async"></brh-header>
     <brh-tabs
     *ngIf="(history$ | async) && (player$ | async)"
     (matchSelected)="selectMatch($event)"
@@ -60,6 +61,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
     this.teams$ = store.select<Team[]>(fromProfile.getAllTeams);
     this.isTeamsLoading$ = store.select<boolean>(fromProfile.getTeamsLoading);
     this.teamsError$ = store.select<string>(fromProfile.getTeamsError);
+  }
+
+  toggleFollow(player: Player): void {
+    this.store.dispatch(new followActions.Add(player));
   }
 
   selectMatch(match: Match): void {
