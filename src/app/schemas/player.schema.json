@@ -1,0 +1,22 @@
+{
+  "title": "player schema",
+  "description": "describes a simple player",
+  "version": 0,
+  "disableKeyCompression": true,
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "primary": true,
+      "default": ""
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}
