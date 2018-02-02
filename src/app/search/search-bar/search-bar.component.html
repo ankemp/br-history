@@ -3,8 +3,7 @@
   <input matInput type="search" placeholder="Player Search" [matAutocomplete]="auto" [formControl]="playerCtrl">
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let player of players$ | async" (onSelectionChange)="goToProfile($event, player)">
-      <span>{{ player.name }}</span>
-      <mat-chip *ngIf="player.stats" color="primary" selected="true">lvl {{ player.stats.accountLevel }}</mat-chip>
+      <span>{{ player.name }} | lvl: {{ player.stats.accountLevel }}</span>
     </mat-option>
   </mat-autocomplete>
   <mat-spinner *ngIf="(loading$ | async)" matSuffix diameter="24" color="accent"></mat-spinner>

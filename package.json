@@ -40,7 +40,7 @@
     "ngx-countdown-timer": "^0.1.9",
     "ngx-gauge": "^1.0.0-beta.1",
     "ngx-pipes": "^2.0.5",
-    "ngx-showdown": "^3.1.0",
+    "ngx-showdown": "^4.0.0",
     "normalize.css": "^7.0.0",
     "rxjs": "^5.5.2",
     "showdown": "^1.8.5",

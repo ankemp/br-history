@@ -48,7 +48,7 @@
 }
 
 .champion-hero img {
-  filter: brightness(85%);
+  filter: grayscale(60%);
 }
 
 .champion-hero brh-winlose {
