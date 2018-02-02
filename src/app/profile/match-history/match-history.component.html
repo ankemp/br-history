@@ -2,14 +2,6 @@
   <mat-toolbar-row *ngIf="hasStats">
     <h3 class="title">Session Stats:</h3>
     <div class="stat">
-      <div>Kills</div>
-      <div>{{ matches | reduceStat:'kills':player.id }}</div>
-    </div>
-    <div class="stat">
-      <div>Deaths</div>
-      <div>{{ matches | reduceStat:'deaths':player.id }}</div>
-    </div>
-    <div class="stat">
       <div>Avg Score</div>
       <div>{{ matches | reduceStat:'score':player.id:'average' }}</div>
     </div>
