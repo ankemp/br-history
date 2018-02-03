@@ -39,7 +39,9 @@ export class TabsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fragSub = this.activatedRoute.fragment.subscribe(fragment => {
-      this.currentTab = +fragment.charAt(0);
+      if (!!fragment) {
+        this.currentTab = +fragment.charAt(0);
+      }
     });
   }
 
