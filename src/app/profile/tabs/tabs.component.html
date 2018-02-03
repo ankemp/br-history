@@ -1,10 +1,10 @@
-<mat-tab-group (selectedTabChange)="tabChange($event)" (selectedIndexChange)="currentTab = $event">
+<mat-tab-group (selectedTabChange)="tabChange($event)" [(selectedIndex)]="currentTab">
   <mat-tab label="Overview">
     <brh-summary *ngIf="currentTab === 0" (viewProfile)="viewProfile($event)" [player]="player" [teams]="teams" [isTeamsLoading]="isTeamsLoading"
       [teamsError]="teamsError"></brh-summary>
     <brh-champions *ngIf="currentTab === 0" [player]="player"></brh-champions>
   </mat-tab>
-  <mat-tab [disabled]="!isTeamsActive">
+  <mat-tab [disabled]="!isTeamsActive" label="Teams">
     <ng-template mat-tab-label>
       Teams
       <brh-loader *ngIf="isTeamsLoading"></brh-loader>
@@ -12,7 +12,7 @@
     </ng-template>
     <brh-teams *ngIf="currentTab === 1" (viewProfile)="viewProfile($event)" [player]="player" [teams]="teams"></brh-teams>
   </mat-tab>
-  <mat-tab [disabled]="currentTab !== 2 && isMatchesLoading">
+  <mat-tab [disabled]="currentTab !== 2 && isMatchesLoading" label="Match History">
     <ng-template mat-tab-label>
       Match History
       <brh-loader *ngIf="isMatchesLoading"></brh-loader>
