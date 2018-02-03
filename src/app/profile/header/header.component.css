@@ -1,6 +1,6 @@
 :host() {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .info {
@@ -44,4 +44,10 @@
 .summary .stat div:first-of-type {
   font-weight: 500;
   text-transform: uppercase;
+}
+
+@media all and (min-width: 46.8em) {
+  :host() {
+    flex-direction: row;
+  }
 }

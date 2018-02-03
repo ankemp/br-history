@@ -1,13 +1,14 @@
 :host() {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  max-width: 100%;
 }
 
 .summary-item {
   display: flex;
   flex-direction: column;
   padding: 16px 8px;
-  width: 33%;
+  width: 100%;
 }
 
 .summary-item .mat-card + .mat-card {
@@ -21,7 +22,7 @@
 .mat-card {
   display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
+  height: 100%;
 }
 
 .mat-card-content {
@@ -74,4 +75,13 @@ dt, dd {
   display: flex;
   margin: 0 0 8px;
   width: 50%;
+}
+
+@media all and (min-width: 46.8em) {
+  :host() {
+    flex-direction: row;
+  }
+  .summary-item {
+    width: 33%;
+  }
 }

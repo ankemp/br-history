@@ -15,3 +15,7 @@ brh-menu {
 .version {
   font-size: 12px;
 }
+
+.copyright {
+  max-width: 100%;
+}
