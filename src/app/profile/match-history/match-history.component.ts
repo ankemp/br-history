@@ -7,7 +7,13 @@ import {
   SimpleChanges,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Angulartics2 } from 'angulartics2';
 
+import { State } from '@app/reducers';
+import * as playersActions from '@state/actions/players';
+import * as matchesActions from '@state/actions/matches';
 import { Match, Player, Participant } from '@app/models';
 
 @Component({
@@ -19,14 +25,15 @@ export class MatchHistoryComponent implements AfterViewInit, OnChanges {
   @Input() matches: Match[];
   @Input() match: Match;
   @Input() player: Player;
-  @Output() matchSelected = new EventEmitter<Match>();
   @Output() viewProfile = new EventEmitter<Player>();
-  @Output() openMatch = new EventEmitter<Match>();
-  @Output() reloadMatches = new EventEmitter<string>();
   refreshTime: string;
   historyWidth: number;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private ga: Angulartics2,
+    private store: Store<State>,
+  ) { }
 
   ngAfterViewInit(): void {
     this.historyWidth = 40;
@@ -38,13 +45,21 @@ export class MatchHistoryComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  kdRatio(match: Match): number | boolean {
-    const kd = match.rosters.reduce((acc, roster) =>
-      roster.participants
-        .filter(p => (p.player.id === this.player.id))
-        .reduce((a, p) => p.stats.kills / p.stats.deaths, 0)
-      , 0);
-    return kd !== Infinity ? kd : false;
+  reloadMatches(playerId: string): void {
+    this.ga.eventTrack.next({
+      action: 'history reload',
+      properties: { category: 'player profile' },
+    });
+    this.store.dispatch(new playersActions.LoadMatches(playerId));
+  }
+
+  selectMatch(match: Match): void {
+    this.store.dispatch(new matchesActions.LoadMatch(match.id));
+  }
+
+  openMatch(match: Match): void {
+    this.store.dispatch(new matchesActions.SetCurrentMatch(match.id));
+    this.router.navigate(['/match', match.id]);
   }
 
   get wlRatio(): string {

@@ -1,6 +1,6 @@
-<mat-tab-group (selectedTabChange)="tabChange.emit($event)" (selectedIndexChange)="currentTab = $event">
+<mat-tab-group (selectedTabChange)="tabChange($event)" (selectedIndexChange)="currentTab = $event">
   <mat-tab label="Overview">
-    <brh-summary *ngIf="currentTab === 0" (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams" [isTeamsLoading]="isTeamsLoading"
+    <brh-summary *ngIf="currentTab === 0" (viewProfile)="viewProfile($event)" [player]="player" [teams]="teams" [isTeamsLoading]="isTeamsLoading"
       [teamsError]="teamsError"></brh-summary>
     <brh-champions *ngIf="currentTab === 0" [player]="player"></brh-champions>
   </mat-tab>
@@ -10,16 +10,14 @@
       <brh-loader *ngIf="isTeamsLoading"></brh-loader>
       <mat-icon *ngIf="!!teamsError" matTooltip="Could not load">error_outline</mat-icon>
     </ng-template>
-    <brh-teams *ngIf="currentTab === 1" (viewProfile)="viewProfile.emit($event)" [player]="player" [teams]="teams"></brh-teams>
+    <brh-teams *ngIf="currentTab === 1" (viewProfile)="viewProfile($event)" [player]="player" [teams]="teams"></brh-teams>
   </mat-tab>
   <mat-tab [disabled]="currentTab !== 2 && isMatchesLoading">
     <ng-template mat-tab-label>
       Match History
       <brh-loader *ngIf="isMatchesLoading"></brh-loader>
     </ng-template>
-    <brh-match-history *ngIf="currentTab === 2" (openMatch)="openMatch.emit($event)" (matchSelected)="matchSelected.emit($event)"
-      (viewProfile)="viewProfile.emit($event)" (reloadMatches)="reloadMatches.emit($event)" [player]="player" [matches]="matches"
-      [match]="match">
+    <brh-match-history *ngIf="currentTab === 2" (viewProfile)="viewProfile($event)" [player]="player" [matches]="matches" [match]="match">
     </brh-match-history>
   </mat-tab>
 </mat-tab-group>
