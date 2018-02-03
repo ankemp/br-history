@@ -15,7 +15,7 @@
     </div>
     <div class="refresh">
       <countdown-timer *ngIf="!canRefresh" [end]="refreshTime"></countdown-timer>
-      <button mat-icon-button color="primary" (click)="reloadMatches.emit(player.id)" [disabled]="!canRefresh">
+      <button mat-icon-button color="primary" (click)="reloadMatches(player.id)" [disabled]="!canRefresh">
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
@@ -29,7 +29,7 @@
   <split direction="horizontal">
     <split-area [size]="historyWidth">
       <mat-nav-list>
-        <a mat-list-item *ngFor="let m of matches" (click)="matchSelected.emit(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
+        <a mat-list-item *ngFor="let m of matches" (click)="selectMatch(m)" [ngClass]="{'won': isWinner(m), 'selected': !!match && m.id === match.id }">
           <div class="where">
             <h4 mat-line>{{ m.matchType }}</h4>
             <p mat-line *ngIf="m.map">{{ m.map.name }}</p>
@@ -47,7 +47,7 @@
     </split-area>
     <split-area size="60">
       <div class="nomatch" *ngIf="!match">Select a match</div>
-      <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="viewProfile.emit($event)" (openMatch)="openMatch.emit($event)"></brh-match-details>
+      <brh-match-details *ngIf="match" [match]="match" [player]="player" (viewProfile)="viewProfile.emit($event)" (openMatch)="openMatch($event)"></brh-match-details>
     </split-area>
   </split>
 </div>
