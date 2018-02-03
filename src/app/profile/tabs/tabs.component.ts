@@ -3,10 +3,13 @@ import {
   Input,
   Output,
   EventEmitter,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
 
 import { State } from '@app/reducers';
 import * as matchesActions from '@state/actions/matches';
@@ -17,7 +20,7 @@ import { Match, Player, Team } from '@app/models';
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent {
+export class TabsComponent implements OnInit, OnDestroy {
   @Input() matches: Match[];
   @Input() match: Match;
   @Input() isMatchesLoading: boolean;
@@ -25,12 +28,24 @@ export class TabsComponent {
   @Input() teams: Team[];
   @Input() isTeamsLoading: boolean;
   @Input() teamsError: string;
+  private fragSub: Subscription;
   currentTab = 0;
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private store: Store<State>,
   ) { }
+
+  ngOnInit() {
+    this.fragSub = this.activatedRoute.fragment.subscribe(fragment => {
+      this.currentTab = +fragment.charAt(0);
+    });
+  }
+
+  ngOnDestroy() {
+    this.fragSub.unsubscribe();
+  }
 
   get isTeamsActive(): boolean {
     return (this.currentTab === 1 || !this.isTeamsLoading && !!!this.teamsError);
@@ -38,7 +53,7 @@ export class TabsComponent {
 
   tabChange($event: MatTabChangeEvent): void {
     this.store.dispatch(new matchesActions.UnSetCurrentMatch);
-    // this.router.navigate([`${$event.index}-${$event.tab.textLabel}`], { relativeTo: this.activatedRoute });
+    this.router.navigate([], { fragment: `${$event.index}-${$event.tab.textLabel}`, relativeTo: this.activatedRoute });
   }
 
   viewProfile(player: Partial<Player>): void {
