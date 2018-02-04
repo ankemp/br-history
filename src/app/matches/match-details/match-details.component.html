@@ -19,9 +19,14 @@
       <span>{{ match.map.name }}</span>
       <div *ngIf="singleMatch" class="match-date">{{ match.createdAt | date:'shortTime' }}</div>
     </mat-card-subtitle>
-    <div class="score">
-      <span class="team1">{{ match.rosters[0].score }}</span> /
-      <span class="team2">{{ match.rosters[1].score }}</span>
+    <div class="score-rounds">
+      <div class="score">
+        <span class="team1">{{ match.rosters[0].score }}</span> /
+        <span class="team2">{{ match.rosters[1].score }}</span>
+      </div>
+      <mat-chip-list class="rounds">
+        <mat-chip *ngFor="let round of match.rounds; let i = index" [ngClass]="'team' + round.winningTeam" selected="true">{{ i+1 }}</mat-chip>
+      </mat-chip-list>
     </div>
     <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'assets/maps':'jpg' }}" alt="">
   </mat-card-title-group>

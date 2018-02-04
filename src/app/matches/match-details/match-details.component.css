@@ -45,13 +45,21 @@
   width: 100%;
 }
 
-.mat-card .mat-card-title-group .score {
-  color: #fff;
-  font-size: 72px;
+.mat-card .mat-card-title-group .score-rounds {
   left: 0;
-  text-align: center;
   top: calc(50% - 36px);
   width: 100%;
+}
+
+.score {
+  text-align: center;
+  color: #fff;
+  font-size: 72px;
+}
+
+.rounds {
+  display: flex;
+  justify-content: center;
 }
 
 .score .team1,
@@ -65,6 +73,14 @@
 
 .score .team2 {
   color: var(--accent2);
+}
+
+.rounds .mat-chip.mat-chip-selected.mat-primary.team1 {
+  background-color: var(--accent);
+}
+
+.rounds .mat-chip.mat-chip-selected.mat-primary.team2 {
+  background-color: var(--accent2);
 }
 
 .mat-card .mat-card-title-group .open-match,
