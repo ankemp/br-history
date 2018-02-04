@@ -25,6 +25,8 @@
   position: absolute;
   top: 16px;
   width: calc(100% - 32px);
+  /* Prevents filter from covering */
+  z-index: 1;
 }
 
 .mat-card .mat-card-title,
@@ -43,6 +45,14 @@
   height: auto;
   object-fit: cover;
   width: 100%;
+}
+
+.mat-card .mat-card-title-group > img.animate {
+  animation-delay: 1s;
+  animation-duration: 800ms;
+  animation-fill-mode: forwards;
+  animation-name: grayOut;
+  animation-timing-function: ease-in-out;
 }
 
 .mat-card .mat-card-title-group .score-rounds {
@@ -87,4 +97,13 @@
 .mat-card .mat-card-title-group .match-date {
   color: #ffffff;
   margin-left: auto;
+}
+
+@keyframes grayOut {
+  0% {
+    filter: grayscale(0%);
+  }
+  100% {
+    filter: grayscale(60%);
+  }
 }
