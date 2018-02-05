@@ -10,6 +10,7 @@ export interface PlayerStat {
   healingDone: number;
   healingReceived: number;
   kills: number;
+  mvp: boolean;
   score: number;
   timeAlive: number;
   userID: string;

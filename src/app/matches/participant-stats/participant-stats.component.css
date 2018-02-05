@@ -18,6 +18,16 @@
 
 .round-select .mat-chip {
   cursor: pointer;
+  height: 32px;
+  width: 32px;
+}
+
+.round-select .mat-icon {
+  font-size: 12px;
+  height: 34px;
+  line-height: 31px;
+  transform: scale(1.65) translateY(2px);
+  width: 32px;
 }
 
 .column {

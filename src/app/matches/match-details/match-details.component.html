@@ -19,11 +19,16 @@
       <span>{{ match.map.name }}</span>
       <div *ngIf="singleMatch" class="match-date">{{ match.createdAt | date:'shortTime' }}</div>
     </mat-card-subtitle>
-    <div class="score">
-      <span class="team1">{{ match.rosters[0].score }}</span> /
-      <span class="team2">{{ match.rosters[1].score }}</span>
+    <div class="score-rounds">
+      <div class="score">
+        <span class="team1">{{ match.rosters[0].score }}</span> /
+        <span class="team2">{{ match.rosters[1].score }}</span>
+      </div>
+      <mat-chip-list class="rounds">
+        <mat-chip *ngFor="let round of match.rounds | orderBy: 'ordinal'" [ngClass]="'team' + round.winningTeam" selected="true">{{ round.ordinal+1 }}</mat-chip>
+      </mat-chip-list>
     </div>
-    <img *ngIf="match.map" src="{{ match.map.id | assetRoute:'assets/maps':'jpg' }}" alt="">
+    <img *ngIf="match.map" [ngClass]="{'animate': singleMatch}" src="{{ match.map.id | assetRoute:'assets/maps':'jpg' }}" alt="">
   </mat-card-title-group>
   <mat-card-content>
     <brh-team-roster *ngFor="let roster of match.rosters; let i = index" [ngClass]="{'theme-accent2': !!i }" [singleMatch]="singleMatch"
