@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "parse-ini": "./scripts/parse-ini.js",
     "prebuild": "./scripts/set-version.js $CIRCLE_BRANCH",
     "build": "ng build --prod --aot --progress=false  --named-chunks",
     "deploy:ci": "",

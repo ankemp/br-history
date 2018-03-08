@@ -31,6 +31,7 @@ node_modules
 /libpeerconnection.log
 npm-debug.log
 firebase-debug.log
+yarn-error.log
 testem.log
 /typings
 

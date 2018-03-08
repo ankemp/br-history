@@ -18,8 +18,9 @@ function jsonWrite(file, obj) {
 program
   .arguments('<file>')
   .action(async file => {
-    const f = ini.parse(fs.readFileSync(file, 'utf-8'));
-    await jsonWrite('src/assets/locale/en.json', f);
+    const path = `./locale/${file}`
+    const f = ini.parse(fs.readFileSync(path, 'utf-8'));
+    await jsonWrite('./src/assets/i18n/en.json', f);
   });
 
 program.parse(process.argv);
